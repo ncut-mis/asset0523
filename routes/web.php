@@ -33,7 +33,6 @@ Route::group(['prefix' => 'admin'], function() {
     //未做
     Route::get('assets/{id}/edit', ['as' => 'assets.edit'   , 'uses' => 'AssetController@edit']);
     Route::patch('assets/{id}'   , ['as' => 'assets.update' , 'uses' => 'AssetController@update']);
-    Route::post('assets'         , ['as' => 'assets.store'  , 'uses' => 'AssetController@store']);
     Route::delete('assets/{id}'  , ['as' => 'assets.destroy', 'uses' => 'AssetController@destroy']);
 });
 

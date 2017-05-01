@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Asset;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Illuminate\Http\Request;
+use App\Asset;
 
 class AssetController extends Controller
 {
@@ -29,14 +28,14 @@ class AssetController extends Controller
 
         return view('assets.edit', $data);
     }
-    public function update(PostRequest $request, $id)
+    public function update(AssetRequest $request, $id)
     {
         $asset=Asset::find($id);
         $asset->update($request->all());
 
         return redirect()->route('assets.index');
     }
-    public function store(PostRequest $request)
+    public function store(AssetRequest $request)
     {
         Asset::create($request->all());
         return redirect()->route('assets.index');
