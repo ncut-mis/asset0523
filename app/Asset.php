@@ -14,7 +14,7 @@ class Asset extends Model
         'category',
         'date',
         'cost',
-        'staues',
+        'status',
         'keeper',
         'lendable',
         'location',

@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            修改資產<small>編輯資產資料</small>
+            修改資產 <small>編輯資產資料</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
