@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Asset extends Model
 {
     //資產
-    protected $table = 'asset_form';
+    protected $table = 'assets';
     protected $fillable = [
         'id',
         'name',
@@ -22,4 +22,5 @@ class Asset extends Model
         'vendor',
         'warranty',
     ];
+
 }
