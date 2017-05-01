@@ -19,7 +19,7 @@ class CreateAssetsTable extends Migration
             $table->integer('category')->index();
             $table->date('date')->nullable();
             $table->integer('cost')->nullable();
-            $table->string('staues',20);
+            $table->string('status',20);
             $table->integer('keeper')->index();
             $table->boolean('lendable');
             $table->string('location',50);
