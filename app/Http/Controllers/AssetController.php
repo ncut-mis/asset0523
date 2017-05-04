@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Asset;
+use App\Category;
 
 class AssetController extends Controller
 {
@@ -18,7 +20,9 @@ class AssetController extends Controller
 
     public function create()
     {
-        return view('assets.create');
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
+        $data=['categories'=>$category];
+        return view('assets.create' ,$data);
     }
 
     public function edit($id)
