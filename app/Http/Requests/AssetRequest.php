@@ -24,18 +24,18 @@ class AssetRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name'=>'required|min:3|max:50',
             'category'=>'required',
-            'staues'=>'required|min:3|max:20',
+            'date',
+            'cost',
+            'status'=>'required|min:3|max:20',
             'keeper'=>'required',
             'lendable'=>'required|boolean',
             'location'=>'required|min:3|max:50',
+            'remark',
             'vendor'=>'required',
             'warranty'=>'required',
-            'title'=>'required|min:3|max:255',
-            'content'=>'required',
-            'is_feature'=>'required|boolean',
+
         ];
     }
 }
