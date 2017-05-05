@@ -11,4 +11,10 @@ class Category extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function asset()
+    {
+        return $this->belongsTo(Asset::class);
+    }
+
 }
