@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/assets/{{$asset->id}}" method="POST" role="form">
+        <form action="/admin/assets/{{$asset->id}}" method="POST" role="form">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
 
