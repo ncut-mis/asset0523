@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AssetRequest;
+
 use App\Asset;
 use App\Category;
+use Illuminate\Http\Request;
 
 class AssetController extends Controller
 {
@@ -25,8 +26,9 @@ class AssetController extends Controller
 
     public function edit($id)
     {
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
         $asset=Asset::find($id);
-        $data = ['asset' => $asset];
+        $data = ['asset' => $asset,'categories'=>$category];
 
         return view('admin.assets.edit', $data);
     }
