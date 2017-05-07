@@ -1,17 +1,17 @@
 @extends('admin.layouts.master')
 
-@section('title', '新增文章')
+@section('title', '新增耗材')
 
 @section('content')
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            新增文章 <small>請輸入文章內容</small>
+            新增耗材 <small>請輸入文章內容</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-edit"></i> 文章管理
+                <i class="fa fa-edit"></i> 耗材管理
             </li>
         </ol>
     </div>
@@ -22,25 +22,17 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/posts" method="POST" role="form">
+        <form action="/admin/supplies" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label>標題：</label>
-                <input name="title" class="form-control" placeholder="請輸入文章標題">
+                <label>耗材名稱：</label>
+                <input name="name" class="form-control" placeholder="請輸入耗材名稱">
             </div>
 
             <div class="form-group">
-                <label>內容：</label>
-                <textarea name="content" class="form-control" rows="10"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>精選？</label>
-                <select name="is_feature" class="form-control">
-                    <option value="0">否</option>
-                    <option value="1">是</option>
-                </select>
+                <label>耗材數量：</label>
+                <input name="quantity" class="form-control" placeholder="請輸入耗材數量">
             </div>
 
             <div class="text-right">

@@ -9,6 +9,13 @@ class Supply extends Model
     //
     protected $table = 'supplies';
     protected $fillable = [
-
+        'name',
+        'quantity',
     ];
+    /*
+    public function receive()
+    {
+
+    }
+    */
 }
