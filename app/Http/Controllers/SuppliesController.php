@@ -12,8 +12,8 @@ class SuppliesController extends Controller
     //
     public function index()
     {
-        $supply = Supply::orderBy('created_at', 'DESC')->get();
-        $data = ['supply' => $supply];
+        $supplies = Supply::orderBy('created_at', 'DESC')->get();
+        $data = ['supplies' => $supplies];
         return view('admin.supplies.index', $data);
     }
 
@@ -24,21 +24,21 @@ class SuppliesController extends Controller
 
     public function edit($id)
     {
-        $supply = Supply::find($id);
-        $data = ['supply' => $supply];
+        $supplies = Supply::find($id);
+        $data = ['supplies' => $supplies];
 
         return view('admin.supplies.edit', $data);
     }
 
-    public function update(SupplyRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $supply = Supply::find($id);
-        $supply->update($request->all());
+        $supplies = Supply::find($id);
+        $supplies->update($request->all());
 
         return redirect()->route('admin.supplies.index');
     }
 
-    public function store(SupplyRequest $request)
+    public function store(Request $request)
     {
         Supply::create($request->all());
         return redirect()->route('admin.supplies.index');
