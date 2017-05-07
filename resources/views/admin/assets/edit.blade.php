@@ -37,6 +37,15 @@
             </div>
 
             <div class="form-group">
+                <label>資產類別：</label>
+                <select name="category" class="form-control">
+                    @foreach($categories as $category)
+                        <option value={{ $category->id }}>{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label>購置日期：</label>
                 <input name="date" class="form-control" placeholder="請輸入資產購置日期" value="{{$asset->date}}">
             </div>
@@ -67,6 +76,16 @@
             <div class="form-group">
                 <label>放置地點：</label>
                 <input name="location" class="form-control" placeholder="請輸入資產放置地點" value="{{$asset->location}}">
+            </div>
+
+            <div class="form-group">
+                <label>供應商：</label>
+                <input name="vendor" class="form-control" placeholder="請輸入資產供應商" value="{{$asset->vendor}}">
+            </div>
+
+            <div class="form-group">
+                <label>耐用年限：</label>
+                <input name="warranty" class="form-control" placeholder="請輸入資產耐用年限" value="{{$asset->warranty}}">
             </div>
 
             <div class="form-group">
