@@ -10,7 +10,10 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+Route::auth();
+Route::get('/home',
+    function (){return view('home');
+});
 Route::get('/'         , ['as' => 'home.index' , 'uses' => 'HomeController@index']);
 Route::get('posts'     , ['as' => 'posts.index', 'uses' => 'PostsController@index']);
 Route::get('posts/{id}', ['as' => 'posts.show' , 'uses' => 'PostsController@show']);
