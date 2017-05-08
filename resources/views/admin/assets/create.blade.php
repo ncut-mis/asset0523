@@ -7,11 +7,11 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            新增資產 <small>請輸資產資料</small>
+            新增資產 <small>請輸入資產資料</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-edit"></i>資產管理
+                <i class="fa fa-edit"></i> 資產管理
             </li>
         </ol>
     </div>
