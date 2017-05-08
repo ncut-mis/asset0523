@@ -33,10 +33,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('assets'          , ['as' => 'admin.assets.index' , 'uses' => 'AssetController@index']);
     Route::get('assets/create'   , ['as' => 'admin.assets.create' , 'uses' => 'AssetController@create']);
     Route::post('assets'         , ['as' => 'admin.asset.store'  , 'uses' => 'AssetController@store']);
-    //未做
     Route::get('assets/{id}/edit', ['as' => 'admin.assets.edit'   , 'uses' => 'AssetController@edit']);
     Route::patch('assets/{id}'   , ['as' => 'admin.assets.update' , 'uses' => 'AssetController@update']);
     Route::delete('assets/{id}'  , ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);
+
 
     //耗材
     Route::get('supplies'          , ['as' => 'admin.supplies.index' , 'uses' => 'SuppliesController@index']);
@@ -44,7 +44,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('supplies'         , ['as' => 'admin.supplies.store'  , 'uses' => 'SuppliesController@store']);
     Route::get('supplies/{id}/edit', ['as' => 'admin.supplies.edit'   , 'uses' => 'SuppliesController@edit']);
     Route::patch('supplies/{id}'   , ['as' => 'admin.supplies.update' , 'uses' => 'SuppliesController@update']);
-    Route::delete('supplies/{id}'  , ['as' => 'admin.supplies.destroy', 'uses' => 'SuppliesController@destroy']);
+    Route::delete('supplies/{id}'  , ['as' => 'admin.supplies.destroy', 'uses' => 'SuppliesController@destro
+//未做
+    Route::get('assets/{query}'  , ['as' => 'admin.assets.show', 'uses' => 'AssetController@show']);
+
 });
 
 Route::get('/tracy',function(){throw new \Exception('Tracy works');} );

@@ -23,7 +23,7 @@
         <input name="query" class="form-control" placeholder="請輸入資產名稱">
     </div>
     <div class="col-lg-12">
-        <a href="{{ route('admin.assets.show',) }}" class="btn btn-success">查詢資產</a>
+        <a href="{{ route('admin.assets.show',) }}" class="btn btn-success">建立新資產</a>
     </div>
 </div>
 <div class="row" style="margin-bottom: 20px; text-align: right">

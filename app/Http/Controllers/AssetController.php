@@ -50,4 +50,10 @@ class AssetController extends Controller
         return redirect()->route('admin.assets.index');
     }
 
+    public function select($query){
+        $asset=Asset::scopeOfName($query)->get();
+        $data=['assets'=>$asset];
+        return view('admin.assets.index' ,$data);
+    }
+
 }

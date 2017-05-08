@@ -27,4 +27,10 @@ class Asset extends Model
         return $this->hasMany(Category::class);
     }
 
+    public function scopeOfName($query, $type)
+    {
+        return $query->where('name', $type);
+    }
+
+
 }

@@ -33,14 +33,13 @@
 
             <div class="form-group">
                 <label>資產類別：</label>
-                <input name="category" class="form-control" placeholder="請輸入資產類別" value="{{$asset->category}}">
-            </div>
-
-            <div class="form-group">
-                <label>資產類別：</label>
                 <select name="category" class="form-control">
                     @foreach($categories as $category)
-                        <option value={{ $category->id }}>{{ $category->name }}</option>
+                        @if($asset->category==$category->id)
+                            <option value={{ $category->id }} selected="true">{{ $category->name }}</option>
+                        @else
+                            <option value={{ $category->id }}>{{ $category->name }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
