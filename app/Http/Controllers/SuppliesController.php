@@ -30,7 +30,7 @@ class SuppliesController extends Controller
         return view('admin.supplies.edit', $data);
     }
 
-    public function update(Request $request, $id)
+    public function update(Requests\SupplyRequest $request, $id)
     {
         $supplies = Supply::find($id);
         $supplies->update($request->all());
@@ -38,7 +38,7 @@ class SuppliesController extends Controller
         return redirect()->route('admin.supplies.index');
     }
 
-    public function store(Request $request)
+    public function store(Requests\SupplyRequest $request)
     {
         Supply::create($request->all());
         return redirect()->route('admin.supplies.index');
@@ -48,5 +48,11 @@ class SuppliesController extends Controller
     {
         Supply::destroy($id);
         return redirect()->route('admin.supplies.index');
+    }
+    public function search()
+    {
+        $supplies = Supply::orderBy('created_at', 'DESC')->get();
+        $data = ['supplies' => $supplies];
+        return view('admin.supplies.index', $data);
     }
 }

@@ -13,7 +13,7 @@ class SupplyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class SupplyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:5|max:20',
+            'name'=>'required|max:20',
             'quantity'=>'required',
         ];
     }
