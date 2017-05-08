@@ -89,7 +89,7 @@
 
             <div class="form-group">
                 <label>備註：</label>
-                <textarea name="submit" class="form-control" rows="10"></textarea> value="{{$asset->remark}}">
+                <textarea name="submit" class="form-control" rows="10" value="{{$asset->remark}}"></textarea>
             </div>
 
             <div class="text-right">

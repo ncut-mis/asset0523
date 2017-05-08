@@ -17,16 +17,19 @@
     </div>
 </div>
 <!-- /.row -->
-
-<div class="row" style="margin-bottom: 20px; text-align: right">
-    <div class="form-group">
-        <input name="query" class="form-control" placeholder="請輸入資產名稱">
-    </div>
-    <div class="col-lg-12">
-        <a href="{{ route('admin.assets.show',) }}" class="btn btn-success">查詢資產</a>
-    </div>
+<div class="input-group custom-search-form">
+    <form action="{{ route('admin.assets.show') }}" method="POST">
+        {{ csrf_field() }}
+        <span class="input-group-btn">
+            <input type="Search" class="form-control" placeholder="Search...">
+            <button class="btn btn-default" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </form>
 </div>
-<div class="row" style="margin-bottom: 20px; text-align: right">
+
+<div class="col-lg-6" style="margin-bottom: 20px; text-align: right" >
     <div class="col-lg-12">
         <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
     </div>
