@@ -30,10 +30,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('assets'          , ['as' => 'admin.assets.index' , 'uses' => 'AssetController@index']);
     Route::get('assets/create'   , ['as' => 'admin.assets.create' , 'uses' => 'AssetController@create']);
     Route::post('assets'         , ['as' => 'admin.asset.store'  , 'uses' => 'AssetController@store']);
-    //未做
     Route::get('assets/{id}/edit', ['as' => 'admin.assets.edit'   , 'uses' => 'AssetController@edit']);
     Route::patch('assets/{id}'   , ['as' => 'admin.assets.update' , 'uses' => 'AssetController@update']);
     Route::delete('assets/{id}'  , ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);
+//未做
+    Route::get('assets/{query}'  , ['as' => 'admin.assets.show', 'uses' => 'AssetController@show']);
 });
 
 Route::get('/tracy',function(){throw new \Exception('Tracy works');} );
