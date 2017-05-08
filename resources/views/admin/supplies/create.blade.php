@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 
-@section('title', '新增耗材')
+@section('title', '新購耗材')
 
 @section('content')
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            新增耗材 <small>請輸入文章內容</small>
+            新增耗材 <small>請輸入耗材資料</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">

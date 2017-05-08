@@ -20,7 +20,7 @@
 
 <div class="row" style="margin-bottom: 20px; text-align: right">
     <div class="col-lg-12">
-        <a href="{{ route('admin.supplies.create') }}" class="btn btn-success">建立新耗材</a>
+        <a href="{{ route('admin.supplies.create') }}" class="btn btn-success">建立新購耗材</a>
     </div>
 </div>
 <!-- /.row -->
@@ -31,10 +31,9 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="80" style="text-align: center">耗材編號</th>
+                        <th width="100" style="text-align: center">耗材編號</th>
                         <th>耗材名稱</th>
-                        <th width="80" style="text-align: center">耗材數量</th>
-
+                        <th width="100" style="text-align: center">耗材數量</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +49,6 @@
                                 <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-
                                     <button class="btn btn-link">刪除</button>
                                 </form>
                             </div>

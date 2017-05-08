@@ -25,7 +25,7 @@ class SupplyRequest extends FormRequest
     {
         return [
             'name'=>'required|max:20',
-            'quantity'=>'required',
+            'quantity'=>'required|integer',
         ];
     }
 }
