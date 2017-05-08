@@ -41,7 +41,7 @@
                 <a href="{{ route('admin.posts.index') }}"><i class="fa fa-fw fa-edit"></i> 文章管理</a>
             </li>
             <li>
-                <a href="{{ route('assets.index') }}"><i class="fa fa-fw fa-edit"></i> 資產管理</a>
+                <a href="{{ route('admin.assets.index') }}"><i class="fa fa-fw fa-edit"></i> 資產管理</a>
             </li>
         </ul>
     </div>

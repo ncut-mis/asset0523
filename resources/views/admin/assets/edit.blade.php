@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/assets/{{$asset->id}}" method="POST" role="form">
+        <form action="/admin/assets/{{$asset->id}}" method="POST" role="form">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
 
@@ -33,7 +33,15 @@
 
             <div class="form-group">
                 <label>資產類別：</label>
-                <input name="category" class="form-control" placeholder="請輸入資產類別" value="{{$asset->category}}">
+                <select name="category" class="form-control">
+                    @foreach($categories as $category)
+                        @if($asset->category==$category->id)
+                            <option value={{ $category->id }} selected="true">{{ $category->name }}</option>
+                        @else
+                            <option value={{ $category->id }}>{{ $category->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
@@ -67,6 +75,16 @@
             <div class="form-group">
                 <label>放置地點：</label>
                 <input name="location" class="form-control" placeholder="請輸入資產放置地點" value="{{$asset->location}}">
+            </div>
+
+            <div class="form-group">
+                <label>供應商：</label>
+                <input name="vendor" class="form-control" placeholder="請輸入資產供應商" value="{{$asset->vendor}}">
+            </div>
+
+            <div class="form-group">
+                <label>耐用年限：</label>
+                <input name="warranty" class="form-control" placeholder="請輸入資產耐用年限" value="{{$asset->warranty}}">
             </div>
 
             <div class="form-group">

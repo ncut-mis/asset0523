@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Asset;
-use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Asset;
+use App\Category;
+use Illuminate\Http\Request;
 
 class AssetController extends Controller
 {
@@ -14,37 +14,46 @@ class AssetController extends Controller
     {
         $asset=Asset::orderBy('created_at', 'DESC')->get();
         $data=['assets'=>$asset];
-        return view('assets.index', $data);
+        return view('admin.assets.index', $data);
     }
 
     public function create()
     {
-        return view('assets.create');
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
+        $data=['categories'=>$category];
+        return view('admin.assets.create' ,$data);
     }
 
     public function edit($id)
     {
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
         $asset=Asset::find($id);
-        $data = ['asset' => $asset];
+        $data = ['asset' => $asset,'categories'=>$category];
 
-        return view('assets.edit', $data);
+        return view('admin.assets.edit', $data);
     }
-    public function update(PostRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $asset=Asset::find($id);
         $asset->update($request->all());
 
-        return redirect()->route('assets.index');
+        return redirect()->route('admin.assets.index');
     }
-    public function store(PostRequest $request)
+    public function store(Request $request)
     {
         Asset::create($request->all());
-        return redirect()->route('assets.index');
+        return redirect()->route('admin.assets.index');
     }
     public function destroy($id)
     {
         Asset::destroy($id);
-        return redirect()->route('assets.index');
+        return redirect()->route('admin.assets.index');
+    }
+
+    public function select($query){
+        $asset=Asset::scopeOfName($query)->get();
+        $data=['assets'=>$asset];
+        return view('admin.assets.index' ,$data);
     }
 
 }

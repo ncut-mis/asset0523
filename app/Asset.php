@@ -9,7 +9,6 @@ class Asset extends Model
     //資產
     protected $table = 'assets';
     protected $fillable = [
-        'id',
         'name',
         'category',
         'date',
@@ -22,5 +21,16 @@ class Asset extends Model
         'vendor',
         'warranty',
     ];
+
+    public function category()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function scopeOfName($query, $type)
+    {
+        return $query->where('name', $type);
+    }
+
 
 }

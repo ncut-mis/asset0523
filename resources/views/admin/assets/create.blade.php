@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/assets" method="POST" role="form">
+        <form action="/admin/assets" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -32,7 +32,11 @@
 
             <div class="form-group">
                 <label>資產類別：</label>
-                <input name="category" class="form-control" placeholder="請輸入資產類別">
+                <select name="category" class="form-control">
+                    @foreach($categories as $category)
+                    <option value={{ $category->id }}>{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
@@ -69,8 +73,18 @@
             </div>
 
             <div class="form-group">
+                <label>供應商：</label>
+                <input name="vendor" class="form-control" placeholder="請輸入資產供應商">
+            </div>
+
+            <div class="form-group">
+                <label>耐用年限：</label>
+                <input name="warranty" class="form-control" placeholder="請輸入資產耐用年限">
+            </div>
+
+            <div class="form-group">
                 <label>備註：</label>
-                <textarea name="remark" class="form-control" rows="10"></textarea>
+                <textarea name="remark" class="form-control" rows="5"></textarea>
             </div>
             <div class="text-right">
                 <button type="submit" class="btn btn-success">新增</button>

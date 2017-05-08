@@ -19,8 +19,16 @@
 <!-- /.row -->
 
 <div class="row" style="margin-bottom: 20px; text-align: right">
+    <div class="form-group">
+        <input name="query" class="form-control" placeholder="請輸入資產名稱">
+    </div>
     <div class="col-lg-12">
-        <a href="{{ route('assets.create') }}" class="btn btn-success">建立新資產</a>
+        <a href="{{ route('admin.assets.show',) }}" class="btn btn-success">查詢資產</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 20px; text-align: right">
+    <div class="col-lg-12">
+        <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
     </div>
 </div>
 <!-- /.row -->
@@ -51,12 +59,11 @@
                         <td style="text-align: center">{{ $asset->location }}</td>
                         <td>
                             <div>
-                                <a href="{{ route('assets.edit', $asset->id) }}">修改</a>
+                                <a href="{{ route('admin.assets.edit', $asset->id) }}">修改</a>
                                 /
-                                <form action="{{ route('assets.destroy', $asset->id) }}" method="POST">
+                                <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-
                                     <button class="btn btn-link">刪除</button>
                                 </form>
                             </div>
