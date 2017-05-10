@@ -29,7 +29,7 @@ class Asset extends Model
 
     public function scopeOfName($query, $type)
     {
-        return $query->where('name','*like*', $type);
+        return $query->where('name','like', '%'.$type.'%');
     }
 
 

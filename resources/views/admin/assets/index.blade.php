@@ -18,17 +18,14 @@
 </div>
 <!-- /.row -->
 <div class="input-group custom-search-form">
-    <form action="{{ route('admin.assets.show') }}" method="POST">
-        {{ csrf_field() }}
-        <span class="input-group-btn">
-            <input type="Search" class="form-control" placeholder="Search...">
-            <button class="btn btn-default" type="button">
-                <i class="fa fa-search"></i>
-            </button>
+<form action="{{ route('admin.assets.show') }}" method="POST">
+    {{ csrf_field() }}
+    <span class="input-group-btn">
+    <input name="Search" class="form-control" placeholder="Search...">
+    <button class="btn btn-info"><i class="fa fa-search"></i></button>
         </span>
-    </form>
+</form>
 </div>
-
 <div class="col-lg-6" style="margin-bottom: 20px; text-align: right" >
     <div class="col-lg-12">
         <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
