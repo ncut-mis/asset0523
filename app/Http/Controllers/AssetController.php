@@ -13,10 +13,11 @@ class AssetController extends Controller
     public function index()
     {
         $asset=Asset::orderBy('created_at', 'DESC')->get();
-        $data=['assets'=>$asset];
+        $data=['assets'=>$asset
+            //,'categories'=>$asset->category
+        ];
         return view('admin.assets.index', $data);
     }
-
     public function create()
     {
         $category=Category::orderBy('created_at' ,'DESC') ->get();
@@ -50,8 +51,20 @@ class AssetController extends Controller
         return redirect()->route('admin.assets.index');
     }
 
-    public function select($query){
-        $asset=Asset::scopeOfName($query)->get();
+    public function show(Request $request)
+    {
+        $Search =$request->input('Search');
+        /*
+          測試
+        $query = Asset::orderBy('created_at', 'DESC')->select('name');
+        $asset =$query->scopeOfName($Search)-get();
+        */
+        $asset = Asset::orderBy('created_at', 'DESC')
+            ->when($Search, function ($query) use ($Search) {
+                return $query->where('name', 'like','%'.$Search.'%');
+            })->get();
+
+
         $data=['assets'=>$asset];
         return view('admin.assets.index' ,$data);
     }
