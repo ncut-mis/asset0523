@@ -12,6 +12,10 @@ class Supply extends Model
         'name',
         'quantity',
     ];
+    public function scopeOfName($query,$type)
+    {
+        return $query->where('name','*like*','%'.$type.'%');
+    }
     /*
     public function receive()
     {
