@@ -26,7 +26,8 @@
         </span>
 </form>
 </div>
-<div class="col-lg-6" style="margin-bottom: 20px; text-align: right" >
+
+<div class="row" style="margin-bottom: 20px; text-align: right" >
     <div class="col-lg-12">
         <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
     </div>
