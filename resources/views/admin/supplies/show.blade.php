@@ -11,7 +11,7 @@
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-edit"></i> 耗材管理
+                <i class="fa fa-edit"></i>耗材管理
             </li>
         </ol>
     </div>
@@ -52,7 +52,7 @@
                         <td style="text-align: center">{{ $supplies->quantity }}</td>
                         <td>
                             <div>
-                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>
+                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">修改</a>
                                 /
                                 <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
                                     {{ csrf_field() }}

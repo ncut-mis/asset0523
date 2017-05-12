@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            新增耗材 <small>請輸入耗材資料</small>
+            新增耗材 <small>輸入耗材資料</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
