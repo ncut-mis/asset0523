@@ -22,23 +22,23 @@ Route::get('posts/{id}', ['as' => 'posts.show' , 'uses' => 'PostsController@show
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'AdminDashboardController@index']);
     //
-    Route::get('posts'          , ['as' => 'admin.posts.index' , 'uses' => 'AdminPostsController@index']);
-    Route::get('posts/create'   , ['as' => 'admin.posts.create' , 'uses' => 'AdminPostsController@create']);
-    Route::get('posts/{id}/edit', ['as' => 'admin.posts.edit'   , 'uses' => 'AdminPostsController@edit']);
-    Route::patch('posts/{id}'   , ['as' => 'admin.posts.update' , 'uses' => 'AdminPostsController@update']);
-    Route::post('posts'         , ['as' => 'admin.posts.store'  , 'uses' => 'AdminPostsController@store']);
-    Route::delete('posts/{id}'  , ['as' => 'admin.posts.destroy', 'uses' => 'AdminPostsController@destroy']);
+    Route::get('posts', ['as' => 'admin.posts.index', 'uses' => 'AdminPostsController@index']);
+    Route::get('posts/create', ['as' => 'admin.posts.create', 'uses' => 'AdminPostsController@create']);
+    Route::get('posts/{id}/edit', ['as' => 'admin.posts.edit', 'uses' => 'AdminPostsController@edit']);
+    Route::patch('posts/{id}', ['as' => 'admin.posts.update', 'uses' => 'AdminPostsController@update']);
+    Route::post('posts', ['as' => 'admin.posts.store', 'uses' => 'AdminPostsController@store']);
+    Route::delete('posts/{id}', ['as' => 'admin.posts.destroy', 'uses' => 'AdminPostsController@destroy']);
 
     //資產
-    Route::get('assets'          , ['as' => 'admin.assets.index' , 'uses' => 'AssetController@index']);
-    Route::get('assets/create'   , ['as' => 'admin.assets.create' , 'uses' => 'AssetController@create']);
-    Route::post('assets'         , ['as' => 'admin.asset.store'  , 'uses' => 'AssetController@store']);
-    Route::get('assets/{id}/edit', ['as' => 'admin.assets.edit'   , 'uses' => 'AssetController@edit']);
-    Route::patch('assets/{id}'   , ['as' => 'admin.assets.update' , 'uses' => 'AssetController@update']);
-    Route::delete('assets/{id}'  , ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);
-    //未做
-    Route::post('assets/show'  , ['as' => 'admin.assets.show', 'uses' => 'AssetController@show']);
 
+    Route::get('assets', ['as' => 'admin.assets.index', 'uses' => 'AssetController@index']);
+    Route::get('assets/create', ['as' => 'admin.assets.create', 'uses' => 'AssetController@create']);
+    Route::post('assets', ['as' => 'admin.asset.store', 'uses' => 'AssetController@store']);
+    Route::get('assets/{id}/edit', ['as' => 'admin.assets.edit', 'uses' => 'AssetController@edit']);
+    Route::patch('assets/{id}', ['as' => 'admin.assets.update', 'uses' => 'AssetController@update']);
+    Route::delete('assets/{id}', ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);
+    Route::post('assets/show'  , ['as' => 'admin.assets.show', 'uses' => 'AssetController@show']);
+   
     //耗材
     Route::get('supplies'          , ['as' => 'admin.supplies.index' , 'uses' => 'SuppliesController@index']);
     Route::get('supplies/create'   , ['as' => 'admin.supplies.create' , 'uses' => 'SuppliesController@create']);
@@ -48,6 +48,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('supplies/{id}'  , ['as' => 'admin.supplies.destroy', 'uses' => 'SuppliesController@destroy']);
 
 
+//未做
+    Route::post('assets/show', ['as' => 'admin.assets.show', 'uses' => 'AssetController@show']);
 });
 
-Route::get('/tracy',function(){throw new \Exception('Tracy works');} );
+
+Route::get('/tracy',function(){throw new \Exception('Tracy works');});

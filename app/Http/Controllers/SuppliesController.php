@@ -46,10 +46,21 @@ class SuppliesController extends Controller
         Supply::destroy($id);
         return redirect()->route('admin.supplies.index');
     }
-    public function search()
+    public function show(Request $request)
     {
-        $supplies = Supply::orderBy('created_at', 'DESC')->get();
-        $data = ['supplies' => $supplies];
-        return view('admin.supplies.index', $data);
+        $Search =$request->input('Search');
+        /*
+          測試
+        $query = Asset::orderBy('created_at', 'DESC')->select('name');
+        $asset =$query->scopeOfName($Search)-get();
+        */
+        $supplies = Supply::orderBy('created_at', 'DESC')
+            ->when($Search, function ($query) use ($Search) {
+                return $query->where('name', 'like','%'.$Search.'%');
+            })->get();
+
+
+        $data=['supplies'=>$supplies];
+        return view('admin.supplies.index' ,$data);
     }
 }
