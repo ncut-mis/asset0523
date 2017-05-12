@@ -46,10 +46,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('supplies/{id}/edit', ['as' => 'admin.supplies.edit'   , 'uses' => 'SuppliesController@edit']);
     Route::patch('supplies/{id}'   , ['as' => 'admin.supplies.update' , 'uses' => 'SuppliesController@update']);
     Route::delete('supplies/{id}'  , ['as' => 'admin.supplies.destroy', 'uses' => 'SuppliesController@destroy']);
+    Route::post('supplies/show'  , ['as' => 'admin.supplies.show', 'uses' => 'SuppliesController@show']);
 
-
-//未做
-    Route::post('assets/show', ['as' => 'admin.assets.show', 'uses' => 'AssetController@show']);
 });
 
 
