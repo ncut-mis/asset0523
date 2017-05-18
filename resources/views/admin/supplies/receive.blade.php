@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            新購耗材 <small>輸入耗材資料</small>
+            新增耗材 <small>輸入耗材資料</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input name="name" class="form-control" placeholder="請輸入耗材名稱">
+                <input name="name" class="form-control" placeholder="請輸入名稱">
             </div>
 
             <div class="form-group">
