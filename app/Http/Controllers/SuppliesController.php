@@ -63,4 +63,10 @@ class SuppliesController extends Controller
         $data=['supplies'=>$supplies];
         return view('admin.supplies.index' ,$data);
     }
+    public function  receive(Request $request) {
+        Receive::create($request->all());
+        Supply::create($request->all());
+        return redirect()->route('admin.supplies.index');
+    }
+
 }
