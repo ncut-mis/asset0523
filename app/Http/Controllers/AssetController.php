@@ -13,8 +13,9 @@ class AssetController extends Controller
     public function index()
     {
         $asset=Asset::orderBy('created_at', 'DESC')->get();
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
         $data=['assets'=>$asset
-            //,'categories'=>$asset->category
+            ,'categories'=>$category
         ];
         return view('admin.assets.index', $data);
     }
@@ -51,21 +52,23 @@ class AssetController extends Controller
         return redirect()->route('admin.assets.index');
     }
 
-    public function show(Request $request)
+    public function show($id)
+    {
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
+        $asset=Asset::find($id);
+        $data = ['asset' => $asset,'categories'=>$category];
+
+        return view('admin.assets.show', $data);
+    }
+
+    public function Search(Request $request)
     {
         $Search =$request->input('Search');
-        /*
-          測試
-        $query = Asset::orderBy('created_at', 'DESC')->select('name');
-        $asset =$query->scopeOfName($Search)-get();
-        */
         $asset = Asset::orderBy('created_at', 'DESC')
-            ->when($Search, function ($query) use ($Search) {
-                return $query->where('name', 'like','%'.$Search.'%');
-            })->get();
-
-
-        $data=['assets'=>$asset];
+            ->where('name', 'like','%'.$Search.'%')
+            ->get();
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
+        $data=['assets'=>$asset,'categories'=>$category];
         return view('admin.assets.index' ,$data);
     }
 

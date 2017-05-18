@@ -18,15 +18,15 @@
 </div>
 <!-- /.row -->
 <div class="input-group custom-search-form">
-<form action="{{ route('admin.assets.show') }}" method="POST">
+<form action="{{ route('admin.assets.Search') }}" method="POST">
     {{ csrf_field() }}
     <span class="input-group-btn">
     <input name="Search" class="form-control" placeholder="Search...">
     <button class="btn btn-info"><i class="fa fa-search"></i></button>
-        </span>
+    </span>
 </form>
 </div>
-<div class="col-lg-6" style="margin-bottom: 20px; text-align: right" >
+<div class="row" style="margin-bottom: 20px; text-align: right">
     <div class="col-lg-12">
         <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
     </div>
@@ -51,21 +51,32 @@
                 <tbody>
                 @foreach($assets as $asset)
                     <tr>
-                        <td style="text-align: center">{{ $asset->id }}</td>
-                        <td style="text-align: center">{{ $asset->name }}</td>
-                        <td style="text-align: center">{{ $asset->category }}</td>
+                        <td style="text-align: center">
+                            {{ $asset->id }}
+                        </td>
+                        <td style="text-align: center">
+                            <a href="{{ route('admin.assets.show', $asset->id) }}">{{ $asset->name }}</a>
+                        </td>
+                        <td style="text-align: center">
+                            @foreach($categories as $category)
+                                @if($asset->category==$category->id)
+                                    {{ $category->name }}
+                                @endif
+                            @endforeach
+                        </td>
                         <td style="text-align: center">{{ $asset->status }}</td>
                         <td style="text-align: center">{{ $asset->lendable?'可':'否' }}</td>
                         <td style="text-align: center">{{ $asset->location }}</td>
                         <td>
                             <div>
                                 <a href="{{ route('admin.assets.edit', $asset->id) }}">修改</a>
-                                /
+                                / <a href="{{ route('admin.assets.application', $asset->id) }}">申請</a> /
                                 <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button class="btn btn-link">刪除</button>
                                 </form>
+
                             </div>
                         </td>
                     </tr>
