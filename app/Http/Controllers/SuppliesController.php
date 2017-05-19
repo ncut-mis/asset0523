@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Receive;
 use App\Supply;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -49,23 +50,37 @@ class SuppliesController extends Controller
     public function show(Request $request)
     {
         $Search =$request->input('Search');
-        /*
-          測試
-        $query = Asset::orderBy('created_at', 'DESC')->select('name');
-        $asset =$query->scopeOfName($Search)-get();
-        */
         $supplies = Supply::orderBy('created_at', 'DESC')
             ->when($Search, function ($query) use ($Search) {
                 return $query->where('name', 'like','%'.$Search.'%');
             })->get();
-
-
         $data=['supplies'=>$supplies];
         return view('admin.supplies.index' ,$data);
     }
-    public function  receive(Request $request) {
-        Supply::create($request->all());
+    public function receive()
+    {
+        return view('admin.receive.create');
+    }
+    public function receivestore(Request $request)
+    {
+        Receive::create($request->all());
         return redirect()->route('admin.supplies.index');
+    }
+    public function receiveedit(Requests\SupplyRequest $request,$id)
+    {
+        $supplies = Supply::find($id);
+        $receives=Receive::find($id);
+
+        $titles = DB::table('supplies')->lists('quantity');
+
+        foreach ($titles as $title) {
+            echo $title;
+        }
+        $date1 =['receives'=>$receives];
+        $data2 = ['supplies' => $supplies];
+
+        $supplies->update($request->all());
+
     }
    /* public function autocomplete(){
         $term = Input::get('term');
