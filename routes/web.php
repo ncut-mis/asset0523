@@ -21,7 +21,7 @@ Route::get('posts/{id}', ['as' => 'posts.show' , 'uses' => 'PostsController@show
 // 後台
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'AdminDashboardController@index']);
-    //
+    //　
     Route::get('posts', ['as' => 'admin.posts.index', 'uses' => 'AdminPostsController@index']);
     Route::get('posts/create', ['as' => 'admin.posts.create', 'uses' => 'AdminPostsController@create']);
     Route::get('posts/{id}/edit', ['as' => 'admin.posts.edit', 'uses' => 'AdminPostsController@edit']);
@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('assets/{id}', ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);
     Route::post('assets/Search'  , ['as' => 'admin.assets.Search', 'uses' => 'AssetController@Search']);
     //有點問題
-    Route::post('assets/{id}/show'  , ['as' => 'admin.assets.show', 'uses' => 'AssetController@show']);
+    Route::get('assets/{id}/data', ['as' => 'admin.assets.data', 'uses' => 'AssetController@data']);
     //申請
     Route::get('assets/{id}/application', ['as' => 'admin.assets.application', 'uses' => 'ApplicationsController@create']);
     Route::patch('assets/{id}/application.store', ['as' => 'admin.assets.applications.store', 'uses' => 'ApplicationsController@store']);

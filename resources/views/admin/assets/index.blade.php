@@ -55,7 +55,7 @@
                             {{ $asset->id }}
                         </td>
                         <td style="text-align: center">
-                            <a href="{{ route('admin.assets.show', $asset->id) }}">{{ $asset->name }}</a>
+                            <a href="{{ route('admin.assets.data', $asset->id) }}">{{ $asset->name }}</a>
                         </td>
                         <td style="text-align: center">
                             @foreach($categories as $category)

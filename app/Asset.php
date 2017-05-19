@@ -29,6 +29,6 @@ class Asset extends Model
 
     public function maintainces() //  Asset (1) -> Maintaince (n)
     {
-        return $this->hasMany(maintaince::class);
+        return $this->hasMany(Maintaince::class);
     }
 }

@@ -52,7 +52,7 @@ class AssetController extends Controller
         return redirect()->route('admin.assets.index');
     }
 
-    public function show($id)
+    public function data($id)
     {
         $category=Category::orderBy('created_at' ,'DESC') ->get();
         $asset=Asset::find($id);
