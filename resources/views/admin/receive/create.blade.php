@@ -22,16 +22,16 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/supplies/" method="POST" role="form">
+        <form action="/admin/receives/" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">
                 <label>領取員工：</label>
-                <input name="u_id" class="form-control" placeholder="請輸入員工名稱">
+                <input name="u_id" class="form-control" placeholder="請輸入員工">
             </div>
             <div class="form-group">
                 <label>領取耗材：</label>
-                <input name="s_id" class="form-control" placeholder="請輸入耗材名稱" >
+                <input name="s_id" class="form-control" placeholder="請輸入耗材" >
             </div>
             <div class="form-group">
                 <label>日期時間：</label>
