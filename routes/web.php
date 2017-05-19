@@ -48,7 +48,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('supplies/{id}'  , ['as' => 'admin.supplies.destroy', 'uses' => 'SuppliesController@destroy']);
     Route::post('supplies/show'  , ['as' => 'admin.supplies.show', 'uses' => 'SuppliesController@show']);
 //自動完成
-   // Route::get('supplies/autocomplete',['as' => 'admin.supplies.auto','uses' => 'SearchController@autocomplete']);
+
 });
 
 
