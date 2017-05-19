@@ -15,10 +15,9 @@ class Application extends Model
         'date'
     ];
 
-
-    public function asset()
+    public function Maintaince() // Application (n) -> Maintaince (1)
     {
-        return $this->belongsTo(Asset::class);
+        return $this->belongsTo(Maintaince::class);
     }
 
 }

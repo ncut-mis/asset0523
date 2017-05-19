@@ -22,12 +22,13 @@ class Asset extends Model
         'warranty'
     ];
 
-    public function categories()
+    public function categories() //  Asset (1) -> Category (n)
     {
         return $this->hasMany(Category::class);
     }
-    public function Applications()
+
+    public function maintainces() //  Asset (1) -> Maintaince (n)
     {
-        return $this->hasMany(Application::class);
+        return $this->hasMany(maintaince::class);
     }
 }
