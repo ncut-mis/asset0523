@@ -26,8 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function supply()
+    public function receives()
     {
-        return $this->belongsToMany(Supply::class);
+        return $this->belongsTo(Receive::class);
     }
 }
