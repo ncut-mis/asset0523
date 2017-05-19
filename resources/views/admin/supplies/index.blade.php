@@ -24,34 +24,33 @@
     <input name="Search" class="form-control" placeholder="Search...">
     <button class="btn btn-info"><i class="fa fa-search"></i></button>
         </span>
-
-        <div id="demoDiv">
-            <div id="demoDivCon">
-                <label id="demoLabel" for="demoInput">輸入搜尋資料:</label>
-                <input id="demoInput" type="text" list="demoList" autofocus="autofocus">
-                <div class="aListCon">
-                    <datalist id="demoList">
-                        <!--[if IE 9]><select disabled><![endif]-->
-                        <option value="Afghanistan">
-
-                            <!--[if IE 9]></select><![endif]-->
-                    </datalist>
-                    <script type="text/javascript" src="src/Autocomplete.js"></script>
-                    <script type="text/javascript">
-                        (function(window, document, undefined) {
-                            "use strict";
-
-                            var myAutocomplete = new Autocomplete("demoInput", {
-                                useNativeInterface : false,
-                                srcType : "dom"
-                            });
-
-                        })(this, this.document);
-                    </script>
-                </div>
-            </div>
-        </div>
     </form>
+</div>
+<div id="demoDiv">
+    <div id="demoDivCon">
+        <label id="demoLabel" for="demoInput">輸入搜尋資料:</label>
+        <input id="demoInput" type="text" list="demoList" autofocus="autofocus">
+        <div class="aListCon">
+            <datalist id="demoList">
+                <!--[if IE 9]><select disabled><![endif]-->
+                <option value="Afghanistan">
+
+                    <!--[if IE 9]></select><![endif]-->
+            </datalist>
+            <script type="text/javascript" src="src/Autocomplete.js"></script>
+            <script type="text/javascript">
+                (function(window, document, undefined) {
+                    "use strict";
+
+                    var myAutocomplete = new Autocomplete("demoInput", {
+                        useNativeInterface : false,
+                        srcType : "dom"
+                    });
+
+                })(this, this.document);
+            </script>
+        </div>
+    </div>
 </div>
 
 <div class="row" style="margin-bottom: 20px; text-align: right">

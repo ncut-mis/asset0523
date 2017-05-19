@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 
-@section('title', '添購耗材')
+@section('title', '領取耗材')
 
 @section('content')
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            添購耗材 <small>輸入耗材添購數量</small>
+            領取耗材 <small>輸入耗材領取數量</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
@@ -22,16 +22,16 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/supplies" method="POST" role="form">
+        <form action="/admin/supplies/" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">
                 <label>領取員工：</label>
-                <input name="u_id" class="form-control" placeholder="請輸入員工ID">
+                <input name="u_id" class="form-control" placeholder="請輸入員工名稱">
             </div>
             <div class="form-group">
                 <label>領取耗材：</label>
-                <input name="s_id" class="form-control" placeholder="請輸入耗材ID">
+                <input name="s_id" class="form-control" placeholder="請輸入耗材名稱" >
             </div>
             <div class="form-group">
                 <label>日期時間：</label>
