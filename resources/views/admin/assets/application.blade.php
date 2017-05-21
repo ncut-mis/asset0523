@@ -29,27 +29,27 @@
             <div>
             <div class="form-group">
                 <label>資產名稱：</label>
-                <input name="name" class="form-control" placeholder="請輸入資產名稱" value="{{$asset->name}}">
+                <input name="name" class="col-lg-4,form-control" placeholder="請輸入資產名稱" value="{{$asset->name}}" readonly>
             </div>
 
             <div class="form-group">
                 <label>資產類別：</label>
-                <input name="category" class="form-control" placeholder="請輸入資產名稱" value="{{$asset->category}}">
+                <input name="category" class="col-lg-4,form-control" placeholder="請輸入資產名稱" value="{{$asset->category}}" readonly>
             </div>
 
             <div class="form-group">
                 <label>資產狀態：</label>
-                <input name="status" class="form-control" placeholder="請輸入資產狀態" value="{{$asset->status}}">
+                <input name="status" class="col-lg-4,form-control" placeholder="請輸入資產狀態" value="{{$asset->status}}" readonly>
             </div>
 
             <div class="form-group">
                 <label>保管人：</label>
-                <input name="keeper" class="form-control" placeholder="請輸入資產保管人" value="{{$asset->keeper}}">
+                <input name="keeper" class="col-lg-4,form-control" placeholder="請輸入資產保管人" value="{{$asset->keeper}}" readonly>
             </div>
 
             <div class="form-group">
                 <label>放置地點：</label>
-                <input name="location" class="form-control" placeholder="請輸入資產放置地點" value="{{$asset->location}}">
+                <input name="location" class="col-lg-4,form-control" placeholder="請輸入資產放置地點" value="{{$asset->location}}" readonly>
             </div>
             </div>
 
