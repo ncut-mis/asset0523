@@ -17,7 +17,6 @@ class CreateMaintaincesTable extends Migration
             $table->increments('id')->index();
             $table->integer('a_id')->index();
             $table->integer('v_id')->index();
-            $table->integer('mitems_id');
             $table->date('date');
             $table->string('status',20);
             $table->string('method',20);

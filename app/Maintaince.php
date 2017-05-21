@@ -11,7 +11,6 @@ class Maintaince extends Model
     protected $fillable = [
         'a_id',
         'v_id',
-        'mitems_id',
         'date',
         'status',
         'method',
