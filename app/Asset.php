@@ -19,18 +19,16 @@ class Asset extends Model
         'location',
         'remark',
         'vendor',
-        'warranty',
+        'warranty'
     ];
 
-    public function category()
+    public function categories() //  Asset (1) -> Category (n)
     {
         return $this->hasMany(Category::class);
     }
 
-    public function scopeOfName($query, $type)
+    public function maintainces() //  Asset (1) -> Maintaince (n)
     {
-        return $query->where('name','like', '%'.$type.'%');
+        return $this->hasMany(Maintaince::class);
     }
-
-
 }
