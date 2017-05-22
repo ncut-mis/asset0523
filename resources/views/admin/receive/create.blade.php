@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/receives/" method="POST" role="form">
+        <form action="supplies/{id}/receive{{$receive->id}}" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label>日期時間：</label>
-                <input name="datatime" class="form-control" placeholder="請輸入日期時間">
+                <input name="datatime" class="form-control" placeholder="請輸入日期與時間">
             </div>
 
             <div class="form-group">

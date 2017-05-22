@@ -54,15 +54,15 @@
                         <td style="text-align: center">{{ $supplies->quantity }}</td>
                         <td>
                             <div>
-                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>
+                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>/
+                                <a href="{{ route('admin.receive.create', $supplies->id) }}">領取</a>
                                 /
                                 <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button class="btn btn-link">刪除</button>
                                 </form>
-                                /
-                                <a href="{{ route('admin.receive.create') }}">領取</a>
+
                             </div>
                         </td>
                     </tr>
