@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Asset;
+use App\Maintaince;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -26,7 +27,12 @@ class MaintaincesController extends Controller
             'method'=>null,
             'remark'=>null,
         ]);
-
+        $maintainces=Maintaince::orderBy('created_at', 'DESC')->first();
+        $maintainces->applications()->create([
+            'user_id'=>$id,
+            'problem'=>$request->problem,
+            'date'=>NULL
+        ]);
         return redirect()->route('admin.assets.index');
     }
 

@@ -88,9 +88,6 @@
                 <textarea name="submit" class="form-control" rows="10" value="{{$asset->remark}}" readonly></textarea>
             </div>
 
-        <div class="text-right">
-            <button type="submit" class="btn btn-success">更新</button>
-        </div>
         </form>
 
         <div class="col-lg-12">
