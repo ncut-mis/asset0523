@@ -1,42 +1,42 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Receive;
-use App\Supply;
+
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
-class SuppliesController extends Controller
+
+class VendorsController extends Controller
 {
-    //
     public function index()
     {
-        $supplies = Supply::orderBy('created_at', 'DESC')->get();
-        $data = ['supplies' => $supplies];
-        return view('admin.supplies.index', $data);
+        $vendors = vendor::orderBy('created_at', 'DESC')->get();
+        $data = ['vendors' => $vendors];
+        return view('admin.vendors.index', $data);
     }
 
     public function create()
     {
-        return view('admin.supplies.create');
+        return view('admin.vendors.create');
     }
 
     public function edit($id)
     {
-        $supplies = Supply::find($id);
-        $data = ['supplies' => $supplies];
+        $vendors = vendor::find($id);
+        $data = ['vendors' => $vendors];
 
-        return view('admin.supplies.edit', $data);
+        return view('admin.vendors.edit', $data);
     }
 
-    public function update(Requests\SupplyRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $supplies = Supply::find($id);
-        $supplies->update($request->all());
+        $vendors = vendor::find($id);
+        $vendors ->update($request->all());
 
         return redirect()->route('admin.supplies.index');
     }
 
-    public function store(Requests\SupplyRequest $request)
+    public function store(Request $request)
     {
         Supply::create($request->all());
         return redirect()->route('admin.supplies.index');
@@ -82,21 +82,4 @@ class SuppliesController extends Controller
         $supplies->update($request->all());
 
     }
-   /* public function autocomplete(){
-        $term = Input::get('term');
-
-        $results = array();
-
-        $queries = DB::table('users')
-            ->where('first_name', 'LIKE', '%'.$term.'%')
-            ->orWhere('last_name', 'LIKE', '%'.$term.'%')
-            ->take(5)->get();
-
-        foreach ($queries as $query)
-        {
-            $results[] = [ 'id' => $query->id, 'value' => $query->first_name.' '.$query->last_name ];
-        }
-        return Response::json($results);
-    }
-   */
 }

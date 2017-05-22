@@ -18,16 +18,15 @@
 </div>
 <!-- /.row -->
 <div class="input-group custom-search-form">
-<form action="{{route('admin.supplies.show')}}" method="POST">
-    {{csrf_field()}}
-    <span class="input-group-btn">
-        <input type="Search" Class="form-control" placeholder="Search...">
-        <button class="btn btn-info">
-            <i class="fa fa -search"></i>
-        </button>
-    </span>
-</form>
+    <form action="{{ route('admin.supplies.show') }}" method="POST">
+        {{ csrf_field() }}
+        <span class="input-group-btn">
+    <input name="Search" class="form-control" placeholder="Search...">
+    <button class="btn btn-info"><i class="fa fa-search"></i></button>
+        </span>
+    </form>
 </div>
+
 <div class="row" style="margin-bottom: 20px; text-align: right">
     <div class="col-lg-12">
         <a href="{{ route('admin.supplies.create') }}" class="btn btn-success">建立新購耗材</a>
@@ -44,6 +43,7 @@
                         <th width="100" style="text-align: center">耗材編號</th>
                         <th>耗材名稱</th>
                         <th width="100" style="text-align: center">耗材數量</th>
+                        <th width="100" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,13 +54,15 @@
                         <td style="text-align: center">{{ $supplies->quantity }}</td>
                         <td>
                             <div>
-                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>
+                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>/
+                                <a href="{{ route('admin.receive.create', $supplies->id) }}">領取</a>
                                 /
                                 <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button class="btn btn-link">刪除</button>
                                 </form>
+
                             </div>
                         </td>
                     </tr>

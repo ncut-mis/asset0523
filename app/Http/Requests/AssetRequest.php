@@ -13,7 +13,7 @@ class AssetRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,13 +26,13 @@ class AssetRequest extends FormRequest
         return [
             'name'=>'required|min:3|max:50',
             'category'=>'required',
-            'date',
-            'cost',
-            'status'=>'required|min:3|max:20',
+        //  'date',
+         //  'cost',
+            'status'=>'required|string|max:20',
             'keeper'=>'required',
             'lendable'=>'required|boolean',
-            'location'=>'required|min:3|max:50',
-            'remark',
+            'location'=>'required|max:50',
+            // 'remark',
             'vendor'=>'required',
             'warranty'=>'required',
 

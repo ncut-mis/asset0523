@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 
-@section('title', '新購耗材')
+@section('title', '添購耗材')
 
 @section('content')
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            新購耗材 <small>輸入耗材資料</small>
+            添購耗材 <small>輸入耗材購買數量</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
@@ -27,16 +27,16 @@
 
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input name="name" class="form-control" placeholder="請輸入耗材名稱">
+                <input name="name" class="form-control" readonly>
             </div>
 
             <div class="form-group">
-                <label>耗材數量：</label>
-                <input name="quantity" class="form-control" placeholder="請輸入耗材數量">
+                <label>添購數量：</label>
+                <input name="quantity" class="form-control" placeholder="請輸入添購數量">
             </div>
 
             <div class="text-right">
-                <button type="submit" class="btn btn-success">新增</button>
+                <button type="submit" class="btn btn-success">領取</button>
             </div>
 
             <p>&nbsp;</p>
