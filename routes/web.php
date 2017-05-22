@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('assets/{id}/data', ['as' => 'admin.assets.data', 'uses' => 'AssetController@data']);
     //申請
     Route::get('assets/{id}/application', ['as' => 'admin.assets.application', 'uses' => 'MaintaincesController@create']);
-    Route::patch('assets/{id}/maintainces.store', ['as' => 'admin.assets.maintainces.store', 'uses' => 'MaintaincesController@store']);
+    Route::patch('assets/{id}/application/store', ['as' => 'admin.assets.application.store', 'uses' => 'MaintaincesController@store']);
 
     //耗材
     Route::get('supplies'          , ['as' => 'admin.supplies.index' , 'uses' => 'SuppliesController@index']);

@@ -19,12 +19,12 @@ class MaintaincesController extends Controller
 
     public function store(Request $request,$id)
     {
-        $request->asset()->maintainces()->create([
-            'a_id',
-            'v_id',
-            'status',
-            'method',
-            'remark'
+        $asset=Asset::find($id);
+        $asset->maintainces()->create([
+            'v_id'=>$asset->vendor,
+            'status'=>'申請中',
+            'method'=>'2017-05-22 01:48:53',
+            'remark'=>null,
         ]);
         return redirect()->route('admin.assets.index');
     }
