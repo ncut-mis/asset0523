@@ -15,10 +15,10 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->increments('id')->index();
-            $table->integer('u_id')->index();
-            $table->integer('m_id')->index();
+            $table->integer('user_id')->index();
+            $table->integer('maintaince_id')->index();
             $table->text('problem');
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

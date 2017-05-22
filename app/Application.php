@@ -9,8 +9,8 @@ class Application extends Model
     //
     protected $table = 'applications';
     protected $fillable = [
-        'u_id',
-        'm_id',
+        'user_id',
+        'maintaince_id',
         'problem',
         'date'
     ];

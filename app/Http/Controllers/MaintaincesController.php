@@ -21,11 +21,12 @@ class MaintaincesController extends Controller
     {
         $asset=Asset::find($id);
         $asset->maintainces()->create([
-            'v_id'=>$asset->vendor,
+            'v_id'=>$asset->warranty,
             'status'=>'申請中',
-            'method'=>'2017-05-22 01:48:53',
+            'method'=>null,
             'remark'=>null,
         ]);
+
         return redirect()->route('admin.assets.index');
     }
 

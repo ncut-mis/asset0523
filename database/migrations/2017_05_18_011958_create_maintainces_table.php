@@ -15,11 +15,11 @@ class CreateMaintaincesTable extends Migration
     {
         Schema::create('maintainces', function (Blueprint $table) {
             $table->increments('id')->index();
-            $table->integer('a_id')->index();
+            $table->integer('asset_id')->index();
             $table->integer('v_id')->index();
-            $table->date('date');
-            $table->string('status',20);
-            $table->string('method',20);
+            $table->date('date')->nullable();
+            $table->string('status',20)->nullable();
+            $table->string('method',20)->nullable();
             $table->text('remark')->nullable();
             $table->timestamps();
         });
