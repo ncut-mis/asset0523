@@ -29,7 +29,7 @@ class MaintaincesController extends Controller
         ]);
         $maintainces=Maintaince::orderBy('created_at', 'DESC')->first();
         $maintainces->applications()->create([
-            'user_id'=>$id,
+            'user_id'=>$request->user()->id,
             'problem'=>$request->problem,
             'date'=>NULL
         ]);
