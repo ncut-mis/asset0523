@@ -45,8 +45,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('assets/{id}/application/store', ['as' => 'admin.assets.application.store', 'uses' => 'MaintaincesController@store']);
 
     //報修
-    Route::get('maintainces', ['as' => 'admin.maintainces.index', 'uses' => 'Maintainces@index']);
-    Route::post('maintainces/Search'  , ['as' => 'admin.maintainces.Search', 'uses' => 'Maintainces@Search']);
+    Route::get('maintainces', ['as' => 'admin.maintainces.index', 'uses' => 'MaintaincesController@index']);
+    Route::post('maintainces/Search'  , ['as' => 'admin.maintainces.Search', 'uses' => 'MaintaincesController@Search']);
 
     //耗材
     Route::get('supplies'          , ['as' => 'admin.supplies.index' , 'uses' => 'SuppliesController@index']);

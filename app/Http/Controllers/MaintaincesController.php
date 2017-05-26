@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Asset;
 use App\Maintaince;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use App\Http\Requests;
 
@@ -25,13 +26,16 @@ class MaintaincesController extends Controller
             'v_id'=>$asset->warranty,
             'status'=>'申請中',
             'method'=>null,
-            'remark'=>null,
+            'remark'=>null
+        ]);
+        $asset->update([
+            'status'=>'報修中'
         ]);
         $maintainces=Maintaince::orderBy('created_at', 'DESC')->first();
         $maintainces->applications()->create([
             'user_id'=>$request->user()->id,
             'problem'=>$request->problem,
-            'date'=>NULL
+            'date'=>$now = Carbon::now()
         ]);
         return redirect()->route('admin.assets.index');
     }
@@ -41,7 +45,10 @@ class MaintaincesController extends Controller
     public function index()
     {
         $maintainces=Maintaince::orderBy('created_at', 'DESC')->get();
-        $data=['maintainces'=>$maintainces
+        $asset=Asset::all();
+        $data=['maintainces'=>$maintainces,
+            'applications'=>$maintainces->applications()->get(),
+            'assets'=>$asset
         ];
         return view('admin.assets.index', $data);
     }

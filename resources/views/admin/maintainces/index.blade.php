@@ -38,31 +38,30 @@
                         <th >資產名稱</th>
                         <th width="80" style="text-align: center">報修狀態</th>
                         <th width="80" style="text-align: center">維修方式</th>
+                        <th width="80" style="text-align: center">申請日期</th>
                         <th width="100" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($assets as $asset)
+                @foreach($maintainces as $maintaince)
                     <tr>
                         <td style="text-align: center">
-                            {{ $asset->id }}
+                            {{ $maintaince->id }}
                         </td>
+                        @foreach($assets as $asset)
                         <td style="text-align: center">
-                            <a href="{{ route('admin.assets.data', $asset->id) }}">{{ $asset->name }}</a>
+                            {{ $asset->name }}
                         </td>
-                        <td style="text-align: center">{{ $asset->status }}</td>
-                        <td style="text-align: center">{{ $asset->lendable?'可':'否' }}</td>
+                        @endforeach
+                        <td style="text-align: center">{{ $maintaince->status }}</td>
+                        <td style="text-align: center">{{ $maintaince->method }}</td>
+                        @foreach($applications as $application)
+                        <td style="text-align: center">{{ $applications->date}}</td>
+                        @endforeach
                         <td style="text-align: center">{{ $asset->location }}</td>
                         <td>
                             <div>
-                                <a href="{{ route('admin.assets.edit', $asset->id) }}">修改</a>
-                                / <a href="{{ route('admin.assets.application', $asset->id) }}">申請</a> /
-                                <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn btn-link">刪除</button>
-                                </form>
-
+                                <a href="{{ route('admin.maintainces.edit', $asset->id) }}">處理</a>
                             </div>
                         </td>
                     </tr>
