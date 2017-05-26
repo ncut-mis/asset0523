@@ -61,9 +61,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('vendors/{id}'  , ['as' => 'admin.vendors.destroy', 'uses' => 'VendorsController@destroy']);
     Route::post('vendors/show'  , ['as' => 'admin.vendors.show', 'uses' => 'VendorsController@show']);
     //耗材領取
-   Route::get('supplies/{id}/receive/create'   , ['as' => 'admin.receive.create' , 'uses' => 'SuppliesController@receive']);
-  //  Route::post('supplies/{id}/receive'   , ['as' => 'admin.receive.store' , 'uses' => 'SuppliesController@receivestore']);
-    //添購跟新增合起來
+   Route::get('supplies/{id}/receive',['as' => 'admin.receive.create' , 'uses' => 'ReceivesController@create']);
+    Route::patch('supplies/{id}'   , ['as' => 'admin.receive.store' , 'uses' => 'ReceivesController@store']);    //添購跟新增合起來
    // Route::get('receive/{id}/edit', ['as' => 'admin.receive.edit'   , 'uses' => 'SuppliesController@receiveedit']);
 //自動完成
 
