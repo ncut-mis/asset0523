@@ -39,9 +39,14 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('assets/{id}', ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);
     Route::post('assets/Search'  , ['as' => 'admin.assets.Search', 'uses' => 'AssetController@Search']);
     Route::get('assets/{id}/data', ['as' => 'admin.assets.data', 'uses' => 'AssetController@data']);
+
     //申請
     Route::get('assets/{id}/application', ['as' => 'admin.assets.application', 'uses' => 'MaintaincesController@create']);
     Route::patch('assets/{id}/application/store', ['as' => 'admin.assets.application.store', 'uses' => 'MaintaincesController@store']);
+
+    //報修
+    Route::get('maintainces', ['as' => 'admin.maintainces.index', 'uses' => 'Maintainces@index']);
+    Route::post('maintainces/Search'  , ['as' => 'admin.maintainces.Search', 'uses' => 'Maintainces@Search']);
 
     //耗材
     Route::get('supplies'          , ['as' => 'admin.supplies.index' , 'uses' => 'SuppliesController@index']);

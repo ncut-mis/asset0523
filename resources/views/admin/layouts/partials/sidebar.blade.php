@@ -60,7 +60,9 @@
             <li>
                 <a href="{{ route('admin.supplies.index') }}"><i class="fa fa-fw fa-edit"></i> 耗材管理</a>
             </li>
-
+            <li>
+                <a href="{{ route('admin.maintainces.index') }}"><i class="fa fa-fw fa-edit"></i> 報修管理</a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

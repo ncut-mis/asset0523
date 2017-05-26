@@ -40,10 +40,8 @@ class MaintaincesController extends Controller
 
     public function index()
     {
-        $asset=Asset::orderBy('created_at', 'DESC')->get();
-        $category=Category::orderBy('created_at' ,'DESC') ->get();
-        $data=['assets'=>$asset
-            ,'categories'=>$category
+        $maintainces=Maintaince::orderBy('created_at', 'DESC')->get();
+        $data=['maintainces'=>$maintainces
         ];
         return view('admin.assets.index', $data);
     }
