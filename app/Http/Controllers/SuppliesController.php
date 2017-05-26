@@ -57,31 +57,8 @@ class SuppliesController extends Controller
         $data=['supplies'=>$supplies];
         return view('admin.supplies.index' ,$data);
     }
-    public function receive()
-    {
-        return view('admin.receive.create');
-    }
-    public function receivestore(Request $request)
-    {
-        Receive::create($request->all());
-        return redirect()->route('admin.supplies.index');
-    }
-    public function receiveedit(Requests\SupplyRequest $request,$id)
-    {
-        $supplies = Supply::find($id);
-        $receives=Receive::find($id);
 
-        $titles = DB::table('supplies')->lists('quantity');
 
-        foreach ($titles as $title) {
-            echo $title;
-        }
-        $date1 =['receives'=>$receives];
-        $data2 = ['supplies' => $supplies];
-
-        $supplies->update($request->all());
-
-    }
    /* public function autocomplete(){
         $term = Input::get('term');
 
