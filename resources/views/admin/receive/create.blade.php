@@ -24,7 +24,6 @@
     <div class="col-lg-12">
         <form action="/admin/supplies/{{$supplies->id}}/receive" method="POST" role="form">
             {{ csrf_field() }}
-            {{ method_field('PATCH') }}
             <div class="form-group">
                 <label>領取員工：</label>
                 <input name="user_id" class="form-control" placeholder="請輸入員工">
@@ -35,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input  class="form-control" value="{{$supplies->name}}" readonly>
+                <input  class="form-control" value="{{$supplies->name}}" disabled>
             </div>
             <div class="form-group">
                 <label>日期時間：</label>

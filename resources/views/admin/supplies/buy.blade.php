@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/supplies" method="POST" role="form">
+        <form action="/admin/supplies/{{$supplies->id}}/buy" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -36,7 +36,7 @@
             </div>
 
             <div class="text-right">
-                <button type="submit" class="btn btn-success">領取</button>
+                <button type="submit" class="btn btn-success">添購</button>
             </div>
 
             <p>&nbsp;</p>
