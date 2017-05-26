@@ -62,7 +62,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('vendors/show'  , ['as' => 'admin.vendors.show', 'uses' => 'VendorsController@show']);
     //耗材領取
    Route::get('supplies/{id}/receive',['as' => 'admin.receive.create' , 'uses' => 'ReceivesController@create']);
-    Route::patch('supplies/{id}'   , ['as' => 'admin.receive.store' , 'uses' => 'ReceivesController@store']);    //添購跟新增合起來
+    Route::post('supplies/{id}'   , ['as' => 'admin.receive.store' , 'uses' => 'ReceivesController@store']);    //添購跟新增合起來
    // Route::get('receive/{id}/edit', ['as' => 'admin.receive.edit'   , 'uses' => 'SuppliesController@receiveedit']);
 //自動完成
 
