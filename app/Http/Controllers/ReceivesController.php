@@ -20,11 +20,12 @@ class ReceivesController extends Controller
     }
     public function receivestore(Request $request,$id)
     {
-        $supplies =Supply::find($id);
-
+       /* $supplies =Supply::find($id);
+        Supply::create($request->all());
         $receive=Receive::find(supply_id);
         $supplies->quantity;
         $date =['supplies' => $supplies];
+*/
 
         Receive::create($request->all());
         return redirect()->route('admin.supplies.index');
