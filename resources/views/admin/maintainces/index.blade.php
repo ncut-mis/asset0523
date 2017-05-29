@@ -11,22 +11,11 @@
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-edit"></i>報修管理
+                <i class="fa fa-edit"></i>報修管理-未處理
             </li>
         </ol>
     </div>
 </div>
-<!-- /.row -->
-<div class="input-group custom-search-form">
-<form action="{{ route('admin.maintainces.Search') }}" method="POST">
-    {{ csrf_field() }}
-    <span class="input-group-btn">
-    <input name="Search" class="form-control" placeholder="Search...">
-    <button class="btn btn-info"><i class="fa fa-search"></i></button>
-    </span>
-</form>
-</div>
-<!-- /.row -->
 
 <div class="row">
     <div class="col-lg-12">
@@ -36,35 +25,102 @@
                     <tr>
                         <th width="30" style="text-align: center">id</th>
                         <th >資產名稱</th>
-                        <th width="80" style="text-align: center">報修狀態</th>
+                        <th width="100" style="text-align: center">報修狀態</th>
                         <th width="80" style="text-align: center">維修方式</th>
-                        <th width="80" style="text-align: center">申請日期</th>
+                        <th width="120" style="text-align: center">申請日期</th>
                         <th width="100" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($maintainces as $maintaince)
+                    @if($maintaince->status=='申請中')
                     <tr>
                         <td style="text-align: center">
                             {{ $maintaince->id }}
                         </td>
-                        @foreach($assets as $asset)
                         <td style="text-align: center">
+                        @foreach($assets as $asset)
+                            @if($maintaince->asset_id==$asset->id)
                             {{ $asset->name }}
-                        </td>
+                            @endif
                         @endforeach
+                        </td>
                         <td style="text-align: center">{{ $maintaince->status }}</td>
                         <td style="text-align: center">{{ $maintaince->method }}</td>
-                        @foreach($applications as $application)
-                        <td style="text-align: center">{{ $applications->date}}</td>
-                        @endforeach
-                        <td style="text-align: center">{{ $asset->location }}</td>
+                        <td style="text-align: center">
+                            @foreach($applications as $application)
+                                @if($maintaince->id==$application->maintaince_id)
+                                    {{ $application-> date}}
+                                @endif
+                            @endforeach
+                        </td>
                         <td>
                             <div>
-                                <a href="{{ route('admin.maintainces.edit', $asset->id) }}">處理</a>
+                                <a >處理</a>
                             </div>
                         </td>
                     </tr>
+                    @endif
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-edit"></i>報修管理-處理中
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="30" style="text-align: center">id</th>
+                    <th >資產名稱</th>
+                    <th width="100" style="text-align: center">報修狀態</th>
+                    <th width="80" style="text-align: center">維修方式</th>
+                    <th width="120" style="text-align: center">申請日期</th>
+                    <th width="100" style="text-align: center">功能</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($maintainces as $maintaince)
+                    @if($maintaince->status!=='申請中'&&$maintaince->status!=='已完成維修')
+                    <tr>
+                        <td style="text-align: center">
+                            {{ $maintaince->id }}
+                        </td>
+                        <td style="text-align: center">
+                            @foreach($assets as $asset)
+                                @if($maintaince->asset_id==$asset->id)
+                                    {{ $asset->name }}
+                                @endif
+                            @endforeach
+                        </td>
+                        <td style="text-align: center">{{ $maintaince->status }}</td>
+                        <td style="text-align: center">{{ $maintaince->method }}</td>
+                        <td style="text-align: center">
+                            @foreach($applications as $application)
+                                @if($maintaince->id==$application->maintaince_id)
+                                    {{ $application-> date}}
+                                @endif
+                            @endforeach
+                        </td>
+                        <td>
+                            <div>
+                                <a >處理</a>
+                            </div>
+                        </td>
+                    </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>

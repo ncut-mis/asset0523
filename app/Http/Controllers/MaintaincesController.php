@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
 use App\Asset;
 use App\Maintaince;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class MaintaincesController extends Controller
         $asset->maintainces()->create([
             'v_id'=>$asset->warranty,
             'status'=>'申請中',
-            'method'=>null,
+            'method'=>'未選擇',
             'remark'=>null
         ]);
         $asset->update([
@@ -45,44 +46,13 @@ class MaintaincesController extends Controller
     public function index()
     {
         $maintainces=Maintaince::orderBy('created_at', 'DESC')->get();
-        $asset=Asset::all();
+        $asset=Asset::orderBy('created_at', 'DESC')->get();
+        $applications=Application::orderBy('created_at', 'DESC')->get();
         $data=['maintainces'=>$maintainces,
-            'applications'=>$maintainces->applications()->get(),
+            'applications'=>$applications,
             'assets'=>$asset
         ];
-        return view('admin.assets.index', $data);
-    }
-
-
-    public function edit($id)
-    {
-        $category=Category::orderBy('created_at' ,'DESC') ->get();
-        $asset=Asset::find($id);
-        $data = ['asset' => $asset,'categories'=>$category];
-
-        return view('admin.assets.edit', $data);
-    }
-    public function update(Request $request, $id)
-    {
-        $asset=Asset::find($id);
-        $asset->update($request->all());
-
-        return redirect()->route('admin.assets.index');
-    }
-
-    public function destroy($id)
-    {
-        Asset::destroy($id);
-        return redirect()->route('admin.assets.index');
-    }
-
-    public function data($id)
-    {
-        $category=Category::orderBy('created_at' ,'DESC') ->get();
-        $asset=Asset::find($id);
-        $data = ['asset' => $asset,'categories'=>$category];
-
-        return view('admin.assets.show', $data);
+        return view('admin.maintainces.index', $data);
     }
 
     public function Search(Request $request)
