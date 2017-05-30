@@ -26,7 +26,18 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                <li>
+                    <a href="{{ url('/logout') }}"
+                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                        <i class="fa fa-fw fa-gear"></i>
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
                 </li>
             </ul>
         </li>
@@ -49,7 +60,9 @@
             <li>
                 <a href="{{ route('admin.supplies.index') }}"><i class="fa fa-fw fa-edit"></i> 耗材管理</a>
             </li>
-
+            <li>
+                <a href="{{ route('admin.maintainces.index') }}"><i class="fa fa-fw fa-edit"></i> 報修管理</a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

@@ -28,6 +28,7 @@ class AssetController extends Controller
 
     public function edit($id)
     {
+        //$array = ["正常使用中","維修中","租借中","待報廢","已報廢"];
         $category=Category::orderBy('created_at' ,'DESC') ->get();
         $asset=Asset::find($id);
         $data = ['asset' => $asset,'categories'=>$category];

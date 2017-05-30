@@ -30,18 +30,30 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('posts/{id}', ['as' => 'admin.posts.destroy', 'uses' => 'AdminPostsController@destroy']);
 
     //資產
-
     Route::get('assets', ['as' => 'admin.assets.index', 'uses' => 'AssetController@index']);
     Route::get('assets/create', ['as' => 'admin.assets.create', 'uses' => 'AssetController@create']);
     Route::post('assets', ['as' => 'admin.asset.store', 'uses' => 'AssetController@store']);
     Route::get('assets/{id}/edit', ['as' => 'admin.assets.edit', 'uses' => 'AssetController@edit']);
     Route::patch('assets/{id}', ['as' => 'admin.assets.update', 'uses' => 'AssetController@update']);
     Route::delete('assets/{id}', ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);
-    Route::post('assets/Search'  , ['as' => 'admin.assets.Search', 'uses' => 'AssetController@Search']);
+    Route::post('assets/search'  , ['as' => 'admin.assets.search', 'uses' => 'AssetController@Search']);
     Route::get('assets/{id}/data', ['as' => 'admin.assets.data', 'uses' => 'AssetController@data']);
+
     //申請
     Route::get('assets/{id}/application', ['as' => 'admin.assets.application', 'uses' => 'MaintaincesController@create']);
     Route::patch('assets/{id}/application/store', ['as' => 'admin.assets.application.store', 'uses' => 'MaintaincesController@store']);
+
+    //報修
+    Route::get('maintainces', ['as' => 'admin.maintainces.index', 'uses' => 'MaintaincesController@index']);
+    Route::post('maintainces/search'  , ['as' => 'admin.maintainces.search', 'uses' => 'MaintaincesController@Search']);
+
+    Route::get('maintainces/{id}/show', ['as' => 'admin.maintainces.show', 'uses' => 'MaintaincesController@show']);
+    Route::patch('maintainces/{id}'  , ['as' => 'admin.maintainces.process', 'uses' => 'MaintaincesController@process']);
+    //未做
+    Route::get('maintainces/{id}/data', ['as' => 'admin.maintainces.data', 'uses' => 'MaintaincesController@data']);
+    Route::post('maintainces/{id}/method'  , ['as' => 'admin.maintainces.method', 'uses' => 'MaintaincesController@method']);
+    Route::post('maintainces/{id}/vendor'  , ['as' => 'admin.maintainces.vendor', 'uses' => 'MaintaincesController@vendor']);
+    Route::get('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.detail', 'uses' => 'MaintaincesController@detail']);
 
     //耗材
     Route::get('supplies'          , ['as' => 'admin.supplies.index' , 'uses' => 'SuppliesController@index']);
@@ -60,6 +72,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('vendors/{id}'   , ['as' => 'admin.vendors.update' , 'uses' => 'VendorsController@update']);
     Route::delete('vendors/{id}'  , ['as' => 'admin.vendors.destroy', 'uses' => 'VendorsController@destroy']);
     Route::post('vendors/show'  , ['as' => 'admin.vendors.show', 'uses' => 'VendorsController@show']);
+
     //耗材領取
    Route::get('supplies/{id}/receive/create'   , ['as' => 'admin.receive.create' , 'uses' => 'SuppliesController@receive']);
   //  Route::post('supplies/{id}/receive'   , ['as' => 'admin.receive.store' , 'uses' => 'SuppliesController@receivestore']);

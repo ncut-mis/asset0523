@@ -18,7 +18,7 @@
 </div>
 <!-- /.row -->
 <div class="input-group custom-search-form">
-<form action="{{ route('admin.assets.Search') }}" method="POST">
+<form action="{{ route('admin.assets.search') }}" method="POST">
     {{ csrf_field() }}
     <span class="input-group-btn">
     <input name="Search" class="form-control" placeholder="Search...">
@@ -44,7 +44,7 @@
                         <th width="30" style="text-align: center">id</th>
                         <th >資產名稱</th>
                         <th width="80" style="text-align: center">資產類別</th>
-                        <th width="80" style="text-align: center">資產狀態</th>
+                        <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
                         <th width="80" style="text-align: center">放置地點</th>
                         <th width="100" style="text-align: center">功能</th>
