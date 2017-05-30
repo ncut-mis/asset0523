@@ -56,6 +56,13 @@
 
             <div class="form-group">
                 <label>資產狀態：</label>
+                <select name="status" class="form-control">
+                    <option value="正常使用中">正常使用中</option>
+                    <option value="維修中">維修中</option>
+                    <option value="租借中">租借中</option>
+                    <option value="待報廢">待報廢</option>
+                    <option value="已報廢">已報廢</option>
+                </select>
                 <input name="status" class="form-control" placeholder="請輸入資產狀態" value="{{$asset->status}}">
             </div>
 

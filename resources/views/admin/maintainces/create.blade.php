@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            新增資產 <small>請輸入資產資料</small>
+            處理報修 <small>請輸入維修資訊</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
@@ -51,13 +51,7 @@
 
             <div class="form-group">
                 <label>資產狀態：</label>
-                <select name="status" class="form-control">
-                    <option value="正常使用中">正常使用中</option>
-                    <option value="維修中">維修中</option>
-                    <option value="租借中">租借中</option>
-                    <option value="待報廢">待報廢</option>
-                    <option value="已報廢">已報廢</option>
-                </select>
+                <input name="status" class="form-control" placeholder="請輸入資產狀態">
             </div>
 
             <div class="form-group">

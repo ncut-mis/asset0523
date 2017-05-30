@@ -29,6 +29,7 @@ class MaintaincesController extends Controller
             'method'=>'未選擇',
             'remark'=>null
         ]);
+        //
         $asset->update([
             'status'=>'報修中'
         ]);
@@ -41,8 +42,6 @@ class MaintaincesController extends Controller
         return redirect()->route('admin.assets.index');
     }
 
-
-
     public function index()
     {
         $maintainces=Maintaince::orderBy('created_at', 'DESC')->get();
@@ -54,7 +53,7 @@ class MaintaincesController extends Controller
         ];
         return view('admin.maintainces.index', $data);
     }
-
+/*
     public function Search(Request $request)
     {
         $Search =$request->input('Search');
@@ -65,6 +64,37 @@ class MaintaincesController extends Controller
         $data=['assets'=>$asset,'categories'=>$category];
         return view('admin.assets.index' ,$data);
     }
+*/
+    public function show(Request $request,$id){
+        //$array = ["未選擇","廠商維修","自行維修","不修"];
+
+        $maintaince=Maintaince::find($id);
+        $asset=Asset::find($maintaince->asset_id);
+
+        $maintaince->update([
+            'status'=>'申請待處理'
+        ]);
+
+        $data=['maintaince'=>$maintaince,'asset'=>$asset];
+        return view('admin.maintainces.show', $data);
+    }
+
+    public function process(Request $request,$id){
+        $maintaince=Maintaince::find($id);
+        $maintaince->update([
+            'method'=>$request->method
+        ]);
+        return redirect()->route('admin.maintainces.index');
+    }
+
+    public function method(Request $request){
+        return view();
+    }
+
+    public function vendor(Request $request){
+        return view();
+    }
+
 
 
 

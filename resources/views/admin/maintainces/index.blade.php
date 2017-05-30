@@ -38,6 +38,7 @@
                         <td style="text-align: center">
                             {{ $maintaince->id }}
                         </td>
+
                         <td style="text-align: center">
                         @foreach($assets as $asset)
                             @if($maintaince->asset_id==$asset->id)
@@ -45,8 +46,11 @@
                             @endif
                         @endforeach
                         </td>
+
                         <td style="text-align: center">{{ $maintaince->status }}</td>
+
                         <td style="text-align: center">{{ $maintaince->method }}</td>
+
                         <td style="text-align: center">
                             @foreach($applications as $application)
                                 @if($maintaince->id==$application->maintaince_id)
@@ -54,9 +58,10 @@
                                 @endif
                             @endforeach
                         </td>
+
                         <td>
                             <div>
-                                <a >處理</a>
+                                <a href="{{ route('admin.maintainces.show', $maintaince->id) }}">處理</a>
                             </div>
                         </td>
                     </tr>
@@ -116,7 +121,7 @@
                         </td>
                         <td>
                             <div>
-                                <a >處理</a>
+                                <a href="{{ route('admin.maintainces.show', $maintaince->id) }}">處理</a>
                             </div>
                         </td>
                     </tr>
