@@ -25,7 +25,6 @@
         <form action="/admin/supplies/{{$supplies->id}}" method="POST" role="form">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
-
             <div class="form-group">
                 <label>耗材名稱：</label>
                 <input name="name" class="form-control" placeholder="請輸入耗材名稱" value="{{$supplies->name}}">
@@ -39,7 +38,6 @@
             <div class="text-right">
                 <button type="submit" class="btn btn-success">更新</button>
             </div>
-
         </form>
 
         <p>&nbsp;</p>
