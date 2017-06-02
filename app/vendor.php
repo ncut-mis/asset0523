@@ -8,13 +8,13 @@ class vendor extends Model
 {
     protected $table = 'vendors';
     protected $fillable = [
-'id',
-'name',
-'cantactperson',
-'phone',
-'address',
-'bankname',
-'bankaccout',
-'remark',
+        'id',
+        'name',
+        'cantactperson',
+        'phone',
+        'address',
+        'bankname',
+        'bankaccout',
+        'remark',
     ];
 }

@@ -28,7 +28,7 @@
                         <th width="100" style="text-align: center">報修狀態</th>
                         <th width="80" style="text-align: center">維修方式</th>
                         <th width="120" style="text-align: center">申請日期</th>
-                        <th width="100" style="text-align: center">功能</th>
+                        <th width="200" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -93,7 +93,7 @@
                     <th width="100" style="text-align: center">報修狀態</th>
                     <th width="80" style="text-align: center">維修方式</th>
                     <th width="120" style="text-align: center">申請日期</th>
-                    <th width="100" style="text-align: center">功能</th>
+                    <th width="200" style="text-align: center">功能</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -121,7 +121,9 @@
                         </td>
                         <td>
                             <div>
-                                <a href="{{ route('admin.maintainces.show', $maintaince->id) }}">處理</a>
+                                <a href="{{ route('admin.maintainces.show', $maintaince->id) }}">處理</a> /
+
+                                <a href="{{ route('admin.maintainces.detail', $maintaince->id) }}">維修明細</a>
                             </div>
                         </td>
                     </tr>
