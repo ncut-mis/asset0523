@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Vendor;
 use App\Http\Requests;
 
 class VendorsController extends Controller
 {
     public function index()
     {
-        $vendors = vendor::orderBy('created_at', 'DESC')->get();
+        $vendors = Vendor::orderBy('created_at', 'DESC')->get();
         $data = ['vendors' => $vendors];
         return view('admin.vendors.index', $data);
     }
@@ -22,7 +22,7 @@ class VendorsController extends Controller
 
     public function edit($id)
     {
-        $vendors = vendor::find($id);
+        $vendors = Vendor::find($id);
         $data = ['vendors' => $vendors];
 
         return view('admin.vendors.edit', $data);
@@ -30,56 +30,32 @@ class VendorsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $vendors = vendor::find($id);
+        $vendors = Vendor::find($id);
         $vendors ->update($request->all());
 
-        return redirect()->route('admin.supplies.index');
+        return redirect()->route('admin.vendors.index');
     }
 
     public function store(Request $request)
     {
-        Supply::create($request->all());
-        return redirect()->route('admin.supplies.index');
+        Vendor::create($request->all());
+        return redirect()->route('admin.vendors.index');
     }
 
     public function destroy($id)
     {
-        Supply::destroy($id);
-        return redirect()->route('admin.supplies.index');
+        Vendor::destroy($id);
+        return redirect()->route('admin.vendors.index');
     }
     public function show(Request $request)
     {
         $Search =$request->input('Search');
-        $supplies = Supply::orderBy('created_at', 'DESC')
+        $vendors = Vendor::orderBy('created_at', 'DESC')
             ->when($Search, function ($query) use ($Search) {
                 return $query->where('name', 'like','%'.$Search.'%');
             })->get();
-        $data=['supplies'=>$supplies];
-        return view('admin.supplies.index' ,$data);
+        $data=['vendors'=>$vendors];
+        return view('admin.vendors.index' ,$data);
     }
-    public function receive()
-    {
-        return view('admin.receive.create');
-    }
-    public function receivestore(Request $request)
-    {
-        Receive::create($request->all());
-        return redirect()->route('admin.supplies.index');
-    }
-    public function receiveedit(Requests\SupplyRequest $request,$id)
-    {
-        $supplies = Supply::find($id);
-        $receives=Receive::find($id);
 
-        $titles = DB::table('supplies')->lists('quantity');
-
-        foreach ($titles as $title) {
-            echo $title;
-        }
-        $date1 =['receives'=>$receives];
-        $data2 = ['supplies' => $supplies];
-
-        $supplies->update($request->all());
-
-    }
 }

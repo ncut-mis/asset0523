@@ -18,7 +18,7 @@
 </div>
 <!-- /.row -->
 <div class="input-group custom-search-form">
-    <form action="{{ route('admin.vendor.show') }}" method="POST">
+    <form action="{{ route('admin.vendors.show') }}" method="POST">
         {{ csrf_field() }}
         <span class="input-group-btn">
     <input name="Search" class="form-control" placeholder="Search...">
@@ -40,7 +40,7 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="100" style="text-align: center">編號</th>
+                        <th width="100" style="text-align: center">廠商編號</th>
                         <th>廠商名稱</th>
                         <th width="100" style="text-align: center">廠商聯絡人</th>
                         <th width="100" style="text-align: center">廠商電話</th>

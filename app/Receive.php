@@ -9,11 +9,12 @@ class Receive extends Model
     //
     protected $table = 'receives';
     protected $fillable = [
-        'u_id',
-'s_id',
+        'user_id',
+'supply_id',
 'datatime'.
 'quantity',
     ];
+    /*
     public function user()
 {
     return $this->hasMany(User::class);
@@ -22,6 +23,7 @@ class Receive extends Model
     {
         return $this->hasMany(Supply::class);
     }
+    */
 }
 
 
