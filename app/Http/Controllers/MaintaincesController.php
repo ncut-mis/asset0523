@@ -87,6 +87,16 @@ class MaintaincesController extends Controller
         return redirect()->route('admin.maintainces.index');
     }
 
+    public function detail(Request $request,$id){
+
+        return view(admin.maintainces.detail);
+    }
+
+    public function detail_store(Request $request,$id){
+
+        return redirect()->route('admin.assets.index');
+    }
+
     public function method(Request $request){
         return view();
     }

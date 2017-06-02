@@ -46,14 +46,16 @@ Route::group(['prefix' => 'admin'], function() {
     //報修
     Route::get('maintainces', ['as' => 'admin.maintainces.index', 'uses' => 'MaintaincesController@index']);
     Route::post('maintainces/search'  , ['as' => 'admin.maintainces.search', 'uses' => 'MaintaincesController@Search']);
-
     Route::get('maintainces/{id}/show', ['as' => 'admin.maintainces.show', 'uses' => 'MaintaincesController@show']);
     Route::patch('maintainces/{id}'  , ['as' => 'admin.maintainces.process', 'uses' => 'MaintaincesController@process']);
     //未做
+    Route::get('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.detail', 'uses' => 'MaintaincesController@detail']);
+    Route::patch('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.detail.store', 'uses' => 'MaintaincesController@detail_store']);
+
     Route::get('maintainces/{id}/data', ['as' => 'admin.maintainces.data', 'uses' => 'MaintaincesController@data']);
     Route::post('maintainces/{id}/method'  , ['as' => 'admin.maintainces.method', 'uses' => 'MaintaincesController@method']);
     Route::post('maintainces/{id}/vendor'  , ['as' => 'admin.maintainces.vendor', 'uses' => 'MaintaincesController@vendor']);
-    Route::get('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.detail', 'uses' => 'MaintaincesController@detail']);
+
 
     //耗材
     Route::get('supplies'          , ['as' => 'admin.supplies.index' , 'uses' => 'SuppliesController@index']);
