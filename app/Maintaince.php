@@ -28,6 +28,11 @@ class Maintaince extends Model
         return $this->hasMany(Application::class);
     }
 
+    public function maintainceitems() //  Maintaince (1) -> MaintainceItem (n)
+    {
+        return $this->hasMany(MaintainceItem::class);
+    }
+
 
 
 
