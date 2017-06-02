@@ -65,9 +65,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('supplies/show'  , ['as' => 'admin.supplies.show', 'uses' => 'SuppliesController@show']);
 
     //廠商
-    Route::get('vendors'          , ['as' => 'admin.vendors.index' , 'uses' => 'VendorsController@index']);
+    Route::get('vendors'         , ['as' => 'admin.vendors.index' , 'uses' => 'VendorsController@index']);
     Route::get('vendors/create'   , ['as' => 'admin.vendors.create' , 'uses' => 'VendorsController@create']);
-    Route::post('vendors'         , ['as' => 'admin.svendors.store'  , 'uses' => 'VendorsController@store']);
+    Route::post('vendors'         , ['as' => 'admin.vendors.store'  , 'uses' => 'VendorsController@store']);
     Route::get('vendors/{id}/edit', ['as' => 'admin.vendors.edit'   , 'uses' => 'VendorsController@edit']);
     Route::patch('vendors/{id}'   , ['as' => 'admin.vendors.update' , 'uses' => 'VendorsController@update']);
     Route::delete('vendors/{id}'  , ['as' => 'admin.vendors.destroy', 'uses' => 'VendorsController@destroy']);

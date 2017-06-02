@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/vendor" method="POST" role="form">
+        <form action="/admin/vendors" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">
