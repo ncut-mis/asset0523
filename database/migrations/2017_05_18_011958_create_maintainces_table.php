@@ -16,7 +16,7 @@ class CreateMaintaincesTable extends Migration
         Schema::create('maintainces', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->integer('asset_id')->index();
-            $table->integer('v_id')->index();
+            $table->integer('vendor_id')->index();
             $table->date('date')->nullable();
             $table->string('status',20)->nullable();
             $table->string('method',20)->nullable();
