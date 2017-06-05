@@ -16,9 +16,15 @@ class ReceivesController extends Controller
         $today = Carbon::today();
         return view('admin.receives.create',$data,$today);
     }
-    public function store(Request $request,$id)
+    public function store(Request $request,$input)
     {
         Receive::create($request->all());
-        return redirect()->route('admin.supplies.index');
+        $input = Input::all();
+
+        $Receive = new Receive;
+        $Receive->title = $input['quantity'];
+
+        return Redirect::to('admin.supplies.index');
+
     }
 }
