@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Application;
 use App\Asset;
 use App\Maintaince;
+use App\MaintainceItem;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -24,7 +25,7 @@ class MaintaincesController extends Controller
     {
         $asset=Asset::find($id);
         $asset->maintainces()->create([
-            'vendor_id'=>$asset->warranty,
+            'vendor_id'=>$asset->vendor,
             'status'=>'申請中',
             'method'=>'未選擇',
             'remark'=>null
@@ -68,16 +69,15 @@ class MaintaincesController extends Controller
     }
 */
     public function show($id){
-        //$array = ["未選擇","廠商維修","自行維修","不修"];
-
         $maintaince=Maintaince::find($id);
         $asset=Asset::find($maintaince->asset_id);
+        $maintaincesitems=MaintainceItem::orderBy('created_at', 'DESC');
 
         $maintaince->update([
             'status'=>'申請待處理'
         ]);
 
-        $data=['maintaince'=>$maintaince,'asset'=>$asset];
+        $data=['maintaince'=>$maintaince,'asset'=>$asset,'assetmaintainces'=>$asset->maintainces,'maintaincesitems'=>$maintaincesitems];
         return view('admin.maintainces.show', $data);
     }
 
@@ -105,7 +105,7 @@ class MaintaincesController extends Controller
         $asset=Asset::find($maintaince->asset_id);
         $maintaince->update([
             'status'=>'已完成維修',
-            'remark'=>$now = Carbon::now()
+            'date'=>$now = Carbon::now()
         ]);
         $asset->update([
             'status'=>'正常使用中'
