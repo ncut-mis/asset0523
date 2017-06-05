@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Receive;
 use Illuminate\Http\Request;
 use App\Supply;
-use App\Http\Requests;
 use Carbon\Carbon;
 
 class ReceivesController extends Controller
@@ -15,8 +14,7 @@ class ReceivesController extends Controller
         $supplies = Supply::find($id);
         $data = ['supplies' => $supplies];
         $today = Carbon::today();
-        $today =['today'=>$today];
-        return view('admin.receive.create',$data,$today);
+        return view('admin.receives.create',$data,$today);
     }
     public function store(Request $request,$id)
     {
