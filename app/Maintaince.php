@@ -10,7 +10,7 @@ class Maintaince extends Model
     protected $table = 'maintainces';
     protected $fillable = [
         'asset_id',
-        'v_id',
+        'vendor_id',
         'date',
         'status',
         'method',

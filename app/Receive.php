@@ -10,20 +10,21 @@ class Receive extends Model
     protected $table = 'receives';
     protected $fillable = [
         'user_id',
-'supply_id',
-'datatime'.
-'quantity',
+        'supply_id',
+        'datatime'.
+        'quantity',
     ];
-    /*
+
     public function user()
-{
-    return $this->hasMany(User::class);
-}
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function supply()
     {
-        return $this->hasMany(Supply::class);
+        return $this->belongsTo(Supply::class);
     }
-    */
+
 }
 
 

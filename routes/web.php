@@ -48,9 +48,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('maintainces/search'  , ['as' => 'admin.maintainces.search', 'uses' => 'MaintaincesController@Search']);
     Route::get('maintainces/{id}/show', ['as' => 'admin.maintainces.show', 'uses' => 'MaintaincesController@show']);
     Route::patch('maintainces/{id}'  , ['as' => 'admin.maintainces.process', 'uses' => 'MaintaincesController@process']);
+    Route::get('maintainces/{id}/details'  , ['as' => 'admin.maintainces.details', 'uses' => 'MaintainceItemsController@index']);
+    Route::post('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.details.store', 'uses' => 'MaintainceItemsController@store']);
     //未做
-    Route::get('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.detail', 'uses' => 'MaintaincesController@detail']);
-    Route::patch('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.detail.store', 'uses' => 'MaintaincesController@detail_store']);
+    Route::post('maintainces/{id}/complete'  , ['as' => 'admin.maintainces.complete', 'uses' => 'MaintaincesController@complete']);
 
     Route::get('maintainces/{id}/data', ['as' => 'admin.maintainces.data', 'uses' => 'MaintaincesController@data']);
     Route::post('maintainces/{id}/method'  , ['as' => 'admin.maintainces.method', 'uses' => 'MaintaincesController@method']);

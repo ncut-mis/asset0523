@@ -14,8 +14,8 @@ class Supply extends Model
     ];
 
 
-    public function receive()
+    public function receives()
     {
-        return $this->belongsTo(Receive::class);
+        return $this->hasMany(Receive::class);
     }
 }

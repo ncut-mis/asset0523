@@ -24,7 +24,7 @@ class MaintaincesController extends Controller
     {
         $asset=Asset::find($id);
         $asset->maintainces()->create([
-            'v_id'=>$asset->warranty,
+            'vendor_id'=>$asset->warranty,
             'status'=>'申請中',
             'method'=>'未選擇',
             'remark'=>null
@@ -44,10 +44,12 @@ class MaintaincesController extends Controller
 
     public function index()
     {
-        $maintainces=Maintaince::orderBy('created_at', 'DESC')->get();
+        $maintainces=Maintaince::orderBy('created_at', 'DESC')->whereNotIn('status',['申請中','不修','已完成維修'])->get();
+        $maintaincesA=Maintaince::orderBy('created_at', 'DESC')->where('status','申請中')->get();
         $asset=Asset::orderBy('created_at', 'DESC')->get();
         $applications=Application::orderBy('created_at', 'DESC')->get();
         $data=['maintainces'=>$maintainces,
+            'maintaincesA'=>$maintaincesA,
             'applications'=>$applications,
             'assets'=>$asset
         ];
@@ -65,7 +67,7 @@ class MaintaincesController extends Controller
         return view('admin.assets.index' ,$data);
     }
 */
-    public function show(Request $request,$id){
+    public function show($id){
         //$array = ["未選擇","廠商維修","自行維修","不修"];
 
         $maintaince=Maintaince::find($id);
@@ -84,17 +86,31 @@ class MaintaincesController extends Controller
         $maintaince->update([
             'method'=>$request->method
         ]);
+        if($request->method=='不修'){
+            $asset=Asset::find($maintaince->asset_id);
+            $maintaince->update([
+                'status'=>'不修',
+                'remark'=>$now = Carbon::now()
+            ]);
+            $asset->update([
+                'remark'=>'待報廢'
+            ]);
+        }
+
         return redirect()->route('admin.maintainces.index');
     }
 
-    public function detail(Request $request,$id){
-
-        return view(admin.maintainces.detail);
-    }
-
-    public function detail_store(Request $request,$id){
-
-        return redirect()->route('admin.assets.index');
+    public function complete(Request $request,$id){
+        $maintaince=Maintaince::find($id);
+        $asset=Asset::find($maintaince->asset_id);
+        $maintaince->update([
+            'status'=>'已完成維修',
+            'remark'=>$now = Carbon::now()
+        ]);
+        $asset->update([
+            'status'=>'正常使用中'
+        ]);
+        return redirect()->route('admin.maintainces.index');
     }
 
     public function method(Request $request){
