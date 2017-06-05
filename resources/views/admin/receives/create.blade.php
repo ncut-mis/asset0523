@@ -34,10 +34,10 @@
             </div>
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input  class="form-control" value="{{$supplies->name}}" disabled>
+                <return  class="form-control" value="{{$supplies->name}}" disabled>
             </div>
             <div class="form-group">
-                <label>日期時間：</label>
+                <label>日期：</label>
                 <input name="date" class="form-control" placeholder="請輸入日期與時間" value="{{$today->month}}{{$today->day}}">
             </div>
 
