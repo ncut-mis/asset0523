@@ -55,7 +55,7 @@
                         <td>
                             <div>
                                 <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>/
-                                <a href="{{ route('admin.receive.create', $supplies->id) }}">領取</a>
+                                <a href="{{ route('admin.receives.create', $supplies->id) }}">領取</a>
                                 /
                                 <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
                                     {{ csrf_field() }}
