@@ -16,9 +16,8 @@ class ReceivesController extends Controller
         $today = Carbon::today();
         return view('admin.receives.create',$data,$today);
     }
-    public function store(Request $request,$input)
+    public function store()
     {
-        Receive::create($request->all());
         $input = Input::all();
 
         $Receive = new Receive;
