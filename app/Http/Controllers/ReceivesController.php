@@ -18,15 +18,8 @@ class ReceivesController extends Controller
         $today =['today'=>$today];
         return view('admin.receive.create',$data,$today);
     }
-    public function receivestore(Request $request,$id)
+    public function store(Request $request,$id)
     {
-       /* $supplies =Supply::find($id);
-        Supply::create($request->all());
-        $receive=Receive::find(supply_id);
-        $supplies->quantity;
-        $date =['supplies' => $supplies];
-*/
-
         Receive::create($request->all());
         return redirect()->route('admin.supplies.index');
     }
