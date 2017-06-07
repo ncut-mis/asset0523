@@ -95,10 +95,18 @@ class MaintaincesController extends Controller
             $asset=Asset::find($maintaince->asset_id);
             $maintaince->update([
                 'status'=>'不修',
-                'remark'=>$now = Carbon::now()
+                'date'=>$now = Carbon::now()
             ]);
             $asset->update([
-                'remark'=>'待報廢'
+                'status'=>'待報廢'
+            ]);
+        }elseif($request->method=='廠商維修'){
+            $maintaince->update([
+                'status'=>'聯絡廠商中',
+            ]);
+        }elseif($request->method=='自行維修'){
+            $maintaince->update([
+                'status'=>'自行維修中',
             ]);
         }
 

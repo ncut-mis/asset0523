@@ -48,7 +48,7 @@
                             <h4 class="panel-title">
                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$assetmaintaince->id}}" aria-expanded="false>"
                                    aria-controls="collapse{{$assetmaintaince->id}}">
-                                        {{$assetmaintaince->id}}
+                                       維修編號 - {{$assetmaintaince->id}}
                                 </a>
                             </h4>
                         </div>
