@@ -60,10 +60,10 @@
                         @foreach ($maintainceitems as $maintainceitem)
                             <tr>
                                 <!-- 任務名稱 -->
-                                <td class="table-text">
+                                <td class="table-text" style="text-align: center">
                                     <div>{{ $maintainceitem->name }}</div>
                                 </td>
-                                <td class="table-text">
+                                <td class="table-text" style="text-align: center">
                                     <div>{{ $maintainceitem->amount }}</div>
                                 </td>
                                 <!-- 刪除按鈕 -->

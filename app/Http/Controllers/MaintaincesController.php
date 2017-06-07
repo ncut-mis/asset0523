@@ -6,6 +6,7 @@ use App\Application;
 use App\Asset;
 use App\Maintaince;
 use App\MaintainceItem;
+use App\Vendor;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -71,13 +72,17 @@ class MaintaincesController extends Controller
     public function show($id){
         $maintaince=Maintaince::find($id);
         $asset=Asset::find($maintaince->asset_id);
-        $maintaincesitems=MaintainceItem::orderBy('created_at', 'DESC');
+        $vendors=Vendor::orderBy('created_at','DESC')->get();
+
+        $maintainceitems=MaintainceItem::orderBy('created_at', 'ASC')->get();
+        $assetmaintainces=Maintaince::where('asset_id',$asset->id)->where('status','已完成維修')->get();
 
         $maintaince->update([
             'status'=>'申請待處理'
         ]);
 
-        $data=['maintaince'=>$maintaince,'asset'=>$asset,'assetmaintainces'=>$asset->maintainces,'maintaincesitems'=>$maintaincesitems];
+        $data=['maintaince'=>$maintaince,'asset'=>$asset,'vendors'=>$vendors,
+            'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
         return view('admin.maintainces.show', $data);
     }
 
