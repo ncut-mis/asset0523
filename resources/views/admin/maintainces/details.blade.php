@@ -1,17 +1,17 @@
 @extends('admin.layouts.master')
 
-@section('title', '資產資料')
+@section('title', '維修明細')
 
 @section('content')
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            資產 <small>資產資料</small>
+            維修<small>維修明細</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-edit"></i> 資產管理
+                <i class="fa fa-edit"></i> 維修管理
             </li>
         </ol>
     </div>
@@ -60,10 +60,10 @@
                         @foreach ($maintainceitems as $maintainceitem)
                             <tr>
                                 <!-- 任務名稱 -->
-                                <td class="table-text">
+                                <td class="table-text" style="text-align: center">
                                     <div>{{ $maintainceitem->name }}</div>
                                 </td>
-                                <td class="table-text">
+                                <td class="table-text" style="text-align: center">
                                     <div>{{ $maintainceitem->amount }}</div>
                                 </td>
                                 <!-- 刪除按鈕 -->

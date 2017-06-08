@@ -57,18 +57,51 @@
             <div class="form-group">
                 <label>資產狀態：</label>
                 <select name="status" class="form-control">
-                    <option value="正常使用中">正常使用中</option>
-                    <option value="維修中">維修中</option>
-                    <option value="租借中">租借中</option>
-                    <option value="待報廢">待報廢</option>
-                    <option value="已報廢">已報廢</option>
+                    @if($asset->status=='維修中')
+                        <option value="正常使用中">正常使用中</option>
+                        <option value="維修中" selected="true">維修中</option>
+                        <option value="租借中">租借中</option>
+                        <option value="待報廢">待報廢</option>
+                        <option value="已報廢">已報廢</option>
+                    @elseif($asset->status=='租借中')
+                        <option value="正常使用中">正常使用中</option>
+                        <option value="維修中">維修中</option>
+                        <option value="租借中" selected="true">租借中</option>
+                        <option value="待報廢">待報廢</option>
+                        <option value="已報廢">已報廢</option>
+                    @elseif($asset->status=='待報廢')
+                        <option value="正常使用中">正常使用中</option>
+                        <option value="維修中">維修中</option>
+                        <option value="租借中">租借中</option>
+                        <option value="待報廢" selected="true">待報廢</option>
+                        <option value="已報廢">已報廢</option>
+                    @elseif($asset->status=='已報廢')
+                        <option value="正常使用中">正常使用中</option>
+                        <option value="維修中">維修中</option>
+                        <option value="租借中">租借中</option>
+                        <option value="待報廢">待報廢</option>
+                        <option value="已報廢" selected="true">已報廢</option>
+                    @else
+                        <option value="正常使用中" selected="true">正常使用中</option>
+                        <option value="維修中">維修中</option>
+                        <option value="租借中">租借中</option>
+                        <option value="待報廢">待報廢</option>
+                        <option value="已報廢">已報廢</option>
+                    @endif
                 </select>
-                <input name="status" class="form-control" placeholder="請輸入資產狀態" value="{{$asset->status}}">
             </div>
 
             <div class="form-group">
                 <label>保管人：</label>
-                <input name="keeper" class="form-control" placeholder="請輸入資產保管人" value="{{$asset->keeper}}">
+                <select name="keeper" class="form-control">
+                    @foreach($users as $user)
+                        @if($asset->keeper==$user->id)
+                            <option value={{ $user->id }} selected="true">{{ $user->name }}</option>
+                        @else
+                            <option value={{ $user->id }}>{{ $user->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
@@ -86,7 +119,15 @@
 
             <div class="form-group">
                 <label>供應商：</label>
-                <input name="vendor" class="form-control" placeholder="請輸入資產供應商" value="{{$asset->vendor}}">
+                <select name="vendor" class="form-control">
+                    @foreach($vendors as $vendor)
+                        @if($asset->vendor==$vendor->id)
+                            <option value={{ $vendor->id }} selected="true">{{ $vendor->name }}</option>
+                        @else
+                            <option value={{ $vendor->id }}>{{ $vendor->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">

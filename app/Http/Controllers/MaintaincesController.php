@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Application;
 use App\Asset;
 use App\Maintaince;
+use App\MaintainceItem;
+use App\User;
+use App\Vendor;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -24,14 +27,14 @@ class MaintaincesController extends Controller
     {
         $asset=Asset::find($id);
         $asset->maintainces()->create([
-            'vendor_id'=>$asset->warranty,
+            'vendor_id'=>$asset->vendor,
             'status'=>'申請中',
             'method'=>'未選擇',
             'remark'=>null
         ]);
         //
         $asset->update([
-            'status'=>'報修中'
+            'status'=>'維修中'
         ]);
         $maintainces=Maintaince::orderBy('created_at', 'DESC')->first();
         $maintainces->applications()->create([
@@ -68,16 +71,21 @@ class MaintaincesController extends Controller
     }
 */
     public function show($id){
-        //$array = ["未選擇","廠商維修","自行維修","不修"];
-
         $maintaince=Maintaince::find($id);
         $asset=Asset::find($maintaince->asset_id);
+        $vendors=Vendor::orderBy('created_at','DESC')->get();
+        $applications=$maintaince->applications()->get();
+        $users=User::orderBy('created_at','DESC')->get();
+
+        $maintainceitems=MaintainceItem::orderBy('created_at', 'ASC')->get();
+        $assetmaintainces=Maintaince::where('asset_id',$asset->id)->where('status','已完成維修')->get();
 
         $maintaince->update([
             'status'=>'申請待處理'
         ]);
 
-        $data=['maintaince'=>$maintaince,'asset'=>$asset];
+        $data=['maintaince'=>$maintaince,'asset'=>$asset,'vendors'=>$vendors,'applications'=>$applications,'users'=>$users,
+            'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
         return view('admin.maintainces.show', $data);
     }
 
@@ -90,10 +98,18 @@ class MaintaincesController extends Controller
             $asset=Asset::find($maintaince->asset_id);
             $maintaince->update([
                 'status'=>'不修',
-                'remark'=>$now = Carbon::now()
+                'date'=>$now = Carbon::now()
             ]);
             $asset->update([
-                'remark'=>'待報廢'
+                'status'=>'待報廢'
+            ]);
+        }elseif($request->method=='廠商維修'){
+            $maintaince->update([
+                'status'=>'聯絡廠商中',
+            ]);
+        }elseif($request->method=='自行維修'){
+            $maintaince->update([
+                'status'=>'自行維修中',
             ]);
         }
 
@@ -105,7 +121,7 @@ class MaintaincesController extends Controller
         $asset=Asset::find($maintaince->asset_id);
         $maintaince->update([
             'status'=>'已完成維修',
-            'remark'=>$now = Carbon::now()
+            'date'=>$now = Carbon::now()
         ]);
         $asset->update([
             'status'=>'正常使用中'
@@ -113,13 +129,6 @@ class MaintaincesController extends Controller
         return redirect()->route('admin.maintainces.index');
     }
 
-    public function method(Request $request){
-        return view();
-    }
-
-    public function vendor(Request $request){
-        return view();
-    }
 
 
 

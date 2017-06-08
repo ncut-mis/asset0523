@@ -41,8 +41,8 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="30" style="text-align: center">id</th>
-                        <th >資產名稱</th>
+                        <th width="80" style="text-align: center">資產編號</th>
+                        <th style="text-align: center">資產名稱</th>
                         <th width="80" style="text-align: center">資產類別</th>
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
