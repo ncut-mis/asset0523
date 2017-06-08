@@ -52,9 +52,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.details.store', 'uses' => 'MaintainceItemsController@store']);
     Route::post('maintainces/{id}/complete'  , ['as' => 'admin.maintainces.complete', 'uses' => 'MaintaincesController@complete']);
     //未做
-    Route::get('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.details.edit', 'uses' => 'MaintainceItemsController@edit']);
-    Route::patch('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.details.update', 'uses' => 'MaintainceItemsController@update']);
-    Route::delete('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.details.delete', 'uses' => 'MaintainceItemsController@delete']);
+    Route::get('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.edit', 'uses' => 'MaintainceItemsController@edit']);
+    Route::patch('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.details.update', 'uses' => 'MaintainceItemsController@update']);
+    Route::delete('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.details.destroy', 'uses' => 'MaintainceItemsController@destroy']);
 
 
     //耗材
