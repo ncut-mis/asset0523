@@ -117,11 +117,8 @@
                                     @endforeach
                                 </table>
                             </div>
-
                         </div>
-
                         @endforeach
-
                 </div>
                 </div>
         @endif

@@ -39,19 +39,19 @@
                 <button type="submit" class="btn btn-success">增加維修項目</button>
             </div>
         </form>
+
         @if (count($maintainceitems) > 0)
             <div class="panel panel-default">
                 <div class="panel-heading">
                     已記錄的維修項目
                 </div>
-
                 <div class="panel-body">
                     <table class="table table-striped task-table">
 
                         <!-- 表頭 -->
                         <thead>
-                        <th width="100" style="text-align: center">維修項目</th>
-                        <th width="100" style="text-align: center">金額</th>
+                        <th width="300" style="text-align: center">維修項目</th>
+                        <th width="300" style="text-align: center">金額</th>
                         <th width="100" style="text-align: center">功能</th>
                         </thead>
 
@@ -66,7 +66,18 @@
                                 <td class="table-text" style="text-align: center">
                                     <div>{{ $maintainceitem->amount }}</div>
                                 </td>
+                                <td class="table-text" style="text-align: center">
+                                    <a class="btn btn-primary" href="{{ route('admin.maintainces.edit',['mid'=>$maintaince->id,'id'=>$maintainceitem->id]) }}" role="button">修改</a>
+                                </td>
                                 <!-- 刪除按鈕 -->
+                                <td>
+                                    <form action="{{ route('admin.maintainces.details.destroy',['mid'=>$maintaince->id,'id'=>$maintainceitem->id]) }}"method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+
+                                        <button class="btn btn-primary">刪除</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
