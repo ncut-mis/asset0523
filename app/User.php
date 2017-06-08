@@ -30,4 +30,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Receive::class);
     }
+
+    public function applications() //  User (1) -> Application (n)
+    {
+        return $this->hasMany(Application::class);
+    }
+
+    public function assets() //  User (1) -> asset (n)
+    {
+        return $this->hasMany(Asset::class);
+    }
 }
