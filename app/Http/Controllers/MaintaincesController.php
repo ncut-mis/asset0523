@@ -6,6 +6,7 @@ use App\Application;
 use App\Asset;
 use App\Maintaince;
 use App\MaintainceItem;
+use App\User;
 use App\Vendor;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -33,7 +34,7 @@ class MaintaincesController extends Controller
         ]);
         //
         $asset->update([
-            'status'=>'報修中'
+            'status'=>'維修中'
         ]);
         $maintainces=Maintaince::orderBy('created_at', 'DESC')->first();
         $maintainces->applications()->create([
@@ -73,6 +74,8 @@ class MaintaincesController extends Controller
         $maintaince=Maintaince::find($id);
         $asset=Asset::find($maintaince->asset_id);
         $vendors=Vendor::orderBy('created_at','DESC')->get();
+        $applications=$maintaince->applications()->get();
+        $users=User::orderBy('created_at','DESC')->get();
 
         $maintainceitems=MaintainceItem::orderBy('created_at', 'ASC')->get();
         $assetmaintainces=Maintaince::where('asset_id',$asset->id)->where('status','已完成維修')->get();
@@ -81,7 +84,7 @@ class MaintaincesController extends Controller
             'status'=>'申請待處理'
         ]);
 
-        $data=['maintaince'=>$maintaince,'asset'=>$asset,'vendors'=>$vendors,
+        $data=['maintaince'=>$maintaince,'asset'=>$asset,'vendors'=>$vendors,'applications'=>$applications,'users'=>$users,
             'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
         return view('admin.maintainces.show', $data);
     }
@@ -126,13 +129,6 @@ class MaintaincesController extends Controller
         return redirect()->route('admin.maintainces.index');
     }
 
-    public function method(Request $request){
-        return view();
-    }
-
-    public function vendor(Request $request){
-        return view();
-    }
 
 
 

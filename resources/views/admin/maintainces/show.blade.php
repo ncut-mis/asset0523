@@ -40,6 +40,43 @@
             <input name="location" class="col-lg-4,form-control" placeholder="請輸入資產放置地點" value="{{$asset->location}}" readonly>
         </div>
 
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-edit"></i> 申請資訊
+            </li>
+        </ol>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="100" style="text-align: center">申請人</th>
+                    <th width="100" style="text-align: center">問題描述</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($applications as $application)
+                    <tr>
+                        <td style="text-align: center">
+                            @foreach($users as $user)
+                                @if($application->user_id==$user->id)
+                                    {{ $user->name }}
+                                @endif
+                            @endforeach
+                        </td>
+
+                        <td style="text-align: center">{{ $application->problem }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-edit"></i> 過去維修紀錄
+            </li>
+        </ol>
+
         @if(count($assetmaintainces)>0)
             <div class="panel-group" id="accordion" role="tablist">
                 <div class="panel panel-default">
@@ -86,9 +123,8 @@
                         @endforeach
 
                 </div>
-                @endif
-
                 </div>
+        @endif
 
                 <form action="/admin/maintainces/{{$maintaince->id}}" method="POST" role="form">
             {{ csrf_field() }}
@@ -106,7 +142,7 @@
 
                     <div class="form-group">
                         <label>選擇維修廠商：</label>
-                        <select name="vendor" class="form-control">
+                        <select name="vendor" class="form-control" >
                             @foreach($vendors as $vendor)
                                 @if($asset->vendor==$vendor->id)
                                     <option value={{ $vendor->id }} selected="true">{{ $vendor->name }}</option>
