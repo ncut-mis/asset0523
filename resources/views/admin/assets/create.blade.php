@@ -62,7 +62,11 @@
 
             <div class="form-group">
                 <label>保管人：</label>
-                <input name="keeper" class="form-control" placeholder="請輸入資產保管人">
+                <select name="keeper" class="form-control">
+                    @foreach($users as $user)
+                        <option value={{ $user->id }}>{{ $user->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
@@ -80,7 +84,11 @@
 
             <div class="form-group">
                 <label>供應商：</label>
-                <input name="vendor" class="form-control" placeholder="請輸入資產供應商">
+                <select name="vendor" class="form-control">
+                    @foreach($vendors as $vendor)
+                        <option value={{ $vendor->id }}>{{ $vendor->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">

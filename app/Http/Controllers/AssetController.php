@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Asset;
 use App\Category;
+use App\User;
+use App\Vendor;
 use Illuminate\Http\Request;
 
 class AssetController extends Controller
@@ -22,16 +24,20 @@ class AssetController extends Controller
     public function create()
     {
         $category=Category::orderBy('created_at' ,'DESC') ->get();
-        $data=['categories'=>$category];
+        $users=User::orderBy('created_at' ,'DESC') ->get();
+        $vendors=Vendor::orderBy('created_at' ,'DESC') ->get();
+        $data=['categories'=>$category,'users'=>$users,'vendors'=>$vendors];
         return view('admin.assets.create' ,$data);
     }
 
     public function edit($id)
     {
         //$array = ["正常使用中","維修中","租借中","待報廢","已報廢"];
-        $category=Category::orderBy('created_at' ,'DESC') ->get();
+        $categories=Category::orderBy('created_at' ,'DESC') ->get();
+        $users=User::orderBy('created_at' ,'DESC') ->get();
+        $vendors=Vendor::orderBy('created_at' ,'DESC') ->get();
         $asset=Asset::find($id);
-        $data = ['asset' => $asset,'categories'=>$category];
+        $data = ['asset' => $asset,'categories'=>$categories,'users'=>$users,'vendors'=>$vendors];
 
         return view('admin.assets.edit', $data);
     }
@@ -55,8 +61,8 @@ class AssetController extends Controller
 
     public function data($id)
     {
-        $category=Category::orderBy('created_at' ,'DESC') ->get();
         $asset=Asset::find($id);
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
         $data = ['asset' => $asset,'categories'=>$category];
 
         return view('admin.assets.show', $data);
