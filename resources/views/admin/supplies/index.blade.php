@@ -41,9 +41,9 @@
                 <thead>
                     <tr>
                         <th width="100" style="text-align: center">耗材編號</th>
-                        <th>耗材名稱</th>
+                        <th style="text-align: center">耗材名稱</th>
                         <th width="100" style="text-align: center">耗材數量</th>
-                        <th width="100" style="text-align: center">功能</th>
+                        <th width="300" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,17 +53,26 @@
                         <td style="text-align: center">{{ $supplies->name }}</td>
                         <td style="text-align: center">{{ $supplies->quantity }}</td>
                         <td>
-                            <div>
-                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>/
-                                <a href="{{ route('admin.receive.create', $supplies->id) }}">領取</a>
-                                /
-                                <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn btn-link">刪除</button>
-                                </form>
-
-                            </div>
+                            <table >
+                                <tbody>
+                                <tr class="table-text" style="text-align: center">
+                                    <td width="100" >
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.edit', $supplies->id) }}" >修改</a>
+                                    </td>
+                                    <td width="100">
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.receive.create', $supplies->id) }}" >領取</a>
+                                    </td>
+                                    <!-- 刪除按鈕 -->
+                                    <td width="100">
+                                        <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button class="btn btn-danger">刪除</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </td>
                     </tr>
                 @endforeach

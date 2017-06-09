@@ -41,14 +41,14 @@
                 <thead>
                     <tr>
                         <th width="100" style="text-align: center">廠商編號</th>
-                        <th>廠商名稱</th>
+                        <th style="text-align: center">廠商名稱</th>
                         <th width="100" style="text-align: center">廠商聯絡人</th>
                         <th width="100" style="text-align: center">廠商電話</th>
                         <th width="100" style="text-align: center">廠商地址</th>
                         <th width="100" style="text-align: center">銀行名稱</th>
                         <th width="100" style="text-align: center">銀行帳戶</th>
                         <th width="100" style="text-align: center">備註</th>
-                        <th width="100" style="text-align: center">功能</th>
+                        <th width="200" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,15 +63,22 @@
                         <td style="text-align: center">{{ $vendors->bankaccount }}</td>
                         <td style="text-align: center">{{ $vendors->remark }}</td>
                         <td>
-                            <div>
-                                <a href="{{ route('admin.vendors.edit', $vendors->id) }}">編輯</a>
-                                /
-                                <form action="{{ route('admin.vendors.destroy', $vendors->id) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn btn-link">刪除</button>
-                                </form>
-                            </div>
+                            <table >
+                                <tbody>
+                                <tr class="table-text" style="text-align: center">
+                                    <td width="100" >
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.vendors.edit', $vendors->id) }}" >修改</a>
+                                    </td>
+                                    <td width="100">
+                                        <form action="{{ route('admin.vendors.destroy', $vendors->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button class="btn btn-danger">刪除</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </td>
                     </tr>
                 @endforeach

@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label>銀行帳戶：</label>
-                <input name="bankaccout" class="form-control" placeholder="請輸入銀行帳戶">
+                <input name="bankaccount" class="form-control" placeholder="請輸入銀行帳戶">
             </div>
             <div class="form-group">
                 <label>備註：</label>

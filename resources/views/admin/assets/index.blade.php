@@ -47,7 +47,7 @@
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
                         <th width="80" style="text-align: center">放置地點</th>
-                        <th width="100" style="text-align: center">功能</th>
+                        <th width="300" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,16 +70,26 @@
                         <td style="text-align: center">{{ $asset->lendable?'可':'否' }}</td>
                         <td style="text-align: center">{{ $asset->location }}</td>
                         <td>
-                            <div>
-                                <a href="{{ route('admin.assets.edit', $asset->id) }}">修改</a>
-                                / <a href="{{ route('admin.assets.application', $asset->id) }}">申請</a> /
-                                <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn btn-link">刪除</button>
-                                </form>
-
-                            </div>
+                                    <table >
+                                        <tbody>
+                                            <tr class="table-text" style="text-align: center">
+                                                <td width="100" >
+                                                    <a class="btn btn-primary" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
+                                                </td>
+                                                <td width="100">
+                                                    <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button">申請</a>
+                                                </td>
+                                                <!-- 刪除按鈕 -->
+                                                <td width="100">
+                                                    <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <button class="btn btn-danger">刪除</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                         </td>
                     </tr>
                 @endforeach
