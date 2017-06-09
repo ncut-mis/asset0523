@@ -13,7 +13,7 @@ class Vendor extends Model
         'phone',
         'address',
         'bankname',
-        'bankaccout',
+        'bankaccount',
         'remark',
     ];
 
