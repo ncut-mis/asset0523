@@ -27,18 +27,14 @@
                 <input name="name" class="col-lg-4,form-control" placeholder="請輸入資產名稱" value="{{$asset->name}}" readonly>
             </div>
 
-            <div class="form-group">
-                <label  width="80">資產類別：</label>
-                <select name="category" class="col-lg-4,form-control" readonly>
-                    @foreach($categories as $category)
-                        @if($asset->category==$category->id)
-                            <option value={{ $category->id }} selected="true">{{ $category->name }}</option>
-                        @else
-                            <option value={{ $category->id }}>{{ $category->name }}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div>
+        <div class="form-group">
+            <label width="80">資產類別：</label>
+            @foreach($categories as $category)
+                @if($asset->category==$category->id)
+            <input name="category" class="col-lg-4,form-control" placeholder="請輸入資產類別" value="{{$category->name}}" readonly>
+                @endif
+            @endforeach
+        </div>
 
             <div class="form-group">
                 <label width="80">購置日期：</label>
@@ -61,11 +57,12 @@
             </div>
 
             <div class="form-group">
-                <label width="80">可否租借？</label>
-                <select name="lendable" class="col-lg-4,form-control" readonly>
-                    <option value="0" {{ $asset->lendable?'':'SELECTED' }}>否</option>
-                    <option value="1" {{ $asset->lendable?'SELECTED':'' }}>是</option>
-                </select>
+                <label width="80">可否租借：</label>
+                @if($asset->lendable)
+                    <input name="lendable" class="col-lg-4,form-control" placeholder="請輸入資產保管人" value="是" readonly>
+                @else
+                    <input name="lendable" class="col-lg-4,form-control" placeholder="請輸入資產保管人" value="否" readonly>
+                @endif
             </div>
 
             <div class="form-group">
