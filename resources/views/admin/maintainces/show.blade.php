@@ -71,13 +71,14 @@
             </table>
         </div>
 
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 過去維修紀錄
-            </li>
-        </ol>
+
 
         @if(count($assetmaintainces)>0)
+            <ol class="breadcrumb">
+                <li class="active">
+                    <i class="fa fa-edit"></i> 過去維修紀錄
+                </li>
+            </ol>
             <div class="panel-group" id="accordion" role="tablist">
                 <div class="panel panel-default">
                     @foreach($assetmaintainces as $assetmaintaince)

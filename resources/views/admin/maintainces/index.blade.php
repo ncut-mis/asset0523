@@ -60,10 +60,8 @@
                             @endforeach
                         </td>
 
-                        <td>
-                            <div>
-                                <a href="{{ route('admin.maintainces.show', $maintaince->id) }}">處理</a>
-                            </div>
+                        <td class="table-text" style="text-align: center">
+                                <a href="{{ route('admin.maintainces.show', $maintaince->id) }}" class="btn btn-primary" role="button">處理</a>
                         </td>
                     </tr>
                 @endforeach
@@ -117,14 +115,12 @@
                                 @endif
                             @endforeach
                         </td>
-                        <td>
-                            <div>
+                        <td class="table-text" style="text-align: center">
                                 @if($maintaince->method!=='未選擇')
-                                    <a href="{{ route('admin.maintainces.details', $maintaince->id) }}">處理</a>
+                                    <a href="{{ route('admin.maintainces.details', $maintaince->id) }}" class="btn btn-primary" role="button">處理</a>
                                 @else
-                                    <a href="{{ route('admin.maintainces.show', $maintaince->id) }}">處理</a>
+                                    <a href="{{ route('admin.maintainces.show', $maintaince->id) }}" class="btn btn-primary" role="button">處理</a>
                                 @endif
-                            </div>
                         </td>
                     </tr>
                     @endif
