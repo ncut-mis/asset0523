@@ -62,8 +62,10 @@ class AssetController extends Controller
     public function data($id)
     {
         $asset=Asset::find($id);
-        $category=Category::orderBy('created_at' ,'DESC') ->get();
-        $data = ['asset' => $asset,'categories'=>$category];
+        $category=Category::find($asset->category);
+        $vendor=Vendor::find($asset->vendor);
+        $user=User::find($asset->keeper);
+        $data = ['asset' => $asset,'category'=>$category,'vendor'=>$vendor,'user'=>$user];
 
         return view('admin.assets.show', $data);
     }

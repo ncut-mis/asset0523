@@ -137,7 +137,7 @@
 
             <div class="form-group">
                 <label>備註：</label>
-                <textarea name="submit" class="form-control" rows="10" value="{{$asset->remark}}"></textarea>
+                <textarea name="submit" class="form-control" rows="5" value="{{$asset->remark}}"></textarea>
             </div>
 
             <div class="text-right">

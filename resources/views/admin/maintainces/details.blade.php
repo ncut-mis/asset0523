@@ -39,7 +39,6 @@
                 <button type="submit" class="btn btn-success">增加維修項目</button>
             </div>
         </form>
-
         @if (count($maintainceitems) > 0)
             <div class="panel panel-default">
                 <div class="panel-heading">
