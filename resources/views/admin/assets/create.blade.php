@@ -100,6 +100,7 @@
                 <label>備註：</label>
                 <textarea name="remark" class="form-control" rows="5"></textarea>
             </div>
+
             <div class="text-right">
                 <button type="submit" class="btn btn-success">新增</button>
             </div>

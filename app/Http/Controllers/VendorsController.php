@@ -8,6 +8,11 @@ use App\Http\Requests;
 
 class VendorsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    //
     public function index()
     {
         $vendors = Vendor::orderBy('created_at', 'DESC')->get();

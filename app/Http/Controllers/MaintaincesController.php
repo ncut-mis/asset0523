@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Application;
 use App\Asset;
+use App\Category;
 use App\Maintaince;
 use App\MaintainceItem;
 use App\User;
@@ -15,15 +16,21 @@ use App\Http\Requests;
 
 class MaintaincesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function create($id)
     {
         $asset=Asset::find($id);
-        $data = ['asset' => $asset];
+        $category=Category::find($asset->category);
+        $user=User::find($asset->keeper);
+        $data = ['asset' => $asset,'category'=>$category,'user'=>$user];
         return view('admin.assets.application', $data);
     }
 
-    public function store(Request $request,$id)
+    public function store(Requests\ApplicationRequest $request,$id)
     {
         $asset=Asset::find($id);
         $asset->maintainces()->create([
