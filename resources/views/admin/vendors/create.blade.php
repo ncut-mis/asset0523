@@ -46,11 +46,11 @@
             </div>
             <div class="form-group">
                 <label>銀行名稱：</label>
-                <input name="bankaccount" class="form-control" placeholder="請輸入銀行名稱">
+                <input name="bankname" class="form-control" placeholder="請輸入銀行名稱">
             </div>
             <div class="form-group">
                 <label>銀行帳戶：</label>
-                <input name="remark" class="form-control" placeholder="請輸入銀行帳戶">
+                <input name="bankaccount" class="form-control" placeholder="請輸入銀行帳戶">
             </div>
             <div class="form-group">
                 <label>備註：</label>
