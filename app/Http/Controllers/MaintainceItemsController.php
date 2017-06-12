@@ -10,6 +10,10 @@ use App\Http\Requests;
 
 class MaintainceItemsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function index($id){
         $maintaince=Maintaince::find($id);

@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class ReceivesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    //
     public function create($id)
     {
         $supplies = Supply::find($id);

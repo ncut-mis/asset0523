@@ -16,6 +16,10 @@ use App\Http\Requests;
 
 class MaintaincesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function create($id)
     {
