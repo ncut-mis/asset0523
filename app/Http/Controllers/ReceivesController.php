@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Receive;
 use Illuminate\Http\Request;
 use App\Supply;
-use App\Http\Requests;
 use Carbon\Carbon;
 
 class ReceivesController extends Controller
@@ -20,19 +19,16 @@ class ReceivesController extends Controller
         $supplies = Supply::find($id);
         $data = ['supplies' => $supplies];
         $today = Carbon::today();
-        $today =['today'=>$today];
-        return view('admin.receive.create',$data,$today);
+        return view('admin.receives.create',$data,$today);
     }
-    public function receivestore(Request $request,$id)
+    public function store()
     {
-       /* $supplies =Supply::find($id);
-        Supply::create($request->all());
-        $receive=Receive::find(supply_id);
-        $supplies->quantity;
-        $date =['supplies' => $supplies];
-*/
+        $input = Input::all();
 
-        Receive::create($request->all());
-        return redirect()->route('admin.supplies.index');
+        $Receive = new Receive;
+        $Receive->title = $input['quantity'];
+
+        return Redirect::to('admin.supplies.index');
+
     }
 }

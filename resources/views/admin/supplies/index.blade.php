@@ -53,6 +53,15 @@
                         <td style="text-align: center">{{ $supplies->name }}</td>
                         <td style="text-align: center">{{ $supplies->quantity }}</td>
                         <td>
+                            <div>
+                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>/
+                                <a href="{{ route('admin.receives.create', $supplies->id) }}">領取</a>
+                                /
+                                <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-link">刪除</button>
+                                </form>
                             <table >
                                 <tbody>
                                 <tr class="table-text" style="text-align: center">
@@ -64,9 +73,6 @@
                                     </td>
                                     <!-- 刪除按鈕 -->
                                     <td width="100">
-
-
-
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                                             刪除

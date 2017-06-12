@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/supplies/{{$supplies->id}}/receive" method="POST" role="form">
+        <form action="/admin/supplies/{id}{{$supplies->id}}" method="POST" role="form">
             {{ csrf_field() }}
             <div class="form-group">
                 <label>領取員工：</label>
@@ -30,15 +30,15 @@
             </div>
             <div class="form-group">
                 <label>耗材編號：</label>
-                <input name="supply_id" class="form-control" value="{{$supplies->id}}" readonly>
+                <input name="supply_id" class="form-control" value="{{$supplies->id}}">
             </div>
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input  class="form-control" value="{{$supplies->name}}" disabled>
+                <return  class="form-control" value="{{$supplies->name}}" disabled>
             </div>
             <div class="form-group">
-                <label>日期時間：</label>
-                <input name="datatime" class="form-control" placeholder="請輸入日期與時間" value="{{$today->year}}{{$today->month}}{{$today->day}}" readonly>
+                <label>日期：</label>
+                <input name="date" class="form-control" placeholder="請輸入日期與時間" value="{{$today->month}}{{$today->day}}">
             </div>
 
             <div class="form-group">
