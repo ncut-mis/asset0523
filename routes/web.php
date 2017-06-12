@@ -50,12 +50,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('maintainces/{id}'  , ['as' => 'admin.maintainces.process', 'uses' => 'MaintaincesController@process']);
     Route::get('maintainces/{id}/details'  , ['as' => 'admin.maintainces.details', 'uses' => 'MaintainceItemsController@index']);
     Route::post('maintainces/{id}/detail'  , ['as' => 'admin.maintainces.details.store', 'uses' => 'MaintainceItemsController@store']);
-    //未做
     Route::post('maintainces/{id}/complete'  , ['as' => 'admin.maintainces.complete', 'uses' => 'MaintaincesController@complete']);
-
-    Route::get('maintainces/{id}/data', ['as' => 'admin.maintainces.data', 'uses' => 'MaintaincesController@data']);
-    Route::post('maintainces/{id}/method'  , ['as' => 'admin.maintainces.method', 'uses' => 'MaintaincesController@method']);
-    Route::post('maintainces/{id}/vendor'  , ['as' => 'admin.maintainces.vendor', 'uses' => 'MaintaincesController@vendor']);
+    //未做
+    Route::get('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.edit', 'uses' => 'MaintainceItemsController@edit']);
+    Route::patch('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.details.update', 'uses' => 'MaintainceItemsController@update']);
+    Route::delete('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.details.destroy', 'uses' => 'MaintainceItemsController@destroy']);
 
 
     //耗材

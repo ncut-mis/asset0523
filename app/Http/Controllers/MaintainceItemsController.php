@@ -10,6 +10,10 @@ use App\Http\Requests;
 
 class MaintainceItemsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function index($id){
         $maintaince=Maintaince::find($id);
@@ -27,5 +31,27 @@ class MaintainceItemsController extends Controller
         return redirect()->route('admin.maintainces.details',$data);
     }
 
+    public function edit($mid,$id)
+    {
+        $maintaince=Maintaince::find($mid);
+        $maintainceitem=MaintainceItem::find($id);
+        $data = ['maintaince' => $maintaince,'maintainceitem'=>$maintainceitem];
 
+        return view('admin.maintainces.edit', $data);
+    }
+    public function update(Request $request,$mid, $id)
+    {
+        $maintainceitem=MaintainceItem::find($id);
+        $maintainceitem->update($request->all());
+        $maintaince=Maintaince::find($mid);
+        $data=['maintaince'=>$maintaince];
+        return redirect()->route('admin.maintainces.details',$data);
+    }
+    public function destroy($mid,$id)
+    {
+        MaintainceItem::destroy($id);
+        $maintaince=Maintaince::find($mid);
+        $data=['maintaince'=>$maintaince];
+        return redirect()->route('admin.maintainces.details',$data);
+    }
 }

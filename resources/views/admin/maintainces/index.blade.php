@@ -25,12 +25,12 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="30" style="text-align: center">id</th>
-                        <th >資產名稱</th>
+                        <th width="80" style="text-align: center">維修編號</th>
+                        <th style="text-align: center">資產名稱</th>
                         <th width="100" style="text-align: center">維修狀態</th>
                         <th width="80" style="text-align: center">維修方式</th>
                         <th width="120" style="text-align: center">申請日期</th>
-                        <th width="200" style="text-align: center">功能</th>
+                        <th width="100" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,10 +60,8 @@
                             @endforeach
                         </td>
 
-                        <td>
-                            <div>
-                                <a href="{{ route('admin.maintainces.show', $maintaince->id) }}">處理</a>
-                            </div>
+                        <td class="table-text" style="text-align: center">
+                                <a href="{{ route('admin.maintainces.show', $maintaince->id) }}" class="btn btn-primary" role="button">處理</a>
                         </td>
                     </tr>
                 @endforeach
@@ -86,12 +84,12 @@
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th width="30" style="text-align: center">id</th>
-                    <th >資產名稱</th>
+                    <th width="80" style="text-align: center">維修編號</th>
+                    <th style="text-align: center">資產名稱</th>
                     <th width="100" style="text-align: center">維修狀態</th>
                     <th width="80" style="text-align: center">維修方式</th>
                     <th width="120" style="text-align: center">申請日期</th>
-                    <th width="200" style="text-align: center">功能</th>
+                    <th width="100" style="text-align: center">功能</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -117,14 +115,12 @@
                                 @endif
                             @endforeach
                         </td>
-                        <td>
-                            <div>
+                        <td class="table-text" style="text-align: center">
                                 @if($maintaince->method!=='未選擇')
-                                    <a href="{{ route('admin.maintainces.details', $maintaince->id) }}">處理</a>
+                                    <a href="{{ route('admin.maintainces.details', $maintaince->id) }}" class="btn btn-primary" role="button">處理</a>
                                 @else
-                                    <a href="{{ route('admin.maintainces.show', $maintaince->id) }}">處理</a>
+                                    <a href="{{ route('admin.maintainces.show', $maintaince->id) }}" class="btn btn-primary" role="button">處理</a>
                                 @endif
-                            </div>
                         </td>
                     </tr>
                     @endif

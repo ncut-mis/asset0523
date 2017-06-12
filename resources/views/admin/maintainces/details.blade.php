@@ -1,17 +1,17 @@
 @extends('admin.layouts.master')
 
-@section('title', '資產資料')
+@section('title', '維修明細')
 
 @section('content')
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            資產 <small>資產資料</small>
+            維修<small>維修明細</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-edit"></i> 資產管理
+                <i class="fa fa-edit"></i> 維修管理
             </li>
         </ol>
     </div>
@@ -44,14 +44,13 @@
                 <div class="panel-heading">
                     已記錄的維修項目
                 </div>
-
                 <div class="panel-body">
                     <table class="table table-striped task-table">
 
                         <!-- 表頭 -->
                         <thead>
-                        <th width="100" style="text-align: center">維修項目</th>
-                        <th width="100" style="text-align: center">金額</th>
+                        <th width="300" style="text-align: center">維修項目</th>
+                        <th width="300" style="text-align: center">金額</th>
                         <th width="100" style="text-align: center">功能</th>
                         </thead>
 
@@ -60,13 +59,54 @@
                         @foreach ($maintainceitems as $maintainceitem)
                             <tr>
                                 <!-- 任務名稱 -->
-                                <td class="table-text">
+                                <td class="table-text" style="text-align: center">
                                     <div>{{ $maintainceitem->name }}</div>
                                 </td>
-                                <td class="table-text">
+                                <td class="table-text" style="text-align: center">
                                     <div>{{ $maintainceitem->amount }}</div>
                                 </td>
+                                <td class="table-text" style="text-align: center">
+                                    <a class="btn btn-primary" href="{{ route('admin.maintainces.edit',['mid'=>$maintaince->id,'id'=>$maintainceitem->id]) }}" role="button">修改</a>
+                                </td>
                                 <!-- 刪除按鈕 -->
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                        刪除
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    確定刪除？
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <table style="text-align: right">
+                                                        <tbody style="text-align: right">
+                                                        <tr class="table-text" style="text-align: center">
+                                                            <td width="100" >
+                                                                <form action="{{ route('admin.maintainces.details.destroy',['mid'=>$maintaince->id,'id'=>$maintainceitem->id]) }}"method="POST">
+                                                                    {{ csrf_field() }}
+                                                                    {{ method_field('DELETE') }}
+                                                                    <button class="btn btn-success">確定</button>
+                                                                </form>
+                                                            </td>
+                                                            <td width="100">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

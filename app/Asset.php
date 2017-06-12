@@ -31,4 +31,10 @@ class Asset extends Model
     {
         return $this->hasMany(Maintaince::class);
     }
+
+
+    public function user() // Asset (n) ->User (1)
+    {
+        return $this->belongsTo(User::class);
+    }
 }

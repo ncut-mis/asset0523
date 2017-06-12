@@ -15,9 +15,14 @@ class Application extends Model
         'date'
     ];
 
-    public function Maintaince() // Application (n) -> Maintaince (1)
+    public function maintaince() // Application (n) -> Maintaince (1)
     {
         return $this->belongsTo(Maintaince::class);
+    }
+
+    public function user()   // Application (n) -> User (1)
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

@@ -29,36 +29,38 @@
             <div>
             <div class="form-group">
                 <label>資產名稱：</label>
-                <input name="name" class="col-lg-4,form-control" placeholder="請輸入資產名稱" value="{{$asset->name}}" readonly>
+                <lable name="name">{{$asset->name}}</lable>
             </div>
 
             <div class="form-group">
                 <label>資產類別：</label>
-                <input name="category" class="col-lg-4,form-control" placeholder="請輸入資產名稱" value="{{$asset->category}}" readonly>
+                <lable name="category">{{$category->name}}</lable>
             </div>
 
             <div class="form-group">
                 <label>資產狀態：</label>
-                <input name="status" class="col-lg-4,form-control" placeholder="請輸入資產狀態" value="{{$asset->status}}" readonly>
+                <lable name="status">{{$asset->status}}</lable>
             </div>
 
             <div class="form-group">
                 <label>保管人：</label>
-                <input name="keeper" class="col-lg-4,form-control" placeholder="請輸入資產保管人" value="{{$asset->keeper}}" readonly>
+                <lable name="keeper">{{$user->name}}</lable>
             </div>
 
             <div class="form-group">
                 <label>放置地點：</label>
-                <input name="location" class="col-lg-4,form-control" placeholder="請輸入資產放置地點" value="{{$asset->location}}" readonly>
+                <lable name="location">{{$asset->location}}</lable>
             </div>
             </div>
 
-            <div class="text-right">
+            <div  class="form-group">
                 <label>問題描述：</label>
-                <input name="problem"  placeholder="請輸入資產問題">
+                <textarea name="problem" class="form-control" rows="2"></textarea>
+            </div>
+
+            <div>
                 <button type="submit" class="btn btn-success">申請</button>
             </div>
-
         </form>
 
         <p>&nbsp;</p>
