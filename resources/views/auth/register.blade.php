@@ -122,6 +122,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('previlege_id') ? ' has-error' : '' }}">
+                            <label for="previlege_id" class="col-md-4 control-label">權限</label>
+
+                            <div class="col-md-6">
+                                <input id="previlege_id" type="text" class="form-control" name="phone" value="{{ old('previlege_id') }}" autofocus>
+
+                                @if ($errors->has('previlege_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('previlege_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
