@@ -1,24 +1,24 @@
 @extends('admin.layouts.master')
 
-@section('title', '資產管理')
+@section('title', '使用者管理')
 
 @section('content')
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            資產管理 <small>所有資產列表</small>
+            使用者管理 <small>所有使用者列表</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-edit"></i>資產管理
+                <i class="fa fa-edit"></i>使用者管理
             </li>
         </ol>
     </div>
 </div>
 <!-- /.row -->
 <div class="input-group custom-search-form">
-<form action="{{ route('admin.assets.search') }}" method="POST">
+<form action="{{ route('admin.users.search') }}" method="POST">
     {{ csrf_field() }}
     <span class="input-group-btn">
     <input name="Search" class="form-control" placeholder="Search...">
@@ -30,7 +30,7 @@
 <div class="row" style="margin-bottom: 20px; text-align: right" >
 
     <div class="col-lg-12">
-        <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
+        <a href="{{ route('admin.users.create') }}" class="btn btn-success">建立新使用者</a>
     </div>
 </div>
 <!-- /.row -->
@@ -41,43 +41,36 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="80" style="text-align: center">資產編號</th>
-                        <th style="text-align: center">資產名稱</th>
-                        <th width="80" style="text-align: center">資產類別</th>
-                        <th width="100" style="text-align: center">資產狀態</th>
-                        <th width="80" style="text-align: center">可否租借</th>
-                        <th width="80" style="text-align: center">放置地點</th>
-                        <th width="300" style="text-align: center">功能</th>
+                        <th width="100" style="text-align: center">使用者編號</th>
+                        <th style="text-align: center">E-mail</th>
+                        <th width="80" style="text-align: center">使用者名稱</th>
+                        <th width="100" style="text-align: center">部門</th>
+                        <th width="80" style="text-align: center">分機號碼</th>
+                        <th width="80" style="text-align: center">職位</th>
+                        <th width="80" style="text-align: center">連絡電話</th>
+                        <th width="80" style="text-align: center">權限</th>
+                        <th width="200" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($assets as $asset)
+                @foreach($users as $user)
                     <tr>
                         <td style="text-align: center">
-                            {{ $asset->id }}
+                            {{ $user->id }}
                         </td>
-                        <td style="text-align: center">
-                            <a href="{{ route('admin.assets.data', $asset->id) }}">{{ $asset->name }}</a>
-                        </td>
-                        <td style="text-align: center">
-                            @foreach($categories as $category)
-                                @if($asset->category==$category->id)
-                                    {{ $category->name }}
-                                @endif
-                            @endforeach
-                        </td>
-                        <td style="text-align: center">{{ $asset->status }}</td>
-                        <td style="text-align: center">{{ $asset->lendable?'可':'否' }}</td>
-                        <td style="text-align: center">{{ $asset->location }}</td>
+                        <td style="text-align: center"><a href="{{ route('admin.users.data', $user->id) }}">{{ $user->email }}</a></td>
+                        <td style="text-align: center">{{ $user->name }}</td>
+                        <td style="text-align: center">{{ $user->department_id }}</td>
+                        <td style="text-align: center">{{ $user->extension }}</td>
+                        <td style="text-align: center">{{ $user->position}}</td>
+                        <td style="text-align: center">{{ $user->phone }}</td>
+                        <td style="text-align: center">{{ $user->previlege_id }}</td>
                         <td>
                                     <table >
                                         <tbody>
                                             <tr class="table-text" style="text-align: center">
                                                 <td width="100" >
-                                                    <a class="btn btn-primary" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
-                                                </td>
-                                                <td width="100">
-                                                    <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button">申請</a>
+                                                    <a class="btn btn-primary" role="button" href="{{ route('admin.users.edit', $user->id) }}" >修改</a>
                                                 </td>
                                                 <!-- 刪除按鈕 -->
                                                 <td width="100">
@@ -101,7 +94,7 @@
                                                                         <tbody style="text-align: right">
                                                                         <tr class="table-text" style="text-align: center">
                                                                             <td width="100" >
-                                                                                <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
+                                                                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                                                                                     {{ csrf_field() }}
                                                                                     {{ method_field('DELETE') }}
                                                                                     <button class="btn btn-danger">刪除</button>
