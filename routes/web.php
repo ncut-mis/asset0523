@@ -79,6 +79,15 @@ Route::group(['prefix' => 'admin'], function() {
    // Route::get('receive/{id}/edit', ['as' => 'admin.receive.edit'   , 'uses' => 'SuppliesController@receiveedit']);
 //自動完成
 
+    //使用者
+    Route::get('users', ['as' => 'admin.users.index', 'uses' => 'UsersController@index']);              //使用者主畫面
+    Route::get('users/create', ['as' => 'admin.users.create', 'uses' => 'UsersController@create']);       //新增使用者(1)
+    Route::post('users', ['as' => 'admin.users.store', 'uses' => 'UsersController@store']);               //新增使用者(2)
+    Route::get('users/{id}/edit', ['as' => 'admin.users.edit', 'uses' => 'UsersController@edit']);        //修改使用者(1)
+    Route::patch('users/{id}', ['as' => 'admin.users.update', 'uses' => 'UsersController@update']);     //修改使用者(2)
+    Route::delete('users/{id}', ['as' => 'admin.users.destroy', 'uses' => 'UsersController@destroy']);   //刪除使用者
+    Route::post('users/search'  , ['as' => 'admin.users.search', 'uses' => 'UsersController@Search']);  //查詢使用者
+    Route::get('users/{id}/data', ['as' => 'admin.users.data', 'uses' => 'UsersController@data']);       //使用者詳細資料
 });
 
 
