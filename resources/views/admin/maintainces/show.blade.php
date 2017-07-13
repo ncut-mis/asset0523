@@ -32,7 +32,11 @@
 
         <div class="form-group">
             <label width="80">保管人：</label>
-            <lable name="keeper">{{$asset->keeper}}</lable>
+            @foreach($users as $user)
+                @if($asset->keeper==$user->id)
+            <lable name="keeper">{{$user->name}}</lable>
+                @endif
+                @endforeach
         </div>
 
         <div class="form-group">

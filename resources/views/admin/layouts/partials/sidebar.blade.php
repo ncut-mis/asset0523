@@ -60,6 +60,9 @@
             <li>
                 <a href="{{ route('admin.maintainces.index') }}"><i class="fa fa-fw fa-edit"></i> 報修處理</a>
             </li>
+            <li>
+                <a href="{{ route('admin.users.index') }}"><i class="fa fa-fw fa-edit"></i> 使用者管理</a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

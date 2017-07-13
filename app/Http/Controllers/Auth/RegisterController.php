@@ -51,11 +51,13 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'extension'=>'required|max:5',
+            /*'extension'=>'required|max:5',
             'position'=>'required|max:20',
             'phone'=>'required|max:20',
+            */
             'department_id'=>'required|integer',
             'previlege_id'=>'required|integer'
+
         ]);
     }
 
@@ -71,11 +73,14 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            /*
             'extension' => $data['extension'],
             'position' => $data['position'],
             'phone' => $data['phone'],
-            'department_id' => $data['department_id'],
-            'previlege_id' => $data['previlege_id'],
+            */
+            'department_id' =>0,
+            'previlege_id' =>0,
+
         ]);
     }
 }

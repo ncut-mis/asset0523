@@ -11,34 +11,7 @@
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-dashboard"></i> 公告
-            </li>
-        </ol>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-dashboard"></i> 目前報修
-            </li>
-        </ol>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-dashboard"></i> 報修處理
-            </li>
-        </ol>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-dashboard"></i> 部門內報修
+                <i class="fa fa-dashboard"></i> 主控台
             </li>
         </ol>
     </div>
