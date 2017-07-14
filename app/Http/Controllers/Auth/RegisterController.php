@@ -54,10 +54,10 @@ class RegisterController extends Controller
             /*'extension'=>'required|max:5',
             'position'=>'required|max:20',
             'phone'=>'required|max:20',
-            */
+
             'department_id'=>'required|integer',
             'previlege_id'=>'required|integer'
-
+            */
         ]);
     }
 
@@ -80,7 +80,6 @@ class RegisterController extends Controller
             */
             'department_id' =>0,
             'previlege_id' =>0,
-
         ]);
     }
 }

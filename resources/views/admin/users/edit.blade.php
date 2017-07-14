@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <label width="80">密碼：</label>
-                <input name="password" class="form-control" placeholder="請輸入密碼" value="{{$user->password}}">
+                <input name="password" class="form-control" placeholder="請輸入密碼" value="{{$decrypted}}">
             </div>
 
             <div class="form-group">

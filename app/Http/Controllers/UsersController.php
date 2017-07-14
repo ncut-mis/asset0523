@@ -6,6 +6,8 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class UsersController extends Controller
 {
@@ -20,6 +22,7 @@ class UsersController extends Controller
         $data=['users'=>$users];
         return view('admin.users.index', $data);
     }
+
     public function create()
     {
         return view('admin.users.create');
@@ -28,9 +31,17 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user=User::find($id);
-        $data = ['user'=>$user];
+
+        try {
+            $decrypted = Crypt::decrypt($user->password);
+        } catch (DecryptException $e) {
+            //
+            $decrypted=$user->password;
+        }
+        $data = ['user'=>$user,'decrypted'=>$decrypted];
         return view('admin.users.edit', $data);
     }
+
     public function update(Request $request, $id)
     {
         $user=User::find($id);
@@ -38,9 +49,24 @@ class UsersController extends Controller
 
         return redirect()->route('admin.users.index');
     }
+
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
+            'department_id'=>'required|integer',
+            'previlege_id'=>'required|integer'
+        ]);
+
         User::create($request->all());
+        $request->password=bcrypt($request->password);
+        $user=User::orderBy('created_at', 'DESC')->first();
+        $user->update([
+            'password'=>bcrypt($user->password)
+        ]);
+
         return redirect()->route('admin.users.index');
     }
     public function destroy($id)
@@ -65,4 +91,5 @@ class UsersController extends Controller
         $data=['user'=>user];
         return view('admin.users.index' ,$data);
     }
+
 }
