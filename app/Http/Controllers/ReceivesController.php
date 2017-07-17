@@ -27,10 +27,9 @@ class ReceivesController extends Controller
     {
 
         $supply=Supply::find($id);
-        /* $quantity=$supply->quantity-$request->quantity;
         $supply->update([
-            'quantity'=>$quantity
-        ]);*/
+            'quantity'=>$supply->quantity-$request->quantity
+        ]);
        Receive::create([
             'user_id'=>$request->user_id,
             'supply_id'=>$request->supply_id,

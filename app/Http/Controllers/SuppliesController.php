@@ -42,7 +42,14 @@ class SuppliesController extends Controller
 
     public function store(Requests\SupplyRequest $request)
     {
+        $supply = Supply::where('name',$request->name)->get();
+        if(count($supply) == 0)
         Supply::create($request->all());
+        else{
+            $supply->update([
+                'quantity'=>$supply->quantity + $request->quantity
+            ]);
+        }
         return redirect()->route('admin.supplies.index');
     }
 
