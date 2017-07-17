@@ -28,10 +28,11 @@
 </div>
 
 <div class="row" style="margin-bottom: 20px; text-align: right" >
-
+@if(Auth::user()->previlege_id==4)
     <div class="col-lg-12">
         <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
     </div>
+    @endif
 </div>
 <!-- /.row -->
 
@@ -47,7 +48,11 @@
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
                         <th width="80" style="text-align: center">放置地點</th>
-                        <th width="300" style="text-align: center">功能</th>
+                        @if(Auth::user()->previlege_id==4)
+                            <th width="300" style="text-align: center">功能</th>
+                        @else
+                            <th width="100" style="text-align: center">功能</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -69,6 +74,7 @@
                         <td style="text-align: center">{{ $asset->status }}</td>
                         <td style="text-align: center">{{ $asset->lendable?'可':'否' }}</td>
                         <td style="text-align: center">{{ $asset->location }}</td>
+                        @if(Auth::user()->previlege_id==4)
                         <td>
                                     <table >
                                         <tbody>
@@ -123,6 +129,11 @@
                                         </tbody>
                                     </table>
                         </td>
+                        @else
+                            <td style="text-align: center">
+                                <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button">申請</a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>

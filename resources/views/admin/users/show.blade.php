@@ -58,7 +58,7 @@
             </div>
 
         <div>
-            <a href="{{ route('admin.users.index') }}" class="btn btn-success">返回</a>
+            <a href="{{ route('admin.dashboard.index') }}" class="btn btn-success">返回</a>
         </div>
         <p>&nbsp;</p>
         <p>&nbsp;</p>

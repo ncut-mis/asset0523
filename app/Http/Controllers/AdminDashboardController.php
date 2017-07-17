@@ -29,12 +29,12 @@ class AdminDashboardController extends Controller
 
         $data=['applications'=>$applications,'maintainces'=>$maintainces,'assets'=>$assets,
             'maintaincesA'=>$maintaincesA,'applicationsA'=>$applicationsA];
-        if (Auth::user()->previlege_id)
-            return view('admin.dashboard.index',$data);
-        elseif(Auth::user()->previlege_id)
+        if (Auth::user()->previlege_id==4)
             return view('admin.dashboard.mis',$data);
-        elseif(Auth::user()->previlege_id)
+        elseif(Auth::user()->previlege_id==2)
             return view('admin.dashboard.user',$data);
+        elseif(Auth::user()->previlege_id)
+            return view('admin.dashboard.index',$data);
 
     }
 }

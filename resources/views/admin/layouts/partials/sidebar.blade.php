@@ -16,7 +16,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{Auth::user()->name}} <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    <a href="{{ route('admin.users.data', Auth::user()->id) }}"><i class="fa fa-fw fa-user"></i> Profile</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
@@ -51,6 +51,7 @@
             <li>
                 <a href="{{ route('admin.assets.index') }}"><i class="fa fa-fw fa-edit"></i> 資產管理</a>
             </li>
+            @if(Auth::user()->previlege_id==4)
             <li>
                 <a href="{{ route('admin.vendors.index') }}"><i class="fa fa-fw fa-edit"></i> 廠商管理</a>
             </li>
@@ -63,6 +64,7 @@
             <li>
                 <a href="{{ route('admin.users.index') }}"><i class="fa fa-fw fa-edit"></i> 使用者管理</a>
             </li>
+                @endif
         </ul>
     </div>
     <!-- /.navbar-collapse -->
