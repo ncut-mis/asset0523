@@ -21,6 +21,8 @@ Route::get('posts/{id}', ['as' => 'posts.show' , 'uses' => 'PostsController@show
 // 後台
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'AdminDashboardController@index']);
+    Route::get('user',['as' => 'admin.dashboard.user', 'uses' => 'AdminDashboardController@index']);
+    Route::get('mis',['as' => 'admin.dashboard.mis', 'uses' => 'AdminDashboardController@index']);
     //　
 
     //資產
