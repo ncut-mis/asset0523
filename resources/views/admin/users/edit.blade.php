@@ -33,17 +33,7 @@
 
             <div class="form-group">
                 <label width="80">E-mail：</label>
-                <input name="email" class="form-control" placeholder="請輸入E-mail" value="{{$user->email}}">
-            </div>
-
-            <div class="form-group">
-                <label width="80">密碼：</label>
-                <input name="password" class="form-control" placeholder="請輸入密碼" value="{{$decrypted}}">
-            </div>
-
-            <div class="form-group">
-                <label width="80">確認密碼：</label>
-                <input name="password_confirm" class="form-control" placeholder="請再次輸出密碼" value="{{$user->password}}">
+                <input name="email" class="form-control" placeholder="請輸入E-mail" value="{{$user->email}}" readonly>
             </div>
 
             <div class="form-group">
