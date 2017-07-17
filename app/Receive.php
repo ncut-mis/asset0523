@@ -11,7 +11,7 @@ class Receive extends Model
     protected $fillable = [
         'user_id',
         'supply_id',
-        'date'.
+        'date',
         'quantity',
     ];
 

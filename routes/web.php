@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('vendors/show'  , ['as' => 'admin.vendors.show', 'uses' => 'VendorsController@show']);
 
     //耗材領取
-   Route::get('supplies/{id}/receives',['as' => 'admin.receives.create' , 'uses' => 'ReceivesController@create']);
+   Route::get('supplies/{id}/receive',['as' => 'admin.supplies.receive' , 'uses' => 'ReceivesController@create']);
     Route::post('supplies/{id}'   , ['as' => 'admin.receives.store' , 'uses' => 'ReceivesController@store']);    //添購跟新增合起來
    // Route::get('receive/{id}/edit', ['as' => 'admin.receive.edit'   , 'uses' => 'SuppliesController@receiveedit']);
 //自動完成

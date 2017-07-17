@@ -54,14 +54,6 @@
                         <td style="text-align: center">{{ $supplies->quantity }}</td>
                         <td>
                             <div>
-                                <a href="{{ route('admin.supplies.edit', $supplies->id) }}">編輯</a>/
-                                <a href="{{ route('admin.receives.create', $supplies->id) }}">領取</a>
-                                /
-                                <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn btn-link">刪除</button>
-                                </form>
                             <table >
                                 <tbody>
                                 <tr class="table-text" style="text-align: center">
@@ -69,7 +61,7 @@
                                         <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.edit', $supplies->id) }}" >修改</a>
                                     </td>
                                     <td width="100">
-                                        <a class="btn btn-primary" role="button" href="{{ route('admin.receive.create', $supplies->id) }}" >領取</a>
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.receive', $supplies->id) }}" >領取</a>
                                     </td>
                                     <!-- 刪除按鈕 -->
                                     <td width="100">

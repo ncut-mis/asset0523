@@ -20,6 +20,7 @@ class CreateReceivesTable extends Migration
             $table->date('date');
             $table->integer('quantity');
             $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
 
         });
     }
