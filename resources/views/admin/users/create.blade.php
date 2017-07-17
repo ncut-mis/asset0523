@@ -67,7 +67,11 @@
 
             <div class="form-group">
                 <label width="80">權限：</label>
-                <input name="previlege_id" class="form-control" placeholder="請輸入權限">
+                <select name="previlege_id" class="form-control">
+                    @foreach($previleges as $previlege)
+                        <option value={{ $previlege->id }}>{{ $previlege->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
 

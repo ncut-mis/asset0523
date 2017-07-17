@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Previlege;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -19,26 +20,23 @@ class UsersController extends Controller
     public function index()
     {
         $users=User::orderBy('created_at', 'DESC')->get();
-        $data=['users'=>$users];
+        $previleges=Previlege::orderBy('created_at','DESC')->get();
+        $data=['users'=>$users,'previleges'=>$previleges];
         return view('admin.users.index', $data);
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        $previleges=Previlege::orderBy('created_at','DESC')->get();
+        $data=['previleges'=>$previleges];
+        return view('admin.users.create',$data);
     }
 
     public function edit($id)
     {
         $user=User::find($id);
-
-        try {
-            $decrypted = Crypt::decrypt($user->password);
-        } catch (DecryptException $e) {
-            //
-            $decrypted=$user->password;
-        }
-        $data = ['user'=>$user,'decrypted'=>$decrypted];
+        $previleges=Previlege::orderBy('created_at','DESC')->get();
+        $data = ['user'=>$user,'previleges'=>$previleges];
         return view('admin.users.edit', $data);
     }
 

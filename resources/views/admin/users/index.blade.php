@@ -41,7 +41,6 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="100" style="text-align: center">使用者編號</th>
                         <th style="text-align: center">E-mail</th>
                         <th width="80" style="text-align: center">使用者名稱</th>
                         <th width="100" style="text-align: center">部門</th>
@@ -55,16 +54,19 @@
                 <tbody>
                 @foreach($users as $user)
                     <tr>
-                        <td style="text-align: center">
-                            {{ $user->id }}
-                        </td>
                         <td style="text-align: center"><a href="{{ route('admin.users.data', $user->id) }}">{{ $user->email }}</a></td>
                         <td style="text-align: center">{{ $user->name }}</td>
                         <td style="text-align: center">{{ $user->department_id }}</td>
                         <td style="text-align: center">{{ $user->extension }}</td>
                         <td style="text-align: center">{{ $user->position}}</td>
                         <td style="text-align: center">{{ $user->phone }}</td>
-                        <td style="text-align: center">{{ $user->previlege_id }}</td>
+                        <td style="text-align: center">
+                            @foreach($previleges as $previlege)
+                            @if($user->previlege_id==$previlege->id)
+                                    {{$previlege->name}}
+                            @endif
+                                @endforeach
+                        </td>
                         <td>
                                     <table >
                                         <tbody>

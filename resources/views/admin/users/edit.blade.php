@@ -58,7 +58,15 @@
 
             <div class="form-group">
                 <label width="80">權限：</label>
-                <input name="previlege_id" class="form-control" placeholder="請輸入權限" value="{{$user->previlege_id}}">
+                <select name="previlege_id" class="form-control">
+                    @foreach($previleges as $previlege)
+                        @if($user->previlege_id==$previlege->id)
+                            <option value={{ $previlege->id }} selected="true">{{ $previlege->name }}</option>
+                        @else
+                            <option value={{ $previlege->id }}>{{ $previlege->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
             </div>
 
 

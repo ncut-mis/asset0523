@@ -78,8 +78,8 @@ class RegisterController extends Controller
             'position' => $data['position'],
             'phone' => $data['phone'],
             */
-            'department_id' =>0,
-            'previlege_id' =>0,
+            'department_id' =>1,
+            'previlege_id' =>1,
         ]);
     }
 }
