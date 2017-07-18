@@ -85,4 +85,12 @@ class AssetController extends Controller
         return view('admin.assets.index' ,$data);
     }
 
+    public function scrapped($id)
+    {
+        $asset=Asset::find($id);
+        $asset->update([
+            'status'=>'已報廢'
+        ]);
+        return redirect()->route('admin.assets.index');
+    }
 }
