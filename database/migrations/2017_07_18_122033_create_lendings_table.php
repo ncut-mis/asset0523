@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReceivesTable extends Migration
+class CreateLendingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateReceivesTable extends Migration
      */
     public function up()
     {
-        Schema::create('receives', function (Blueprint $table) {
+        Schema::create('lendings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->integer('supply_id')->index();
-            $table->date('date');
-            $table->integer('quantity');
-            $table->timestamp('created_at')->nullable();
-
+            $table->integer('asset_id')->index();
+            $table->date('lenttime');
+            $table->date('returntime')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +30,6 @@ class CreateReceivesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('receives');
+        Schema::drop('lendings');
     }
 }

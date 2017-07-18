@@ -26,6 +26,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
     public function receives()
     {
         return $this->belongsTo(Receive::class);
@@ -44,5 +45,10 @@ class User extends Authenticatable
     public function Previlege() // User (n) ->Previlege (1)
     {
         return $this->belongsTo(Previlege::class);
+    }
+
+    public function lendings() //  User (1) -> Lending (n)
+    {
+        return $this->hasMany(Lending::class);
     }
 }
