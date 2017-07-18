@@ -56,7 +56,7 @@
 
             <div class="form-group">
                 <label>資產狀態：</label>
-                <select name="status" class="form-control">
+                <select name="status" class="form-control" disabled >
                     @if($asset->status=='維修中')
                         <option value="正常使用中">正常使用中</option>
                         <option value="維修中" selected="true">維修中</option>

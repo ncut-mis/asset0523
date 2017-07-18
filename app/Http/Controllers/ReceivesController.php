@@ -33,7 +33,7 @@ class ReceivesController extends Controller
        Receive::create([
             'user_id'=>$request->user_id,
             'supply_id'=>$request->supply_id,
-            'date'=>$now = Carbon::now(),
+            'date'=> Carbon::now(),
             'quantity'=>$request->quantity
         ]);
         return redirect()->route('admin.supplies.index');

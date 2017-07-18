@@ -22,7 +22,7 @@ class AdminDashboardController extends Controller
         //Auth::user()->id;
         $applications=Application::where('user_id', Auth::user()->id)->get();
         $applicationsA=Application::orderBy('created_at', 'DESC')->get();
-        $maintainces=Maintaince::whereNotIn('status',array('已完成維修'))->get();
+        $maintainces=Maintaince::whereNotIn('status',array('已完成維修','不修'))->get();
         $assets=Asset::orderBy('created_at', 'ASC')->get();
         $maintaincesA=Maintaince::where('status','申請中')->get();
 

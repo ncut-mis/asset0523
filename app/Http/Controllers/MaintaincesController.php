@@ -47,7 +47,7 @@ class MaintaincesController extends Controller
         $maintainces->applications()->create([
             'user_id'=>$request->user()->id,
             'problem'=>$request->problem,
-            'date'=>$now = Carbon::now()
+            'date'=>Carbon::now()
         ]);
         return redirect()->route('admin.assets.index');
     }
@@ -105,7 +105,7 @@ class MaintaincesController extends Controller
             $asset=Asset::find($maintaince->asset_id);
             $maintaince->update([
                 'status'=>'不修',
-                'date'=>$now = Carbon::now()
+                'date'=>Carbon::now()
             ]);
             $asset->update([
                 'status'=>'待報廢'
@@ -128,7 +128,7 @@ class MaintaincesController extends Controller
         $asset=Asset::find($maintaince->asset_id);
         $maintaince->update([
             'status'=>'已完成維修',
-            'date'=>$now = Carbon::now()
+            'date'=>Carbon::now()
         ]);
         $asset->update([
             'status'=>'正常使用中'
