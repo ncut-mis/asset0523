@@ -25,7 +25,6 @@ class ReceivesController extends Controller
     }
     public function store(Request $request, $id)
     {
-
         $supply=Supply::find($id);
         $supply->update([
             'quantity'=>$supply->quantity-$request->quantity
