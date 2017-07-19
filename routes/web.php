@@ -21,7 +21,7 @@ Route::get('posts/{id}', ['as' => 'posts.show' , 'uses' => 'PostsController@show
 // 後台
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'AdminDashboardController@index']);
-    //首頁公告
+    //公告
     Route::get('announcements'         , ['as' => 'admin.announcements.index' , 'uses' => 'AnnouncementsController@index']);
     Route::get('announcements/create'   , ['as' => 'admin.announcements.create' , 'uses' => 'AnnouncementsController@create']);
     Route::post('announcements'         , ['as' => 'admin.announcements.store'  , 'uses' => 'AnnouncementsController@store']);
