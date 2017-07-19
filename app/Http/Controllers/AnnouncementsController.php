@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Announcement;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,51 +18,56 @@ class AnnouncementsController extends Controller
     //
     public function index()
     {
-        $anonouncements = Announcement::orderBy('created_at', 'DESC')->get();
-        $data = ['anonouncements' => $anonouncements];
-        return view('admin.anonouncements.index', $data);
+        $announcements = Announcement::orderBy('created_at', 'DESC')->get();
+        $users=User::orderBy('created_at' ,'DESC') ->get();
+        $data = ['announcements' => $announcements,'users'=> $users];
+
+        return view('admin.announcements.index', $data);
     }
 
     public function create()
     {
-        return view('admin.anonouncements.create');
+        $user=User::find($announcements->user_id);
+        $today = Carbon::today();
+        $data = ['user'=>$user,'today'=>$today,'announcements'=>$announcements];
+        return view('admin.announcements.create',$data);
     }
 
     public function edit($id)
     {
-        $anonouncements = Announcement::find($id);
-        $data = ['anonouncements' => $anonouncements];
+        $announcements = Announcement::find($id);
+        $data = ['announcements' => $announcements];
 
-        return view('admin.anonouncements.edit', $data);
+        return view('admin.announcements.edit', $data);
     }
 
     public function update(Requests $request, $id)
     {
-        $anonouncements = Announcement::find($id);
-        $anonouncements->update($request->all());
+        $announcements = Announcement::find($id);
+        $announcements->update($request->all());
 
-        return redirect()->route('admin.anonouncements.index');
+        return redirect()->route('admin.announcements.index');
     }
 
     public function store(Requests  $request)
     {
         Announcement::create($request->all());
-        return redirect()->route('admin.anonouncements.index');
+        return redirect()->route('admin.announcements.index');
     }
 
     public function destroy($id)
     {
         Announcement::destroy($id);
-        return redirect()->route('admin.anonouncements.index');
+        return redirect()->route('admin.announcements.index');
     }
     public function show(Request $request)
     {
         $Search =$request->input('Search');
-        $supplies = Announcement::orderBy('created_at', 'DESC')
+        $announcements = Announcement::orderBy('created_at', 'DESC')
             ->when($Search, function ($query) use ($Search) {
                 return $query->where('name', 'like','%'.$Search.'%');
             })->get();
-        $data=['supplies'=>$supplies];
-        return view('admin.anonouncements.index' ,$data);
+        $data=['announcements'=>$announcements];
+        return view('admin.announcements.index' ,$data);
     }
 }

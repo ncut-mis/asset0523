@@ -18,7 +18,7 @@
 </div>
 <!-- /.row -->
 <div class="input-group custom-search-form">
-    <form action="{{ route('admin.anonouncements.show') }}" method="POST">
+    <form action="{{ route('admin.announcements.show') }}" method="POST">
         {{ csrf_field() }}
         <span class="input-group-btn">
     <input name="Search" class="form-control" placeholder="Search...">
@@ -29,7 +29,7 @@
 
 <div class="row" style="margin-bottom: 20px; text-align: right">
     <div class="col-lg-12">
-        <a href="{{ route('admin.anonouncements.create') }}" class="btn btn-success">新增公告</a>
+        <a href="{{ route('admin.announcements.create') }}" class="btn btn-success">新增公告</a>
     </div>
 </div>
 <!-- /.row -->
@@ -43,22 +43,29 @@
                         <th width="100" style="text-align: center">標題</th>
                         <th style="text-align: center">內容</th>
                         <th width="100" style="text-align: center">日期</th>
-                        <th width="300" style="text-align: center">功能</th>
+                        <th style="text-align: center">發布者</th>
+                        <th width="200" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($anonouncements as $anonouncements)
+                @foreach($announcements as $announcement)
                     <tr>
-                        <td style="text-align: center">{{ $anonouncements->title}}</td>
-                        <td style="text-align: center">{{ $anonouncements->content }}</td>
-                        <td style="text-align: center">{{ $anonouncements->date}}</td>
+                        <td style="text-align: center">{{ $announcement->title}}</td>
+                        <td style="text-align: center">{{ $announcement->content }}</td>
+                        <td style="text-align: center">{{ $announcement->date}}</td>
+                        <td style="text-align: center">
+                            @foreach($users as $user)
+                                @if($announcement->user_id==$user->id)
+                                    {{ $user->name }}
+                                @endif
+                            @endforeach
+                        </td>
                         <td>
-                            <div>
                             <table >
                                 <tbody>
                                 <tr class="table-text" style="text-align: center">
                                     <td width="100" >
-                                        <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.edit', $supplies->id) }}" >修改</a>
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.announcements.edit', $announcement->id) }}" >修改</a>
                                     </td>
                                     <!-- 刪除按鈕 -->
                                     <td width="100">
@@ -82,7 +89,7 @@
                                                             <tbody style="text-align: right">
                                                             <tr class="table-text" style="text-align: center">
                                                                 <td width="100" >
-                                                                    <form action="{{ route('admin.supplies.destroy', $supplies->id) }}" method="POST">
+                                                                    <form action="{{ route('admin.announcements.destroy', $announcement->id) }}" method="POST">
                                                                         {{ csrf_field() }}
                                                                         {{ method_field('DELETE') }}
                                                                         <button class="btn btn-danger">刪除</button>
