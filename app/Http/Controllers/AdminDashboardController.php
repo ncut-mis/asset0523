@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
+use App\Asset;
+use App\Maintaince;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class AdminDashboardController extends Controller
 {
@@ -15,6 +19,22 @@ class AdminDashboardController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard.index');
+        //Auth::user()->id;
+        $applications=Application::where('user_id', Auth::user()->id)->get();
+        $applicationsA=Application::orderBy('created_at', 'DESC')->get();
+        $maintainces=Maintaince::whereNotIn('status',array('已完成維修','不修'))->get();
+        $assets=Asset::orderBy('created_at', 'ASC')->get();
+        $maintaincesA=Maintaince::where('status','申請中')->get();
+
+
+        $data=['applications'=>$applications,'maintainces'=>$maintainces,'assets'=>$assets,
+            'maintaincesA'=>$maintaincesA,'applicationsA'=>$applicationsA];
+        if (Auth::user()->previlege_id==4)
+            return view('admin.dashboard.mis',$data);
+        elseif(Auth::user()->previlege_id==2)
+            return view('admin.dashboard.user',$data);
+        elseif(Auth::user()->previlege_id)
+            return view('admin.dashboard.index',$data);
+
     }
 }

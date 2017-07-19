@@ -37,10 +37,12 @@
                 <lable name="date">{{$asset->date}}</lable>
             </div>
 
+        @if(Auth::user()->previlege_id==4)
             <div class="form-group">
                 <label width="80">成本：</label>
                 <lable name="cost">{{$asset->cost}}</lable>
             </div>
+        @endif
 
             <div class="form-group">
                 <label width="80">資產狀態：</label>

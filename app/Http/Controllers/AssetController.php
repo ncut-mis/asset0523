@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 
 use App\Asset;
 use App\Category;
+use App\Lending;
 use App\User;
 use App\Vendor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AssetController extends Controller
 {
@@ -85,4 +88,46 @@ class AssetController extends Controller
         return view('admin.assets.index' ,$data);
     }
 
+    public function scrapped($id)
+    {
+        $asset=Asset::find($id);
+        $asset->update([
+            'status'=>'已報廢'
+        ]);
+        return redirect()->route('admin.assets.index');
+    }
+
+    public function lendings_create($id)
+    {
+        $asset=Asset::find($id);
+        $data=['asset'=>$asset];
+        return view('admin.assets.lendings' ,$data);
+    }
+
+    public function lendings_store($id)
+    {
+        $asset=Asset::find($id);
+        $asset->lendings()->create([
+            'user_id'=>Auth::user()->id,
+            'lenttime'=> Carbon::now(),
+            'returntime'=>null
+        ]);
+        $asset->update([
+            'status'=>'租借中'
+        ]);
+        return redirect()->route('admin.assets.index');
+    }
+
+    public function lendings_return($aid,$id)
+    {
+        $asset=Asset::find($aid);
+        $lending=Lending::find($id);
+        $lending->update([
+            'returntime'=>Carbon::now()
+        ]);
+        $asset->update([
+            'status'=>'正常使用中'
+        ]);
+        return redirect()->route('admin.assets.index');
+    }
 }

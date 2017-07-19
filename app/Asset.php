@@ -37,4 +37,9 @@ class Asset extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function lendings() //  Asset (1) -> Lending (n)
+    {
+        return $this->hasMany(Lending::class);
+    }
 }
