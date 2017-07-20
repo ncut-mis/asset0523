@@ -14,6 +14,40 @@
                 <i class="fa fa-dashboard"></i> 公告
             </li>
         </ol>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th width="100" style="text-align: center">標題</th>
+                            <th style="text-align: center">內容</th>
+                            <th width="100" style="text-align: center">日期</th>
+                            <th style="text-align: center">發布者</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($announcements as $announcement)
+                            <tr>
+                                <td style="text-align: center">{{ $announcement->title}}</td>
+                                <td style="text-align: center">{{ $announcement->content }}</td>
+                                <td style="text-align: center">{{ $announcement->date}}</td>
+                                <td style="text-align: center">
+                                    @foreach($users as $user)
+                                        @if($announcement->user_id==$user->id)
+                                            {{ $user->name }}
+                                        @endif
+                                    @endforeach
+                                </td>
+
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
