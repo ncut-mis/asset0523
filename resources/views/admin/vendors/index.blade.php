@@ -55,7 +55,9 @@
                 @foreach($vendors as $vendors)
                     <tr>
                         <td style="text-align: center">{{ $vendors->id }}</td>
-                        <td style="text-align: center">{{ $vendors->name }}</td>
+                        <td style="text-align: center">
+                            <a href="{{ route('admin.vendors.data', $vendors->id) }}">{{ $vendors->name }}</a>
+                        </td>
                         <td style="text-align: center">{{ $vendors->cantactperson}}</td>
                         <td style="text-align: center">{{ $vendors->phone }}</td>
                         <td style="text-align: center">{{ $vendors->address }}</td>
