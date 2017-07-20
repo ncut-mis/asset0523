@@ -24,60 +24,60 @@
     <div class="col-lg-12">
             <div class="form-group">
                 <label width="80">資產名稱：</label>
-                <lable name="name">{{$asset->name}}</lable>
+                <label name="name">{{$asset->name}}</label>
             </div>
 
         <div class="form-group">
             <label width="80">資產類別：</label>
-                    <lable name="category">{{$category->name}}</lable>
+                    <label name="category">{{$category->name}}</label>
         </div>
 
             <div class="form-group">
                 <label width="80">購置日期：</label>
-                <lable name="date">{{$asset->date}}</lable>
+                <label name="date">{{$asset->date}}</label>
             </div>
 
         @if(Auth::user()->previlege_id==4)
             <div class="form-group">
                 <label width="80">成本：</label>
-                <lable name="cost">{{$asset->cost}}</lable>
+                <label name="cost">{{$asset->cost}}</label>
             </div>
         @endif
 
             <div class="form-group">
                 <label width="80">資產狀態：</label>
-                <lable name="status">{{$asset->status}}</lable>
+                <label name="status">{{$asset->status}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">保管人：</label>
-                <lable name="keeper">{{$user->name}}</lable>
+                <label name="keeper">{{$user->name}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">可否租借：</label>
-                    <lable name="lendable">
+                    <label name="lendable">
                         @if($asset->lendable)
                         是
                         @else
                             <lable name="lendable">否</lable>
                         @endif
-                    </lable>
+                    </label>
             </div>
 
             <div class="form-group">
                 <label width="80">放置地點：</label>
-                <lable name="location">{{$asset->location}}</lable>
+                <label name="location">{{$asset->location}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">供應商：</label>
-                <lable name="vendor">{{$vendor->name}}</lable>
+                <label name="vendor">{{$vendor->name}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">耐用年限：</label>
-                <lable name="warranty">{{$asset->warranty}}</lable>
+                <label name="warranty">{{$asset->warranty}}</label>
             </div>
 
             <div class="form-group">

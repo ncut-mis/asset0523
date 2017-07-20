@@ -24,37 +24,37 @@
     <div class="col-lg-12">
             <div class="form-group">
                 <label width="80">使用者名稱：</label>
-                <lable name="name">{{$user->name}}</lable>
+                <label name="name">{{$user->name}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">E-mail：</label>
-                        <lable name="email">{{$user->email}}</lable>
+                <label name="email">{{$user->email}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">部門：</label>
-                <lable name="department_id">{{$user->department_id}}</lable>
+                <label name="department_id">{{$user->department_id}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">分機號碼：</label>
-                <lable name="extension">{{$user->extension}}</lable>
+                <label name="extension">{{$user->extension}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">職位：</label>
-                <lable name="position">{{$user->position}}</lable>
+                <label name="position">{{$user->position}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">連絡電話：</label>
-                <lable name="phone">{{$user->phone}}</lable>
+                <label name="phone">{{$user->phone}}</label>
             </div>
 
             <div class="form-group">
                 <label width="80">權限：</label>
-                    <lable name="previlege_id">{{$user->previlege_id}}</lable>
+                    <label name="previlege_id">{{$previlege->name}}</label>
             </div>
 
         <div>
