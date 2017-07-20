@@ -50,8 +50,11 @@
                 @foreach($supplies as $supplies)
                     <tr>
                         <td style="text-align: center">{{ $supplies->id }}</td>
-                        <td style="text-align: center">{{ $supplies->name }}</td>
+                        <td style="text-align: center">
+                            <a href="{{ route('admin.supplies.data', $supplies->id) }}">{{ $supplies->name }}</a>
+                        </td>
                         <td style="text-align: center">{{ $supplies->quantity }}</td>
+
                         <td>
                             <div>
                             <table >

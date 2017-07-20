@@ -68,6 +68,12 @@ class SuppliesController extends Controller
         $data=['supplies'=>$supplies];
         return view('admin.supplies.index' ,$data);
     }
+    public function data($id)
+    {
+        $supply = Supply::find($id);
+        $data = ['supply' => $supply];
+        return view('admin.supplies.show', $data);
+    }
 
 
    /* public function autocomplete(){
