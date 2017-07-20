@@ -45,13 +45,17 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('assets/{id}', ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);   //刪除資產
     Route::post('assets/search'  , ['as' => 'admin.assets.search', 'uses' => 'AssetController@Search']);  //查詢資產
     Route::get('assets/{id}/data', ['as' => 'admin.assets.data', 'uses' => 'AssetController@data']);       //資產詳細資料
+
+    //報廢資產
     Route::patch('assets/{id}/scrapped', ['as' => 'admin.assets.scrapped', 'uses' => 'AssetController@scrapped']);     //報廢資產
 
     //未做
     //Route::patch('assets/{id}/scrapped', ['as' => 'admin.assets.update', 'uses' => 'AssetController@update']);     //取消報修資產
-    Route::get('assets/{id}/lendings', ['as' => 'admin.lendings.create', 'uses' => 'AssetController@lendings_create']);     //租用資產(1)
-    Route::patch('assets/{id}/lendings', ['as' => 'admin.lendings.store', 'uses' => 'AssetController@lendings_store']);     //租用資產(2)
-    Route::patch('assets/{aid}/lendings/{id}', ['as' => 'admin.lendings.return', 'uses' => 'AssetController@lendings_return']);     //歸還資產
+
+    //租用資產
+    Route::get('assets/{id}/lending', ['as' => 'admin.lendings.create', 'uses' => 'AssetController@lendings_create']);     //租用資產(1)
+    Route::post('assets/{id}/lending', ['as' => 'admin.lendings.store', 'uses' => 'AssetController@lendings_store']);     //租用資產(2)
+    Route::patch('assets/{aid}/lending/{id}', ['as' => 'admin.lendings.return', 'uses' => 'AssetController@lendings_return']);     //歸還資產
 
     //申請
     Route::get('assets/{id}/application', ['as' => 'admin.assets.application', 'uses' => 'MaintaincesController@create']);             //員工申請資產(1)
