@@ -22,22 +22,22 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/anonouncements/{{$anonouncements->id}}" method="POST" role="form">
+        <form action="/admin/announcements/{{$announcements->id}}" method="POST" role="form">
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <div class="form-group">
                 <label>標題：</label>
-                <input name="title" class="form-control" placeholder="請輸入耗材名稱" value="{{$anonouncements->title}}">
+                <input name="title" class="form-control" placeholder="請輸入耗材名稱" value="{{$announcements->title}}">
             </div>
 
             <div class="form-group">
                 <label>內容：</label>
-                <input name="content" class="form-control" placeholder="請輸入內容" value="{{$anonouncements->content}}">
+                <textarea name="content" class="form-control">{{$announcements->content}}</textarea>
             </div>
 
             <div class="form-group">
                 <label>日期：</label>
-                <label name="date" class="form-control" value="{{$anonouncements->date}}"> </label>
+                <label name="date" class="form-control">{{$announcements->date}}</label>
             </div>
             <div class="text-right">
                 <button type="submit" class="btn btn-success">更新</button>

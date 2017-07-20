@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/announcements/{{$user->id}}" method="POST" role="form">
+        <form action="/admin/announcements" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -32,17 +32,12 @@
 
             <div class="form-group">
                 <label>內容：</label>
-                <textarea name="content" class="form-control" placeholder="輸入內容"> </textarea>
+                <textarea name="content1" class="form-control" placeholder="輸入內容"> </textarea>
             </div>
             <div class="form-group">
                 <label>日期：</label>
-                <input name="date" class="form-control" placeholder="請輸入日期與時間" value="{{$today->month}}{{$today->day}}">
+                <input name="date" class="form-control" placeholder="請輸入日期與時間" value="{{$today->toDateString()}}">
             </div>
-            <div class="form-group">
-                <label>發布者：</label>
-                <input name="user_id" class="form-control" value="{{$user->id}}" >
-            </div>
-
             <div class="text-right">
                 <button type="submit" class="btn btn-success">新增</button>
             </div>

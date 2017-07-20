@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Announcement;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class AnnouncementsController extends Controller
     //
     public function index()
     {
-        $announcements = Announcement::orderBy('created_at', 'DESC')->get();
+        $announcements = Announcement::orderBy('created_at', 'DESC')->take(3)->get();
         $users=User::orderBy('created_at' ,'DESC') ->get();
         $data = ['announcements' => $announcements,'users'=> $users];
 
@@ -27,9 +28,8 @@ class AnnouncementsController extends Controller
 
     public function create()
     {
-        $user=User::find($announcements->user_id);
         $today = Carbon::today();
-        $data = ['user'=>$user,'today'=>$today,'announcements'=>$announcements];
+        $data = ['today'=>$today];
         return view('admin.announcements.create',$data);
     }
 
@@ -41,7 +41,7 @@ class AnnouncementsController extends Controller
         return view('admin.announcements.edit', $data);
     }
 
-    public function update(Requests $request, $id)
+    public function update(Request $request, $id)
     {
         $announcements = Announcement::find($id);
         $announcements->update($request->all());
@@ -49,9 +49,14 @@ class AnnouncementsController extends Controller
         return redirect()->route('admin.announcements.index');
     }
 
-    public function store(Requests  $request)
+    public function store(Request  $request)
     {
-        Announcement::create($request->all());
+        Announcement::create([
+            'user_id'=>Auth::user()->id,
+            'title'=>$request->title,
+            'content'=>$request->content1,
+            'date'=>$request->date
+        ]);
         return redirect()->route('admin.announcements.index');
     }
 
