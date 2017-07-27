@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input name="name" class="form-control" readonly>
+                <input name="name" class="form-control"  value="{{$supply->name}} readonly>
             </div>
 
             <div class="form-group">

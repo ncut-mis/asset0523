@@ -68,7 +68,20 @@ class SuppliesController extends Controller
         $data=['supplies'=>$supplies];
         return view('admin.supplies.index' ,$data);
     }
-
+    public function buy($id)
+    {
+        $supply= Supply::find($id);
+        $data = ['supply' => $supply];
+        return view('admin.supplies.buy',$data);
+    }
+    public function buyupdate(Request $request, $id)
+    {
+        $supply=Supply::find($id);
+        $supply->update([
+            'quantity'=>$supply->quantity+$request->quantity
+        ]);
+        return redirect()->route('admin.supplies.index');
+    }
 
    /* public function autocomplete(){
         $term = Input::get('term');

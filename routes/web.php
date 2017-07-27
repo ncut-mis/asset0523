@@ -94,6 +94,8 @@ Route::group(['prefix' => 'admin'], function() {
     //耗材領取
    Route::get('supplies/{id}/receive',['as' => 'admin.supplies.receive' , 'uses' => 'ReceivesController@create']);
     Route::post('supplies/{id}'   , ['as' => 'admin.receives.store' , 'uses' => 'ReceivesController@store']);    //添購跟新增合起來
+    Route::get('supplies/{id}/buy', ['as' => 'admin.supplies.buy', 'uses' => 'ReceivesController@buy']);        //添購耗材
+    Route::patch('supplies/{id}', ['as' => 'admin.supplies.buyupdate', 'uses' => 'ReceivesController@buyupdate']);
    // Route::get('receive/{id}/edit', ['as' => 'admin.receive.edit'   , 'uses' => 'SuppliesController@receiveedit']);
 
 
