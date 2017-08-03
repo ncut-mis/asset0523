@@ -88,6 +88,17 @@ class AssetController extends Controller
         return view('admin.assets.index' ,$data);
     }
 
+    public function SearchAll(Request $request)
+    {
+        $asset = Asset::orderBy('created_at', 'DESC');
+
+        $Search =$request->input('Search');
+        $asset ->where('name', 'like','%'.$Search.'%')
+            ->get();
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
+        $data=['assets'=>$asset,'categories'=>$category];
+        return view('admin.assets.index' ,$data);
+    }
     public function scrapped($id)
     {
         $asset=Asset::find($id);

@@ -35,6 +35,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('assets/search'  , ['as' => 'admin.assets.search', 'uses' => 'AssetController@Search']);  //查詢資產
     Route::get('assets/{id}/data', ['as' => 'admin.assets.data', 'uses' => 'AssetController@data']);       //資產詳細資料
 
+    //未做
+    Route::post('assets/searchAll'  , ['as' => 'admin.assets.searchAll', 'uses' => 'AssetController@SearchAll']);  //查詢資產(複雜)
+
     //報廢資產
     Route::patch('assets/{id}/scrapped', ['as' => 'admin.assets.scrapped', 'uses' => 'AssetController@scrapped']);     //報廢資產
 
@@ -96,6 +99,5 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('users/search'  , ['as' => 'admin.users.search', 'uses' => 'UsersController@Search']);  //查詢使用者
     Route::get('users/{id}/data', ['as' => 'admin.users.data', 'uses' => 'UsersController@data']);       //使用者詳細資料
 });
-
 
 Route::get('/tracy',function(){throw new \Exception('Tracy works');});
