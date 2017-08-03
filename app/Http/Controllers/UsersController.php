@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
 use App\Previlege;
 use App\User;
 use Illuminate\Http\Request;
@@ -21,14 +22,16 @@ class UsersController extends Controller
     {
         $users=User::orderBy('created_at', 'DESC')->get();
         $previleges=Previlege::orderBy('created_at','DESC')->get();
-        $data=['users'=>$users,'previleges'=>$previleges];
+        $departments=Department::orderBy('created_at','DESC')->get();
+        $data=['users'=>$users,'previleges'=>$previleges,'departments'=>$departments];
         return view('admin.users.index', $data);
     }
 
     public function create()
     {
         $previleges=Previlege::orderBy('created_at','DESC')->get();
-        $data=['previleges'=>$previleges];
+        $departments=Department::orderBy('created_at','DESC')->get();
+        $data=['previleges'=>$previleges,'departments'=>$departments];
         return view('admin.users.create',$data);
     }
 
@@ -36,7 +39,8 @@ class UsersController extends Controller
     {
         $user=User::find($id);
         $previleges=Previlege::orderBy('created_at','DESC')->get();
-        $data = ['user'=>$user,'previleges'=>$previleges];
+        $departments=Department::orderBy('created_at','DESC')->get();
+        $data = ['user'=>$user,'previleges'=>$previleges,'departments'=>$departments];
         return view('admin.users.edit', $data);
     }
 

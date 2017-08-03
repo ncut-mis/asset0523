@@ -38,8 +38,16 @@
 
             <div class="form-group">
                 <label width="80">部門：</label>
-                <input name="department_id" class="form-control" placeholder="請輸入部門" value="{{$user->department_id}}">
-            </div>
+                <select name="department_id" class="form-control">
+                    @foreach($departments as $department)
+                        @if($user->department_id==$department->id)
+                            <option value={{ $department->id }} selected="true">{{ $department->name }}</option>
+                        @else
+                            <option value={{ $department->id }}>{{ $department->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+               </div>
 
             <div class="form-group">
                 <label width="80">分機號碼：</label>

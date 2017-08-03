@@ -56,7 +56,13 @@
                     <tr>
                         <td style="text-align: center"><a href="{{ route('admin.users.data', $user->id) }}">{{ $user->email }}</a></td>
                         <td style="text-align: center">{{ $user->name }}</td>
-                        <td style="text-align: center">{{ $user->department_id }}</td>
+                        <td style="text-align: center">
+                            @foreach($departments as $department)
+                                @if($user->department_id==$department->id)
+                                    {{ $department->name }}
+                                @endif
+                                @endforeach
+                        </td>
                         <td style="text-align: center">{{ $user->extension }}</td>
                         <td style="text-align: center">{{ $user->position}}</td>
                         <td style="text-align: center">{{ $user->phone }}</td>
