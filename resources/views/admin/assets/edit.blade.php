@@ -56,39 +56,7 @@
 
             <div class="form-group">
                 <label>資產狀態：</label>
-                <select name="status" class="form-control" disabled >
-                    @if($asset->status=='維修中')
-                        <option value="正常使用中">正常使用中</option>
-                        <option value="維修中" selected="true">維修中</option>
-                        <option value="租借中">租借中</option>
-                        <option value="待報廢">待報廢</option>
-                        <option value="已報廢">已報廢</option>
-                    @elseif($asset->status=='租借中')
-                        <option value="正常使用中">正常使用中</option>
-                        <option value="維修中">維修中</option>
-                        <option value="租借中" selected="true">租借中</option>
-                        <option value="待報廢">待報廢</option>
-                        <option value="已報廢">已報廢</option>
-                    @elseif($asset->status=='待報廢')
-                        <option value="正常使用中">正常使用中</option>
-                        <option value="維修中">維修中</option>
-                        <option value="租借中">租借中</option>
-                        <option value="待報廢" selected="true">待報廢</option>
-                        <option value="已報廢">已報廢</option>
-                    @elseif($asset->status=='已報廢')
-                        <option value="正常使用中">正常使用中</option>
-                        <option value="維修中">維修中</option>
-                        <option value="租借中">租借中</option>
-                        <option value="待報廢">待報廢</option>
-                        <option value="已報廢" selected="true">已報廢</option>
-                    @else
-                        <option value="正常使用中" selected="true">正常使用中</option>
-                        <option value="維修中">維修中</option>
-                        <option value="租借中">租借中</option>
-                        <option value="待報廢">待報廢</option>
-                        <option value="已報廢">已報廢</option>
-                    @endif
-                </select>
+                <label>{{$asset->status}}</label>
             </div>
 
             <div class="form-group">
@@ -105,11 +73,19 @@
             </div>
 
             <div class="form-group">
-                <label>可否租借？</label>
+                <label>可否租借：</label>
+                @if($asset->status=='租借中')
+                    @if($asset->lendable=="0")
+                        <label>否</label>
+                        @else
+                        <label>是</label>
+                    @endif
+                    @else
                 <select name="lendable" class="form-control">
                     <option value="0" {{ $asset->lendable?'':'SELECTED' }}>否</option>
                     <option value="1" {{ $asset->lendable?'SELECTED':'' }}>是</option>
                 </select>
+                    @endif
             </div>
 
             <div class="form-group">

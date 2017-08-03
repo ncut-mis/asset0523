@@ -82,7 +82,7 @@
 
             <div class="form-group">
                 <label width="80">備註：</label>
-                <textarea name="submit" class="form-control" rows="5" value="{{$asset->remark}}" readonly></textarea>
+                <lable name="warranty">{{$asset->remark}}</lable>
             </div>
 
         <div>
