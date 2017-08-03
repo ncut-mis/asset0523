@@ -37,4 +37,5 @@ class ReceivesController extends Controller
         ]);
         return redirect()->route('admin.supplies.index');
     }
+
 }

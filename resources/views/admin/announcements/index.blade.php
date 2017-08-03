@@ -1,24 +1,24 @@
 @extends('admin.layouts.master')
 
-@section('title', '耗材管理')
+@section('title', '公告管理')
 
 @section('content')
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            耗材管理 <small>耗材列表</small>
+            公告管理 <small>公告列表</small>
         </h1>
         <ol class="breadcrumb">
             <li class="active">
-                <i class="fa fa-edit"></i> 耗材管理
+                <i class="fa fa-edit"></i> 公告管理
             </li>
         </ol>
     </div>
 </div>
 <!-- /.row -->
 <div class="input-group custom-search-form">
-    <form action="{{ route('admin.supplies.show') }}" method="POST">
+    <form action="{{ route('admin.anonouncements.show') }}" method="POST">
         {{ csrf_field() }}
         <span class="input-group-btn">
     <input name="Search" class="form-control" placeholder="Search...">
@@ -29,7 +29,7 @@
 
 <div class="row" style="margin-bottom: 20px; text-align: right">
     <div class="col-lg-12">
-        <a href="{{ route('admin.supplies.create') }}" class="btn btn-success">建立新購耗材</a>
+        <a href="{{ route('admin.anonouncements.create') }}" class="btn btn-success">新增公告</a>
     </div>
 </div>
 <!-- /.row -->
@@ -40,18 +40,18 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th width="100" style="text-align: center">耗材編號</th>
-                        <th style="text-align: center">耗材名稱</th>
-                        <th width="100" style="text-align: center">耗材數量</th>
+                        <th width="100" style="text-align: center">標題</th>
+                        <th style="text-align: center">內容</th>
+                        <th width="100" style="text-align: center">日期</th>
                         <th width="300" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($supplies as $supplies)
+                @foreach($anonouncements as $anonouncements)
                     <tr>
-                        <td style="text-align: center">{{ $supplies->id }}</td>
-                        <td style="text-align: center">{{ $supplies->name }}</td>
-                        <td style="text-align: center">{{ $supplies->quantity }}</td>
+                        <td style="text-align: center">{{ $anonouncements->title}}</td>
+                        <td style="text-align: center">{{ $anonouncements->content }}</td>
+                        <td style="text-align: center">{{ $anonouncements->date}}</td>
                         <td>
                             <div>
                             <table >
@@ -59,12 +59,6 @@
                                 <tr class="table-text" style="text-align: center">
                                     <td width="100" >
                                         <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.edit', $supplies->id) }}" >修改</a>
-                                    </td>
-                                    <td width="100">
-                                        <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.receive', $supplies->id) }}" >領取</a>
-                                    </td>
-                                    <td width="100">
-                                        <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.buy', $supplies->id) }}" >添購</a>
                                     </td>
                                     <!-- 刪除按鈕 -->
                                     <td width="100">

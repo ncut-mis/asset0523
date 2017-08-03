@@ -21,8 +21,19 @@ Route::get('posts/{id}', ['as' => 'posts.show' , 'uses' => 'PostsController@show
 // 後台
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'AdminDashboardController@index']);
+
+    //公告
+    Route::get('announcements'         , ['as' => 'admin.announcements.index' , 'uses' => 'AnnouncementsController@index']);
+    Route::get('announcements/create'   , ['as' => 'admin.announcements.create' , 'uses' => 'AnnouncementsController@create']);
+    Route::post('announcements'         , ['as' => 'admin.announcements.store'  , 'uses' => 'AnnouncementsController@store']);
+    Route::get('announcements/{id}/edit', ['as' => 'admin.announcements.edit'   , 'uses' => 'AnnouncementsController@edit']);
+    Route::patch('announcements/{id}'   , ['as' => 'admin.announcements.update' , 'uses' => 'AnnouncementsController@update']);
+    Route::delete('announcements/{id}'  , ['as' => 'admin.announcements.destroy', 'uses' => 'AnnouncementsController@destroy']);
+    Route::post('announcements/show'  , ['as' => 'admin.announcements.show', 'uses' => 'AnnouncementsController@show']);
+
     Route::get('user',['as' => 'admin.dashboard.user', 'uses' => 'AdminDashboardController@index']);
     Route::get('mis',['as' => 'admin.dashboard.mis', 'uses' => 'AdminDashboardController@index']);
+
     //　
 
     //資產
@@ -86,7 +97,11 @@ Route::group(['prefix' => 'admin'], function() {
     //耗材領取
    Route::get('supplies/{id}/receive',['as' => 'admin.supplies.receive' , 'uses' => 'ReceivesController@create']);
     Route::post('supplies/{id}'   , ['as' => 'admin.receives.store' , 'uses' => 'ReceivesController@store']);    //添購跟新增合起來
+    Route::get('supplies/{id}/buy', ['as' => 'admin.supplies.buy', 'uses' => 'SuppliesController@buy']);        //添購耗材
+    Route::patch('supplies/{id}', ['as' => 'admin.supplies.buyupdate', 'uses' => 'SuppliesController@buyupdate']);
    // Route::get('receive/{id}/edit', ['as' => 'admin.receive.edit'   , 'uses' => 'SuppliesController@receiveedit']);
+
+
 //自動完成
 
     //使用者
