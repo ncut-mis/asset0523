@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Asset;
 use App\Category;
+use App\Http\Requests\AssetRequest;
 use App\Lending;
 use App\User;
 use App\Vendor;
@@ -47,14 +48,14 @@ class AssetController extends Controller
 
         return view('admin.assets.edit', $data);
     }
-    public function update(Request $request, $id)
+    public function update(AssetRequest $request, $id)
     {
         $asset=Asset::find($id);
         $asset->update($request->all());
 
         return redirect()->route('admin.assets.index');
     }
-    public function store(Request $request)
+    public function store(AssetRequest $request)
     {
         Asset::create($request->all());
         return redirect()->route('admin.assets.index');
