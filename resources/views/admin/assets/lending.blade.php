@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label>租借資產名稱：</label>
-                <input name="asset_id" class="form-control" value="{{$asset->name}}">
+                <label>{{$asset->name}}</label>
             </div>
             <div class="form-group">
                 <label>租借日期：</label>
