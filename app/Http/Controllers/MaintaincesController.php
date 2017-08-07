@@ -138,28 +138,29 @@ class MaintaincesController extends Controller
 
 
     public function mail(Request $request,$id){
+
+        $maintaince=Maintaince::find($id);
+        $applications=$maintaince->applications()->get();
+        $user=$applications->User()->get();
+
+/*
         //從表單取得資料
         $from = ['email'=>$request['email'],
             'name'=>$request['name'],
             'subject'=>$request['subject']
         ];
+*/
         //填寫收信人信箱
-        $to = ['email'=>'xxx@xxx.com',
-            'name'=>'xxx'];
+        $to = ['email'=>$user->email,
+            'name'=>$user->name];
         //信件的內容(即表單填寫的資料)
-        $data = ['company'=>$request['company'],
-            'address'=>$request['address'],
-            'email'=>$request['email'],
-            'subject'=>$request['subject'],
-            'msg'=>$request['message']
+        $data = ['status '=>$request[' status '],
         ];
         //寄出信件
-        Mail::send('admin.emails.test01', $data, function($message) use ($from, $to) {
-            $message->from($from['email'], $from['name']);
-            $message->to($to['email'], $to['name'])->subject($from['subject']);
+        Mail::send('admin.emails.test01', $data, function($message) use ($to) {
+            //$message->from($from['email'], $from['name']);
+            $message->to($to['email'], $to['name'])->subject('測試信件');
         });
-
-        return redirect()->route('admin.maintainces.index');
     }
 
 
