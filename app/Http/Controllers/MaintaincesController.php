@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Mail;
 
 class MaintaincesController extends Controller
 {
@@ -83,7 +84,6 @@ class MaintaincesController extends Controller
         $vendors=Vendor::orderBy('created_at','DESC')->get();
         $applications=$maintaince->applications()->get();
         $users=User::orderBy('created_at','DESC')->get();
-
         $maintainceitems=MaintainceItem::orderBy('created_at', 'ASC')->get();
         $assetmaintainces=Maintaince::where('asset_id',$asset->id)->where('status','已完成維修')->get();
 
@@ -137,11 +137,21 @@ class MaintaincesController extends Controller
     }
 
 
-    public function mail(Request $request,$id){
+    public function mail($id){
 
         $maintaince=Maintaince::find($id);
-        $applications=$maintaince->applications()->get();
-        $user=$applications->User()->get();
+        $application=$maintaince->applications()->get();
+        $asset=Asset::find($maintaince->asset_id);
+        $users=User::orderBy('created_at','DESC')->get();
+
+        foreach ($users as $user)
+        {
+            $to = ['email'=>$user->email,
+                'name'=>$user->name];
+            Mail::raw(' 資產狀態變更成'.$asset->status.' ！', function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('測試信件');
+            });
+        }
 
 /*
         //從表單取得資料
@@ -149,18 +159,21 @@ class MaintaincesController extends Controller
             'name'=>$request['name'],
             'subject'=>$request['subject']
         ];
-*/
+
         //填寫收信人信箱
         $to = ['email'=>$user->email,
             'name'=>$user->name];
         //信件的內容(即表單填寫的資料)
-        $data = ['status '=>$request[' status '],
+        $data = ['status'=>$asset->status,
         ];
         //寄出信件
-        Mail::send('admin.emails.test01', $data, function($message) use ($to) {
+        Mail::raw(' 資產狀態變更成'.$asset->status.' ！', function($message) use ($to) {
             //$message->from($from['email'], $from['name']);
             $message->to($to['email'], $to['name'])->subject('測試信件');
         });
+
+        */
+        return redirect()->route('admin.maintainces.show',$id);
     }
 
 

@@ -16,7 +16,6 @@
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
-
     <!-- Morris Charts CSS -->
     <link href="{{ asset('css/plugins/morris.css') }}" rel="stylesheet">
 
@@ -37,7 +36,6 @@
     <div id="wrapper">
 
         @include('admin.layouts.partials.sidebar')
-
         <div id="page-wrapper">
 
             <div class="container-fluid">
