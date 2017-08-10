@@ -26,8 +26,12 @@
             {{ csrf_field() }}
             {{ method_field('PATCH') }}
             <div class="form-group">
+                <label>日期：</label>
+                <label name="date" class="form-control" value="{{$anonouncements->date}}"> </label>
+            </div>
+            <div class="form-group">
                 <label>標題：</label>
-                <input name="title" class="form-control" placeholder="請輸入耗材名稱" value="{{$anonouncements->title}}">
+                <input name="title" class="form-control" placeholder="請輸入標題" value="{{$anonouncements->title}}">
             </div>
 
             <div class="form-group">
@@ -35,10 +39,6 @@
                 <input name="content" class="form-control" placeholder="請輸入內容" value="{{$anonouncements->content}}">
             </div>
 
-            <div class="form-group">
-                <label>日期：</label>
-                <label name="date" class="form-control" value="{{$anonouncements->date}}"> </label>
-            </div>
             <div class="text-right">
                 <button type="submit" class="btn btn-success">更新</button>
             </div>

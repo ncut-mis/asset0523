@@ -32,7 +32,7 @@
 
             <div class="form-group">
                 <label>耗材數量：</label>
-                <input name="quantity" class="form-control" value="{{$supplies->quantity}}" readonly>
+                <label name="quantity" class="form-control" value="{{$supplies->quantity}}" readonly></label>
             </div>
 
             <div class="text-right">

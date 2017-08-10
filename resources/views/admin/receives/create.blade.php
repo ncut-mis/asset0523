@@ -25,17 +25,19 @@
         <form action="/admin/supplies/{id}{{$supplies->id}}" method="POST" role="form">
             {{ csrf_field() }}
             <div class="form-group">
-                <label>領取員工：</label>
-                <input name="user_id" class="form-control" placeholder="請輸入員工">
-            </div>
-            <div class="form-group">
                 <label>耗材編號：</label>
-                <input name="supply_id" class="form-control" value="{{$supplies->id}}">
+                <label name="supply_id" class="form-control" value="{{$supplies->id}}"></label>
             </div>
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <return  class="form-control" value="{{$supplies->name}}" disabled>
+                <label class="form-control" value="{{$supplies->name}}" disabled></label>
             </div>
+
+            <div class="form-group">
+                <label>領取員工：</label>
+                <input name="user_id" class="form-control" placeholder="請輸入員工">
+            </div>
+
             <div class="form-group">
                 <label>日期：</label>
                 <input name="date" class="form-control" placeholder="請輸入日期與時間" value="{{$today->month}}{{$today->day}}">

@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Page Heading -->
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="col-lg-12">
         <h1 class="page-header">
             領取耗材 <small>輸入耗材領取數量</small>
@@ -34,11 +34,11 @@
             </div>
             <div class="form-group">
                 <label>耗材編號：</label>
-                <input name="supply_id" class="form-control" value="{{$supply->id}}">
+                <label name="supply_id" class="form-control" value="{{$supply->id}}"></label>
             </div>
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input name="name"  class="form-control" value="{{$supply->name}}" disabled>
+                <label name="name"  class="form-control" value="{{$supply->name}}" disabled></label>
             </div>
             <div class="form-group">
                 <label>日期：</label>

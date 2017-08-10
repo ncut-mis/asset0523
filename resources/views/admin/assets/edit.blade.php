@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <label>資產名稱：</label>
-                <input name="name" class="form-control" placeholder="請輸入資產名稱" value="{{$asset->name}}">
+                <label name="name" class="form-control" placeholder="請輸入資產名稱" value="{{$asset->name}}"></label>
             </div>
 
             <div class="form-group">
