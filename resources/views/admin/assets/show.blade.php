@@ -85,6 +85,9 @@
                 <lable name="warranty">{{$asset->remark}}</lable>
             </div>
 
+
+
+
         <div>
             <a href="{{ route('admin.assets.index') }}" class="btn btn-success">返回</a>
         </div>
