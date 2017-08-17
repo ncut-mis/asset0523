@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class MaintaincesController extends Controller
@@ -50,6 +51,25 @@ class MaintaincesController extends Controller
             'problem'=>$request->problem,
             'date'=>Carbon::now()
         ]);
+
+        $users=User::where('previlege_id',3)->get();
+        $userk=User::find($asset->keeper);
+        foreach ($users as $user)
+        {
+            $to = ['email'=>$user->email,
+                'name'=>$user->name];
+            $data = [
+                'name'=>$asset->name,
+                'location'=>$asset->location,
+                'keeper'=>$userk->name,
+                'applications_user'=>Auth::user()->name,
+                'problem'=>$request->problem,
+            ];
+            Mail::later(3,' admin.emails.applications',$data, function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('有新的報修訊息');
+            });
+        }
+
         return redirect()->route('admin.assets.index');
     }
 
@@ -148,7 +168,9 @@ class MaintaincesController extends Controller
         {
             $to = ['email'=>$user->email,
                 'name'=>$user->name];
-            Mail::raw(' 資產狀態變更成'.$asset->status.' ！', function($message) use ($to) {
+            $data = ['status'=>$asset->status,
+            ];
+            Mail::later(10,' admin.emails.test01',$data, function($message) use ($to) {
                 $message->to($to['email'], $to['name'])->subject('測試信件');
             });
         }
