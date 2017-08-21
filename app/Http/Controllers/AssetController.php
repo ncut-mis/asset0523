@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Asset;
 use App\Category;
+use App\Http\Requests\AssetRequest;
 use App\Lending;
 use App\User;
 use App\Vendor;
@@ -23,9 +24,8 @@ class AssetController extends Controller
     {
         $asset=Asset::orderBy('created_at', 'DESC')->get();
         $category=Category::orderBy('created_at' ,'DESC') ->get();
-        $data=['assets'=>$asset
-            ,'categories'=>$category
-        ];
+        $lendings=Lending::whereNull('returntime')->get();
+        $data=['assets'=>$asset,'lendings'=>$lendings,'categories'=>$category];
         return view('admin.assets.index', $data);
     }
     public function create()
@@ -48,14 +48,14 @@ class AssetController extends Controller
 
         return view('admin.assets.edit', $data);
     }
-    public function update(Request $request, $id)
+    public function update(AssetRequest $request, $id)
     {
         $asset=Asset::find($id);
         $asset->update($request->all());
 
         return redirect()->route('admin.assets.index');
     }
-    public function store(Request $request)
+    public function store(AssetRequest $request)
     {
         Asset::create($request->all());
         return redirect()->route('admin.assets.index');
@@ -88,6 +88,17 @@ class AssetController extends Controller
         return view('admin.assets.index' ,$data);
     }
 
+    public function SearchAll(Request $request)
+    {
+        $asset = Asset::orderBy('created_at', 'DESC');
+
+        $Search =$request->input('Search');
+        $asset ->where('name', 'like','%'.$Search.'%')
+            ->get();
+        $category=Category::orderBy('created_at' ,'DESC') ->get();
+        $data=['assets'=>$asset,'categories'=>$category];
+        return view('admin.assets.index' ,$data);
+    }
     public function scrapped($id)
     {
         $asset=Asset::find($id);
@@ -100,17 +111,18 @@ class AssetController extends Controller
     public function lendings_create($id)
     {
         $asset=Asset::find($id);
-        $data=['asset'=>$asset];
-        return view('admin.assets.lendings' ,$data);
+        $users=User::orderBy('created_at' ,'DESC') ->get();
+        $today = Carbon::today();
+        $data=['asset'=>$asset,'users'=>$users,'today'=>$today];
+        return view('admin.assets.lending' ,$data);
     }
 
-    public function lendings_store($id)
+    public function lendings_store(Request $request,$id)
     {
         $asset=Asset::find($id);
         $asset->lendings()->create([
-            'user_id'=>Auth::user()->id,
+            'user_id'=>$request->user_id,
             'lenttime'=> Carbon::now(),
-            'returntime'=>null
         ]);
         $asset->update([
             'status'=>'租借中'

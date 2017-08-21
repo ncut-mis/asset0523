@@ -15,7 +15,7 @@ class Lending extends Model
         'returntime',
     ];
 
-    public function asset() // Lending (n) -> Asset (1)
+    public function Asset() // Lending (n) -> Asset (1)
     {
         return $this->belongsTo(Asset::class);
     }

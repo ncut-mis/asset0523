@@ -45,13 +45,20 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('assets/{id}', ['as' => 'admin.assets.destroy', 'uses' => 'AssetController@destroy']);   //刪除資產
     Route::post('assets/search'  , ['as' => 'admin.assets.search', 'uses' => 'AssetController@Search']);  //查詢資產
     Route::get('assets/{id}/data', ['as' => 'admin.assets.data', 'uses' => 'AssetController@data']);       //資產詳細資料
+
+    //未做
+    Route::post('assets/searchAll'  , ['as' => 'admin.assets.searchAll', 'uses' => 'AssetController@SearchAll']);  //查詢資產(複雜)
+
+    //報廢資產
     Route::patch('assets/{id}/scrapped', ['as' => 'admin.assets.scrapped', 'uses' => 'AssetController@scrapped']);     //報廢資產
 
     //未做
     //Route::patch('assets/{id}/scrapped', ['as' => 'admin.assets.update', 'uses' => 'AssetController@update']);     //取消報修資產
-    Route::get('assets/{id}/lendings', ['as' => 'admin.lendings.create', 'uses' => 'AssetController@lendings_create']);     //租用資產(1)
-    Route::patch('assets/{id}/lendings', ['as' => 'admin.lendings.store', 'uses' => 'AssetController@lendings_store']);     //租用資產(2)
-    Route::patch('assets/{aid}/lendings/{id}', ['as' => 'admin.lendings.return', 'uses' => 'AssetController@lendings_return']);     //歸還資產
+
+    //租用資產
+    Route::get('assets/{id}/lending', ['as' => 'admin.lendings.create', 'uses' => 'AssetController@lendings_create']);     //租用資產(1)
+    Route::post('assets/{id}/lending', ['as' => 'admin.lendings.store', 'uses' => 'AssetController@lendings_store']);     //租用資產(2)
+    Route::patch('assets/{aid}/lending/{id}', ['as' => 'admin.lendings.return', 'uses' => 'AssetController@lendings_return']);     //歸還資產
 
     //申請
     Route::get('assets/{id}/application', ['as' => 'admin.assets.application', 'uses' => 'MaintaincesController@create']);             //員工申請資產(1)
@@ -67,6 +74,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.edit', 'uses' => 'MaintainceItemsController@edit']);                 //修改維修項目資料(1)
     Route::patch('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.details.update', 'uses' => 'MaintainceItemsController@update']);   //修改維修項目資料(2)
     Route::delete('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.details.destroy', 'uses' => 'MaintainceItemsController@destroy']);  //刪除維修項目
+
+    Route::get('maintainces/{id}/mail', ['as' => 'admin.maintainces.mail', 'uses' => 'MaintaincesController@mail']);
 
 
     //耗材
@@ -92,6 +101,8 @@ Route::group(['prefix' => 'admin'], function() {
     //耗材領取
    Route::get('supplies/{id}/receive',['as' => 'admin.supplies.receive' , 'uses' => 'ReceivesController@create']);
     Route::post('supplies/{id}'   , ['as' => 'admin.receives.store' , 'uses' => 'ReceivesController@store']);    //添購跟新增合起來
+    Route::get('supplies/{id}/buy', ['as' => 'admin.supplies.buy', 'uses' => 'SuppliesController@buy']);        //添購耗材
+    Route::patch('supplies/{id}', ['as' => 'admin.supplies.buyupdate', 'uses' => 'SuppliesController@buyupdate']);
    // Route::get('receive/{id}/edit', ['as' => 'admin.receive.edit'   , 'uses' => 'SuppliesController@receiveedit']);
 
 
@@ -107,6 +118,5 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('users/search'  , ['as' => 'admin.users.search', 'uses' => 'UsersController@Search']);  //查詢使用者
     Route::get('users/{id}/data', ['as' => 'admin.users.data', 'uses' => 'UsersController@data']);       //使用者詳細資料
 });
-
 
 Route::get('/tracy',function(){throw new \Exception('Tracy works');});

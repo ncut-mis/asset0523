@@ -66,6 +66,9 @@
                                     <td width="100">
                                         <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.receive', $supplies->id) }}" >領取</a>
                                     </td>
+                                    <td width="100">
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.supplies.buy', $supplies->id) }}" >添購</a>
+                                    </td>
                                     <!-- 刪除按鈕 -->
                                     <td width="100">
                                         <!-- Button trigger modal -->

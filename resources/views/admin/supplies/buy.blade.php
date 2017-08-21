@@ -27,13 +27,14 @@
 
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input name="name" class="form-control" readonly>
+                <input  class="form-control" value="{{$supplies->name}}" readonly>
             </div>
 
             <div class="form-group">
-                <label>添購數量：</label>
-                <input name="quantity" class="form-control" placeholder="請輸入添購數量">
+                <label>領取數量：</label>
+                <input name="quantity" class="form-control" placeholder="請輸入領取數量">
             </div>
+
 
             <div class="text-right">
                 <button type="submit" class="btn btn-success">添購</button>

@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class MaintaincesController extends Controller
 {
@@ -49,6 +51,25 @@ class MaintaincesController extends Controller
             'problem'=>$request->problem,
             'date'=>Carbon::now()
         ]);
+
+        $users=User::where('previlege_id',3)->get();
+        $userk=User::find($asset->keeper);
+        foreach ($users as $user)
+        {
+            $to = ['email'=>$user->email,
+                'name'=>$user->name];
+            $data = [
+                'name'=>$asset->name,
+                'location'=>$asset->location,
+                'keeper'=>$userk->name,
+                'applications_user'=>Auth::user()->name,
+                'problem'=>$request->problem,
+            ];
+            Mail::later(3,' admin.emails.applications',$data, function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('有新的報修訊息');
+            });
+        }
+
         return redirect()->route('admin.assets.index');
     }
 
@@ -83,7 +104,6 @@ class MaintaincesController extends Controller
         $vendors=Vendor::orderBy('created_at','DESC')->get();
         $applications=$maintaince->applications()->get();
         $users=User::orderBy('created_at','DESC')->get();
-
         $maintainceitems=MaintainceItem::orderBy('created_at', 'ASC')->get();
         $assetmaintainces=Maintaince::where('asset_id',$asset->id)->where('status','已完成維修')->get();
 
@@ -136,6 +156,47 @@ class MaintaincesController extends Controller
         return redirect()->route('admin.maintainces.index');
     }
 
+
+    public function mail($id){
+
+        $maintaince=Maintaince::find($id);
+        $application=$maintaince->applications()->get();
+        $asset=Asset::find($maintaince->asset_id);
+        $users=User::orderBy('created_at','DESC')->get();
+
+        foreach ($users as $user)
+        {
+            $to = ['email'=>$user->email,
+                'name'=>$user->name];
+            $data = ['status'=>$asset->status,
+            ];
+            Mail::later(10,' admin.emails.test01',$data, function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('測試信件');
+            });
+        }
+
+/*
+        //從表單取得資料
+        $from = ['email'=>$request['email'],
+            'name'=>$request['name'],
+            'subject'=>$request['subject']
+        ];
+
+        //填寫收信人信箱
+        $to = ['email'=>$user->email,
+            'name'=>$user->name];
+        //信件的內容(即表單填寫的資料)
+        $data = ['status'=>$asset->status,
+        ];
+        //寄出信件
+        Mail::raw(' 資產狀態變更成'.$asset->status.' ！', function($message) use ($to) {
+            //$message->from($from['email'], $from['name']);
+            $message->to($to['email'], $to['name'])->subject('測試信件');
+        });
+
+        */
+        return redirect()->route('admin.maintainces.show',$id);
+    }
 
 
 

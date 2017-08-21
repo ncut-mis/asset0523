@@ -110,6 +110,18 @@
         @endif
     </div>
 </div>
+@if(Auth::user()->previlege_id==2)
+<div class="row">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-dashboard"></i> 部門內報修
+            </li>
+        </ol>
+
+    </div>
+</div>
+@endif
 <!-- /.row -->
 
 <div class="row">

@@ -47,7 +47,11 @@
 
             <div class="form-group">
                 <label width="80">部門：</label>
-                <input name="department_id" class="form-control" placeholder="請輸入部門">
+                <select name="department_id" class="form-control">
+                    @foreach($departments as $department)
+                        <option value={{ $department->id }}>{{ $department->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
