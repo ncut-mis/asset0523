@@ -111,7 +111,7 @@ class AssetController extends Controller
     public function lendings_create($id)
     {
         $asset=Asset::find($id);
-        $users=Asset::orderBy('created_at' ,'DESC') ->get();
+        $users=User::orderBy('created_at' ,'DESC') ->get();
         $today = Carbon::today();
         $data=['asset'=>$asset,'users'=>$users,'today'=>$today];
         return view('admin.assets.lending' ,$data);
