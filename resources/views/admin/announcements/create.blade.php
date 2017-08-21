@@ -32,13 +32,12 @@
 
             <div class="form-group">
                 <label>內容：</label>
-                <textarea name="content" class="form-control" placeholder="輸入內容"> </textarea>
+                <textarea name="content1" class="form-control" placeholder="輸入內容"> </textarea>
             </div>
             <div class="form-group">
                 <label>日期：</label>
-                <label name="date" class="form-control" > </label>
+                <input name="date" class="form-control" placeholder="請輸入日期與時間" value="{{$today->toDateString()}}">
             </div>
-
             <div class="text-right">
                 <button type="submit" class="btn btn-success">新增</button>
             </div>

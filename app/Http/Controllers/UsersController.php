@@ -80,7 +80,9 @@ class UsersController extends Controller
     public function data($id)
     {
         $user=User::find($id);
-        $data = ['user'=>$user];
+        $previlege=Previlege::find($user->previlege_id);
+
+        $data = ['user'=>$user,'previlege'=>$previlege];
         return view('admin.users.show', $data);
     }
 

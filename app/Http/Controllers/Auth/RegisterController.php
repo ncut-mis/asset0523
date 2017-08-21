@@ -80,6 +80,7 @@ class RegisterController extends Controller
             */
             'department_id' =>1,
             'previlege_id' =>3,
+
         ]);
     }
 }

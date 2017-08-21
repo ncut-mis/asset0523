@@ -62,5 +62,10 @@ class VendorsController extends Controller
         $data=['vendors'=>$vendors];
         return view('admin.vendors.index' ,$data);
     }
-
+    public function data($id)
+    {
+        $vendors = Vendor::find($id);
+        $data=['vendors'=>$vendors];
+        return view('admin.vendors.show', $data);
+    }
 }

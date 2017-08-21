@@ -19,7 +19,7 @@ class CreateReceivesTable extends Migration
             $table->integer('supply_id')->index();
             $table->date('date');
             $table->integer('quantity');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamps();
 
         });
     }

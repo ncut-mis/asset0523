@@ -64,9 +64,14 @@
             <li>
                 <a href="{{ route('admin.users.index') }}"><i class="fa fa-fw fa-edit"></i> 使用者管理</a>
             </li>
+
+                <li>
+                    <a href="{{ route('admin.announcements.index') }}"><i class="fa fa-fw fa-edit"></i> 公告</a>
+
                 @else
                 <li>
                     <a href="{{ route('admin.assets.index') }}"><i class="fa fa-fw fa-edit"></i> 資產</a>
+
                 </li>
                 @endif
         </ul>

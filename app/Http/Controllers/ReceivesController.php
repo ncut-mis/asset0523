@@ -26,14 +26,15 @@ class ReceivesController extends Controller
     public function store(Request $request, $id)
     {
         $supply=Supply::find($id);
-        $supply->update([
-            'quantity'=>$supply->quantity-$request->quantity
-        ]);
+
        Receive::create([
             'user_id'=>$request->user_id,
             'supply_id'=>$request->supply_id,
             'date'=> Carbon::now(),
             'quantity'=>$request->quantity
+        ]);
+        $supply->update([
+            'quantity'=>$supply->quantity-$request->quantity
         ]);
         return redirect()->route('admin.supplies.index');
     }

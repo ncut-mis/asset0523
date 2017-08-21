@@ -85,7 +85,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('supplies/{id}/edit', ['as' => 'admin.supplies.edit'   , 'uses' => 'SuppliesController@edit']);
     Route::patch('supplies/{id}'   , ['as' => 'admin.supplies.update' , 'uses' => 'SuppliesController@update']);
     Route::delete('supplies/{id}'  , ['as' => 'admin.supplies.destroy', 'uses' => 'SuppliesController@destroy']);
-    Route::post('supplies/show'  , ['as' => 'admin.supplies.show', 'uses' => 'SuppliesController@show']);
+    Route::post('supplies/show'  , ['as' => 'admin.supplies.show', 'uses' => 'SuppliesController@show']);//查詢
+    Route::get('supplies/{id}/data', ['as' => 'admin.supplies.data', 'uses' => 'SuppliesController@data']);       //詳細資料
 
     //廠商
     Route::get('vendors'         , ['as' => 'admin.vendors.index' , 'uses' => 'VendorsController@index']);
@@ -95,6 +96,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('vendors/{id}'   , ['as' => 'admin.vendors.update' , 'uses' => 'VendorsController@update']);
     Route::delete('vendors/{id}'  , ['as' => 'admin.vendors.destroy', 'uses' => 'VendorsController@destroy']);
     Route::post('vendors/show'  , ['as' => 'admin.vendors.show', 'uses' => 'VendorsController@show']);
+    Route::get('vendors/{id}/data', ['as' => 'admin.vendors.data', 'uses' => 'VendorsController@data']);       //詳細資料
 
     //耗材領取
    Route::get('supplies/{id}/receive',['as' => 'admin.supplies.receive' , 'uses' => 'ReceivesController@create']);
