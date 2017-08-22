@@ -32,8 +32,8 @@ class AdminDashboardController extends Controller
 
 
         $data=['applications'=>$applications,'maintainces'=>$maintainces,'assets'=>$assets,
-
-            'maintaincesA'=>$maintaincesA,'applicationsA'=>$applicationsA];
+            'maintaincesA'=>$maintaincesA,'applicationsA'=>$applicationsA,'announcements'=>$announcements,
+            "users"=>$users];
         if (Auth::user()->previlege_id==3)
             return view('admin.dashboard.mis',$data);
         elseif(Auth::user()->previlege_id==4)

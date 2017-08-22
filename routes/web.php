@@ -75,9 +75,6 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.details.update', 'uses' => 'MaintainceItemsController@update']);   //修改維修項目資料(2)
     Route::delete('maintainces/{mid}/details/{id}'  , ['as' => 'admin.maintainces.details.destroy', 'uses' => 'MaintainceItemsController@destroy']);  //刪除維修項目
 
-    Route::get('maintainces/{id}/mail', ['as' => 'admin.maintainces.mail', 'uses' => 'MaintaincesController@mail']);
-
-
     //耗材
     Route::get('supplies'          , ['as' => 'admin.supplies.index' , 'uses' => 'SuppliesController@index']);
     Route::get('supplies/create'   , ['as' => 'admin.supplies.create' , 'uses' => 'SuppliesController@create']);
