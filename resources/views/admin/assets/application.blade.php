@@ -60,6 +60,7 @@
 
             <div>
                 <button type="submit" class="btn btn-success">申請</button>
+                <a href="{{ route('admin.assets.index') }}" class="btn btn-success">返回</a>
             </div>
         </form>
 

@@ -84,7 +84,8 @@ class AssetController extends Controller
             ->where('name', 'like','%'.$Search.'%')
             ->get();
         $category=Category::orderBy('created_at' ,'DESC') ->get();
-        $data=['assets'=>$asset,'categories'=>$category];
+        $lendings=Lending::whereNull('returntime')->get();
+        $data=['assets'=>$asset,'lendings'=>$lendings,'categories'=>$category];
         return view('admin.assets.index' ,$data);
     }
 

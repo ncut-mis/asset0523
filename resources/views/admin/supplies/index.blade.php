@@ -42,8 +42,8 @@
                     <tr>
                         <th width="100" style="text-align: center">耗材編號</th>
                         <th style="text-align: center">耗材名稱</th>
-                        <th width="100" style="text-align: center">耗材數量</th>
-                        <th width="300" style="text-align: center">功能</th>
+                        <th width="200" style="text-align: center">耗材數量</th>
+                        <th width="350" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,7 +81,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                        <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
                                                     </div>
                                                     <div class="modal-body">
                                                         確定刪除？

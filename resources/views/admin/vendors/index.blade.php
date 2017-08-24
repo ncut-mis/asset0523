@@ -41,13 +41,12 @@
                 <thead>
                     <tr>
                         <th width="100" style="text-align: center">廠商編號</th>
-                        <th style="text-align: center">廠商名稱</th>
-                        <th width="100" style="text-align: center">廠商聯絡人</th>
+                        <th width="200" style="text-align: center">廠商名稱</th>
+                        <th width="110" style="text-align: center">廠商聯絡人</th>
                         <th width="100" style="text-align: center">廠商電話</th>
-                        <th width="100" style="text-align: center">廠商地址</th>
+                        <th width="300" style="text-align: center">廠商地址</th>
                         <th width="100" style="text-align: center">銀行名稱</th>
                         <th width="100" style="text-align: center">銀行帳戶</th>
-                        <th width="100" style="text-align: center">備註</th>
                         <th width="200" style="text-align: center">功能</th>
                     </tr>
                 </thead>
@@ -63,7 +62,6 @@
                         <td style="text-align: center">{{ $vendors->address }}</td>
                         <td style="text-align: center">{{ $vendors->bankname }}</td>
                         <td style="text-align: center">{{ $vendors->bankaccount }}</td>
-                        <td style="text-align: center">{{ $vendors->remark }}</td>
                         <td>
                             <table >
                                 <tbody>
@@ -82,7 +80,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                        <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
                                                     </div>
                                                     <div class="modal-body">
                                                         確定刪除？

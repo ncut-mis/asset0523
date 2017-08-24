@@ -66,7 +66,7 @@
             </li>
 
                 <li>
-                    <a href="{{ route('admin.announcements.index') }}"><i class="fa fa-fw fa-edit"></i> 公告</a>
+                    <a href="{{ route('admin.announcements.index') }}"><i class="fa fa-fw fa-edit"></i> 公告管理</a>
 
                 @else
                 <li>

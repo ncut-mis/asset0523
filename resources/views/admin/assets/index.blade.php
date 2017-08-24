@@ -38,16 +38,16 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
-                    <tr>
+                    <tr>                            <div class="table-responsive">
+
                         <th width="80" style="text-align: center">資產編號</th>
-                        <th style="text-align: center">資產名稱</th>
+                        <th width="200" style="text-align: center">資產名稱</th>
                         <th width="80" style="text-align: center">資產類別</th>
+                            <th width="80" style="text-align: center">放置地點</th>
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
-                        <th width="80" style="text-align: center">放置地點</th>
                         @if(Auth::user()->previlege_id==3)
                             <th width="250" style="text-align: center">功能</th>
                         @else
@@ -71,9 +71,9 @@
                                 @endif
                             @endforeach
                         </td>
+                        <td style="text-align: center">{{ $asset->location }}</td>
                         <td style="text-align: center">{{ $asset->status }}</td>
                         <td style="text-align: center">{{ $asset->lendable?'可':'否' }}</td>
-                        <td style="text-align: center">{{ $asset->location }}</td>
                         @if(Auth::user()->previlege_id==3)
                         <td>
                             <table>
@@ -144,7 +144,7 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                                    <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     確定歸還？
@@ -201,7 +201,7 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                                <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
                                                             </div>
                                                             <div class="modal-body">
                                                                 確定刪除？
