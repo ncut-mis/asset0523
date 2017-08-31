@@ -145,7 +145,7 @@
                                             @if((!($asset->status=='已報廢'||$asset->status=='待報廢')||$asset->status=='正常使用中'))
                                                 <a class="btn btn-primary" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
                                             @else
-                                                <a class="btn btn-primary disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
+                                                <a class="btn btn-primary    disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
                                             @endif
                                         </td>
 
@@ -203,7 +203,7 @@
 
                                     @else
 
-                                        <td width="100">
+                                        <td width="80">
                                             @if($asset->status=='正常使用中')
                                                 <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
                                             @else
@@ -211,23 +211,23 @@
                                             @endif
                                         </td>
 
-                                        <td width="100" >
+                                        <td width="80" >
                                             <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
                                         </td>
 
-                                        <td width="100">
+                                        <td width="80">
                                             <a class="btn btn-primary disabled" role="button">歸還</a>
                                         </td>
 
-                                        <td width="100" >
+                                        <td width="80" >
                                             <a class="btn btn-primary disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
                                         </td>
 
-                                        <td width="100" >
+                                        <td width="80" >
                                             <a class="btn btn-danger disabled" role="button">報廢</a>
                                         </td>
 
-                                        <td width="100">
+                                        <td width="80">
                                             <a class="btn btn-danger disabled" role="button">刪除</a>
                                         </td>
                                     @endif

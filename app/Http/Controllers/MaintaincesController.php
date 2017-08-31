@@ -112,7 +112,7 @@ class MaintaincesController extends Controller
         ]);
 
         $data=['maintaince'=>$maintaince,'asset'=>$asset,'vendors'=>$vendors,'applications'=>$applications,'users'=>$users,
-            'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
+                'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
         return view('admin.maintainces.show', $data);
     }
 
