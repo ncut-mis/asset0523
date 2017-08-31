@@ -168,6 +168,21 @@ class MaintaincesController extends Controller
             });
         }
 
+/*
+ *       $maintainceitems=$maintaince->maintainceitems()->get();
+        $usersA=User::where('','')->get();
+        foreach ($users as $user)
+        {
+            $to = ['email'=>$usersA->email,
+                'name'=>$usersA->name];
+            $data = ['maintainceitems'=>$maintainceitems,
+            ];
+            Mail::later(3,' admin.emails.spend',$data, function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('測試信件');
+            });
+        }
+*/
+
         return redirect()->route('admin.maintainces.index');
     }
 
