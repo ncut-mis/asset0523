@@ -85,13 +85,206 @@
                 <lable name="warranty">{{$asset->remark}}</lable>
             </div>
 
+            <div class = “btn-group” >
+                @if(Auth::user()->previlege_id==3)
 
 
+                    <a class="btn btn-success" href="{{ route('admin.assets.index') }}"  role="button">返回</a>
 
-        <div>
-            <a href="{{ route('admin.assets.index') }}" class="btn btn-success">返回</a>
+                        @if($asset->status=='正常使用中')
+                            <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
+                        @else
+                            <a class="btn btn-primary disabled" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
+                        @endif
+
+                        @if($asset->status=='正常使用中'||$asset->lendable==1)
+                            <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >租借</a>
+                        @else
+                            <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
+                        @endif
+
+                    @if($asset->status=='租借中')
+                        @foreach($lendings as $lending)
+                            @if($asset->id==$lending->asset_id)
+                                <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                        歸還
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    確定歸還？
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <table style="text-align: right">
+                                                        <tbody style="text-align: right">
+                                                        <tr class="table-text" style="text-align: center">
+                                                            <td width="100" >
+                                                                <form action="{{ route('admin.lendings.return',['aid'=>$asset->id,'id'=>$lending->id]) }}" method="POST">
+                                                                    {{ csrf_field() }}
+                                                                    {{ method_field('PATCH') }}
+                                                                    <button class="btn btn-danger">歸還</button>
+                                                                </form>
+                                                            </td>
+                                                            <td width="100">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @else
+                            <a class="btn btn-primary disabled" role="button">歸還</a>
+                        @endif
+
+                        @if((!($asset->status=='已報廢'||$asset->status=='待報廢')||$asset->status=='正常使用中'))
+                            <a class="btn btn-primary" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
+                        @else
+                            <a class="btn btn-primary    disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
+                        @endif
+
+                        @if($asset->status=='待報廢')
+                            <form action="{{ route('admin.assets.scrapped', $asset->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('PATCH') }}
+                                <button class="btn btn-danger">報廢</button>
+                            </form>
+                        @else
+                            <a class="btn btn-danger disabled" role="button">報廢</a>
+                        @endif
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                            刪除
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        確定刪除？
+                                    </div>
+                                    <div class="modal-footer">
+                                        <table style="text-align: right">
+                                            <tbody style="text-align: right">
+                                            <tr class="table-text" style="text-align: center">
+                                                <td width="100" >
+                                                    <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <button class="btn btn-danger">刪除</button>
+                                                    </form>
+                                                </td>
+                                                <td width="100">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                @else
+
+                        @if($asset->status=='正常使用中')
+                            <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
+                        @else
+                            <a class="btn btn-primary disabled" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
+                        @endif
+
+                        <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
+
+                        <a class="btn btn-primary disabled" role="button">歸還</a>
+
+                        <a class="btn btn-primary disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
+
+                        <a class="btn btn-danger disabled" role="button">報廢</a>
+
+                        <a class="btn btn-danger disabled" role="button">刪除</a>
+                @endif
+
         </div>
         <p>&nbsp;</p>
+
+        <ol class="breadcrumb">
+            <li class="active">
+                <i class="fa fa-edit"></i> 過去維修紀錄
+            </li>
+        </ol>
+        @if(count($assetmaintainces)>0)
+            <div class="panel-group" id="accordion" role="tablist">
+                <div class="panel panel-default">
+                    @foreach($assetmaintainces as $assetmaintaince)
+                        <div class="panel-heading" role="tab" id="heading{{$assetmaintaince->id}}">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$assetmaintaince->id}}" aria-expanded="false>"
+                                   aria-controls="collapse{{$assetmaintaince->id}}">
+                                    維修紀錄  {{$assetmaintaince->date}}
+                                </a>
+                            </h4>
+                        </div>
+
+                        <div id="collapse{{$assetmaintaince->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$assetmaintaince->id}}">
+
+                            <div class="panel-body">
+                                <table class="table table-striped task-table">
+                                    <!-- 表頭 -->
+                                    <thead>
+                                    <th width="100" style="text-align: center">維修項目</th>
+                                    <th width="100" style="text-align: center">金額</th>
+                                    </thead>
+                                @foreach($maintainceitems as $maintainceitem)
+                                    @if($assetmaintaince->id==$maintainceitem->maintaince_id)
+                                        <!-- 表身 -->
+                                            <tbody>
+                                            <tr>
+                                                <!-- 任務名稱 -->
+                                                <td class="table-text" style="text-align: center">
+                                                    <div>{{ $maintainceitem->name }}</div>
+                                                </td>
+                                                <td class="table-text" style="text-align: center">
+                                                    <div>{{ $maintainceitem->amount }}</div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        @endif
+                                    @endforeach
+                                </table>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @else
+            <div class="panel-group" id="accordion" role="tablist">
+                <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading">
+                            <h4 class="panel-title">
+                                    無維修紀錄
+                            </h4>
+                        </div>
+                </div>
+            </div>
+
+        @endif
+
         <p>&nbsp;</p>
         <p>&nbsp;</p>
 
