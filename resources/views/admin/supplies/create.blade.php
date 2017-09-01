@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input name="name" class="form-control" placeholder="請輸入耗材名稱">
+                <input  name="name" class="form-control" placeholder="請輸入耗材名稱" value="{{ old('name') }}" autofocus>
             </div>
 
             <div class="form-group">
