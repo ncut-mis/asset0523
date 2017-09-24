@@ -5,6 +5,11 @@
 @section('content')
 <!-- Page Heading -->
 <div class="row">
+    <div class="col-sm-12">
+        <h1 class="page-header">
+            <small></small>
+        </h1>
+    </div>
     <div class="col-lg-12">
         <h1 class="page-header">
             資產 <small>資產資料</small>
@@ -221,26 +226,6 @@
                                     @else
                                         <a class="btn btn-primary disabled" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
                                     @endif
-                                </td>
-
-                                <td width="80">
-                                    <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
-                                </td>
-
-                                <td width="80">
-                                    <a class="btn btn-primary disabled" role="button">歸還</a>
-                                </td>
-
-                                <td width="80">
-                                    <a class="btn btn-primary disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
-                                </td>
-
-                                <td width="80">
-                                    <a class="btn btn-danger disabled" role="button">報廢</a>
-                                </td>
-
-                                <td width="80">
-                                    <a class="btn btn-danger disabled" role="button">刪除</a>
                                 </td>
                             @endif
                         </tr>

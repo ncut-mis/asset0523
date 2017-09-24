@@ -4,6 +4,11 @@
 
 @section('content')
 <!-- Page Heading -->
+<div class="col-sm-12">
+    <h1 class="page-header">
+        <small></small>
+    </h1>
+</div>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
@@ -37,15 +42,14 @@
                 <thead>
                     <tr>
                         <div class="table-responsive">
-
                         <th width="80" style="text-align: center">資產編號</th>
                         <th width="200" style="text-align: center">資產名稱</th>
                         <th width="80" style="text-align: center">資產類別</th>
                             <th width="80" style="text-align: center">放置地點</th>
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
-                            <th width="400" style="text-align: center">功能</th>
-                            </div>
+                            <th style="text-align: center">功能</th>
+                        </div>
                     </tr>
                 </thead>
                 <tbody>
@@ -205,26 +209,6 @@
                                             @else
                                                 <a class="btn btn-primary disabled" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
                                             @endif
-                                        </td>
-
-                                        <td width="80" >
-                                            <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
-                                        </td>
-
-                                        <td width="80">
-                                            <a class="btn btn-primary disabled" role="button">歸還</a>
-                                        </td>
-
-                                        <td width="80" >
-                                            <a class="btn btn-primary disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
-                                        </td>
-
-                                        <td width="80" >
-                                            <a class="btn btn-danger disabled" role="button">報廢</a>
-                                        </td>
-
-                                        <td width="80">
-                                            <a class="btn btn-danger disabled" role="button">刪除</a>
                                         </td>
                                     @endif
                                 </tr>
