@@ -9,11 +9,6 @@
         <h1 class="page-header">
             耗材管理 <small>耗材列表</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 耗材管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->

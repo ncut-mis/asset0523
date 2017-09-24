@@ -6,44 +6,15 @@
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">
-            主控台 <small></small>
-        </h1>
         <ol class="breadcrumb">
-
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="table-responsive">
-                        <table class="table">
-                <thead>
-                <tr>
-                    <th style="text-align: center"></th>
-                    <th style="text-align: center"></th>
-                </tr>
-                </thead>
-                <tbody class="row">
-                <tr>
-                    <td>
-                        <li class="active">
-                            <i class="fa fa-dashboard"></i> 公告
-                        </li>
-                    </td>
-                    <td>
-                        <div style="text-align: right">
-                            <div class="col-lg-12">
-                                <a href="{{ route('admin.announcements.create') }}" class="btn btn-success">新增公告</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-                    </div>
-                </div>
-            </div>
-
+            <li class="active">
+                <i class="fa fa-dashboard"></i> 公告
+            </li>
+        </ol>
+        <div style="text-align: right">
+                <a href="{{ route('admin.announcements.create') }}" class="btn btn-success">新增公告</a>
+        </div>
+        <p></p>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
@@ -129,7 +100,7 @@
                 </div>
             </div>
 
-        </ol>
+
 
 
     </div>

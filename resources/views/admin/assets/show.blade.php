@@ -9,11 +9,6 @@
         <h1 class="page-header">
             資產 <small>資產資料</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 資產管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
@@ -85,30 +80,100 @@
                 <lable name="warranty">{{$asset->remark}}</lable>
             </div>
 
-            <div class = “btn-group” >
-                @if(Auth::user()->previlege_id==3)
+                    <table>
+                        <tbody>
+                        <tr class="table-text"  style="text-align: center">
+                            <td>
+                                <a class="btn btn-success" href="{{ route('admin.assets.index') }}"  role="button">返回</a>
+                            </td>
+                            @if(Auth::user()->previlege_id==3)
+                                <td width="80">
+                                    @if($asset->status=='正常使用中')
+                                        <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
+                                    @else
+                                        <a class="btn btn-primary disabled" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
+                                    @endif
+                                </td>
 
+                                <td width="80" >
+                                    @if($asset->status=='正常使用中'||$asset->lendable==1)
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >租借</a>
+                                    @else
+                                        <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
+                                    @endif
+                                </td>
 
-                    <a class="btn btn-success" href="{{ route('admin.assets.index') }}"  role="button">返回</a>
+                                <td width="80">
+                                @if($asset->status=='租借中')
+                                    @foreach($lendings as $lending)
+                                        @if($asset->id==$lending->asset_id)
+                                            <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                    歸還
+                                                </button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                確定歸還？
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <table style="text-align: right">
+                                                                    <tbody style="text-align: right">
+                                                                    <tr class="table-text" style="text-align: center">
+                                                                        <td width="100" >
+                                                                            <form action="{{ route('admin.lendings.return',['aid'=>$asset->id,'id'=>$lending->id]) }}" method="POST">
+                                                                                {{ csrf_field() }}
+                                                                                {{ method_field('PATCH') }}
+                                                                                <button class="btn btn-danger">歸還</button>
+                                                                            </form>
+                                                                        </td>
+                                                                        <td width="100">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <a class="btn btn-primary disabled" role="button">歸還</a>
+                                    @endif
+                                </td>
 
-                        @if($asset->status=='正常使用中')
-                            <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
-                        @else
-                            <a class="btn btn-primary disabled" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
-                        @endif
+                                <td width="80">
+                                    @if((!($asset->status=='已報廢'||$asset->status=='待報廢')||$asset->status=='正常使用中'))
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
+                                    @else
+                                        <a class="btn btn-primary    disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
+                                    @endif
+                                </td>
 
-                        @if($asset->status=='正常使用中'||$asset->lendable==1)
-                            <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >租借</a>
-                        @else
-                            <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
-                        @endif
+                                <td >
+                                    @if($asset->status=='待報廢')
+                                        <form action="{{ route('admin.assets.scrapped', $asset->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('PATCH') }}
+                                            <button class="btn btn-danger">報廢</button>
+                                        </form>
+                                    @else
+                                        <a class="btn btn-danger disabled" role="button">報廢</a>
+                                    @endif
+                                </td>
 
-                    @if($asset->status=='租借中')
-                        @foreach($lendings as $lending)
-                            @if($asset->id==$lending->asset_id)
-                                <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                        歸還
+                                <td width="80">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                        刪除
                                     </button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -116,20 +181,20 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    確定歸還？
+                                                    確定刪除？
                                                 </div>
                                                 <div class="modal-footer">
                                                     <table style="text-align: right">
                                                         <tbody style="text-align: right">
                                                         <tr class="table-text" style="text-align: center">
                                                             <td width="100" >
-                                                                <form action="{{ route('admin.lendings.return',['aid'=>$asset->id,'id'=>$lending->id]) }}" method="POST">
+                                                                <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
                                                                     {{ csrf_field() }}
-                                                                    {{ method_field('PATCH') }}
-                                                                    <button class="btn btn-danger">歸還</button>
+                                                                    {{ method_field('DELETE') }}
+                                                                    <button class="btn btn-danger">刪除</button>
                                                                 </form>
                                                             </td>
                                                             <td width="100">
@@ -142,85 +207,42 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endif
-                            @endforeach
-                        @else
-                            <a class="btn btn-primary disabled" role="button">歸還</a>
-                        @endif
+                                </td>
 
-                        @if((!($asset->status=='已報廢'||$asset->status=='待報廢')||$asset->status=='正常使用中'))
-                            <a class="btn btn-primary" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
-                        @else
-                            <a class="btn btn-primary    disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
-                        @endif
 
-                        @if($asset->status=='待報廢')
-                            <form action="{{ route('admin.assets.scrapped', $asset->id) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('PATCH') }}
-                                <button class="btn btn-danger">報廢</button>
-                            </form>
-                        @else
-                            <a class="btn btn-danger disabled" role="button">報廢</a>
-                        @endif
+                            @else
+                                <td width="80">
+                                    @if($asset->status=='正常使用中')
+                                        <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
+                                    @else
+                                        <a class="btn btn-primary disabled" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
+                                    @endif
+                                </td>
 
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-                            刪除
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        確定刪除？
-                                    </div>
-                                    <div class="modal-footer">
-                                        <table style="text-align: right">
-                                            <tbody style="text-align: right">
-                                            <tr class="table-text" style="text-align: center">
-                                                <td width="100" >
-                                                    <form action="{{ route('admin.assets.destroy', $asset->id) }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <button class="btn btn-danger">刪除</button>
-                                                    </form>
-                                                </td>
-                                                <td width="100">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                <td width="80">
+                                    <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
+                                </td>
 
-                @else
+                                <td width="80">
+                                    <a class="btn btn-primary disabled" role="button">歸還</a>
+                                </td>
 
-                        @if($asset->status=='正常使用中')
-                            <a class="btn btn-primary" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
-                        @else
-                            <a class="btn btn-primary disabled" href="{{ route('admin.assets.application', $asset->id) }}" role="button" >報修</a>
-                        @endif
+                                <td width="80">
+                                    <a class="btn btn-primary disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
+                                </td>
 
-                        <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
+                                <td width="80">
+                                    <a class="btn btn-danger disabled" role="button">報廢</a>
+                                </td>
 
-                        <a class="btn btn-primary disabled" role="button">歸還</a>
+                                <td width="80">
+                                    <a class="btn btn-danger disabled" role="button">刪除</a>
+                                </td>
+                            @endif
+                        </tr>
+                        </tbody>
+                    </table>
 
-                        <a class="btn btn-primary disabled" role="button" href="{{ route('admin.assets.edit', $asset->id) }}" >修改</a>
-
-                        <a class="btn btn-danger disabled" role="button">報廢</a>
-
-                        <a class="btn btn-danger disabled" role="button">刪除</a>
-                @endif
-
-        </div>
         <p>&nbsp;</p>
 
         <ol class="breadcrumb">
@@ -284,6 +306,7 @@
             </div>
 
         @endif
+
 
         <p>&nbsp;</p>
         <p>&nbsp;</p>

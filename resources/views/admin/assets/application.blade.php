@@ -9,11 +9,6 @@
         <h1 class="page-header">
             資產報修申請 <small>請輸入資產問題</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 資產管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->

@@ -7,13 +7,8 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            維修<small>維修明細</small>
+            維修<small>維修明細修改</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 維修明細修改
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->

@@ -9,11 +9,6 @@
         <h1 class="page-header">
             使用者管理 <small>所有使用者列表</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i>使用者管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->

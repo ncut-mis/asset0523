@@ -9,11 +9,6 @@
         <h1 class="page-header">
             資產管理 <small>所有資產列表</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i>資產管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
@@ -50,6 +45,7 @@
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
                             <th width="400" style="text-align: center">功能</th>
+                            </div>
                     </tr>
                 </thead>
                 <tbody>

@@ -9,11 +9,6 @@
         <h1 class="page-header">
             修改廠商 <small>編輯廠商資料</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 廠商管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
