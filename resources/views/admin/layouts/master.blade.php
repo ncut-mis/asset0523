@@ -15,6 +15,9 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
+    @if(Auth::user()->previlege_id==3)
+    <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
+    @endif
     <!-- Morris Charts CSS -->
     <link href="{{ asset('css/plugins/morris.css') }}" rel="stylesheet">
 

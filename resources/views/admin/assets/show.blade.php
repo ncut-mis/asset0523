@@ -41,7 +41,11 @@
 
             <div class="form-group">
                 <label width="80">資產狀態：</label>
-                <label name="status">{{$asset->status}}</label>
+                @if($asset->status=='正常使用中')
+                    <label name="status">{{$asset->status}}</label>
+                    @else
+                <label name="status"><font color="#FF0000"  size="+2">{{$asset->status}}</font></label>
+            @endif
             </div>
 
             <div class="form-group">
