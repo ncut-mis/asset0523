@@ -15,7 +15,6 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="{{ asset('css/plugins/morris.css') }}" rel="stylesheet">
 

@@ -27,6 +27,10 @@ class AssetController extends Controller
         $asset=Asset::orderBy('created_at', 'DESC')->get();
         $category=Category::orderBy('created_at' ,'DESC') ->get();
         $lendings=Lending::whereNull('returntime')->get();
+        if(!(Auth::user()->previlege_id==3)){
+            $asset=Asset::where('id','0')->get();
+        }
+
         $data=['assets'=>$asset,'lendings'=>$lendings,'categories'=>$category];
         return view('admin.assets.index', $data);
     }

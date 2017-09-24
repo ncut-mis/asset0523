@@ -5,10 +5,23 @@
 @section('content')
 <!-- Page Heading -->
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-sm-12">
         <h1 class="page-header">
-            主控台 <small></small>
+           <small></small>
         </h1>
+    </div>
+        <div class="col-lg-12">
+        <h1 class="page-header">
+            <small></small>
+        </h1>
+
+        </div>
+        <div class="col-lg-12">
+        <div class="row,page-header" style="margin-bottom: 20px; text-align: right" >
+            <div>
+                <a href="{{ route('admin.assets.index') }}" class="btn btn-primary">我要報修</a>
+        </div>
+        </div>
         <ol class="breadcrumb">
             <li class="active">
                 <i class="fa fa-dashboard"></i> 公告
