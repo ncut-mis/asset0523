@@ -5,11 +5,13 @@
 @section('content')
 <!-- Page Heading -->
 <div class="row">
-    <div class="col-sm-12">
-        <h1 class="page-header">
-            <small></small>
-        </h1>
-    </div>
+    @if(!(Auth::user()->previlege_id==3))
+        <div class="col-sm-12">
+            <h1 class="page-header">
+                <small></small>
+            </h1>
+        </div>
+    @endif
     <div class="col-lg-12">
         <h1 class="page-header">
             資產報修申請 <small>請輸入資產問題</small>
