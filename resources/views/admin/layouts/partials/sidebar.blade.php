@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('admin.dashboard.index') }}">盈錫報修系統</a>
+        <a class="navbar-brand" href="{{ route('admin.dashboard.index') }}">盈錫資訊設備報修系統</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
