@@ -65,7 +65,7 @@ class MaintaincesController extends Controller
                 'applications_user'=>Auth::user()->name,
                 'problem'=>$request->problem,
             ];
-            Mail::later(3,' admin.emails.applications',$data, function($message) use ($to) {
+            Mail::later(3,' admin.emails.application',$data, function($message) use ($to) {
                 $message->to($to['email'], $to['name'])->subject('有新的報修訊息');
             });
         }
@@ -112,7 +112,7 @@ class MaintaincesController extends Controller
         ]);
 
         $data=['maintaince'=>$maintaince,'asset'=>$asset,'vendors'=>$vendors,'applications'=>$applications,'users'=>$users,
-            'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
+                'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
         return view('admin.maintainces.show', $data);
     }
 
@@ -153,6 +153,36 @@ class MaintaincesController extends Controller
         $asset->update([
             'status'=>'正常使用中'
         ]);
+
+        $users=User::where('previlege_id',3)->get();
+        foreach ($users as $user)
+        {
+            $to = ['email'=>$user->email,
+                'name'=>$user->name];
+            $data = [
+                'name'=>$asset->name,
+                'date'=>Carbon::now(),
+            ];
+            Mail::later(3,' admin.emails.complete',$data, function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('報修的資產已完成維修');
+            });
+        }
+
+/*
+ *       $maintainceitems=$maintaince->maintainceitems()->get();
+        $usersA=User::where('','')->get();
+        foreach ($users as $user)
+        {
+            $to = ['email'=>$usersA->email,
+                'name'=>$usersA->name];
+            $data = ['maintainceitems'=>$maintainceitems,
+            ];
+            Mail::later(3,' admin.emails.spend',$data, function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('測試信件');
+            });
+        }
+*/
+
         return redirect()->route('admin.maintainces.index');
     }
 

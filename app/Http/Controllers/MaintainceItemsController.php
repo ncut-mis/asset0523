@@ -21,7 +21,7 @@ class MaintainceItemsController extends Controller
         return view('admin.maintainces.details',$data);
     }
 
-    public function store(Request $request,$id){
+    public function store(Requests\MaintainceItemRequest $request,$id){
         $maintaince=Maintaince::find($id);
         $maintaince->maintainceitems()->create([
             'name'=>$request->name,
@@ -39,7 +39,7 @@ class MaintainceItemsController extends Controller
 
         return view('admin.maintainces.edit', $data);
     }
-    public function update(Request $request,$mid, $id)
+    public function update(Requests\MaintainceItemRequest $request,$mid, $id)
     {
         $maintainceitem=MaintainceItem::find($id);
         $maintainceitem->update($request->all());

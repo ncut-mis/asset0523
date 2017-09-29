@@ -9,11 +9,6 @@
         <h1 class="page-header">
             領取耗材 <small>輸入耗材領取數量</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 耗材管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->

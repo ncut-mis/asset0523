@@ -9,11 +9,6 @@
         <h1 class="page-header">
             使用者管理 <small>所有使用者列表</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i>使用者管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
@@ -42,12 +37,11 @@
                 <thead>
                     <tr>
                         <th style="text-align: center">E-mail</th>
-                        <th width="80" style="text-align: center">使用者名稱</th>
+                        <th width="120" style="text-align: center">姓名</th>
                         <th width="100" style="text-align: center">部門</th>
-                        <th width="80" style="text-align: center">分機號碼</th>
-                        <th width="80" style="text-align: center">職位</th>
-                        <th width="80" style="text-align: center">連絡電話</th>
-                        <th width="80" style="text-align: center">權限</th>
+                        <th width="120" style="text-align: center">職位</th>
+                        <th width="80 " style="text-align: center">分機</th>
+                        <th width="100" style="text-align: center">權限</th>
                         <th width="200" style="text-align: center">功能</th>
                     </tr>
                 </thead>
@@ -63,9 +57,8 @@
                                 @endif
                                 @endforeach
                         </td>
-                        <td style="text-align: center">{{ $user->extension }}</td>
                         <td style="text-align: center">{{ $user->position}}</td>
-                        <td style="text-align: center">{{ $user->phone }}</td>
+                        <td style="text-align: center">{{ $user->extension }}</td>
                         <td style="text-align: center">
                             @foreach($previleges as $previlege)
                             @if($user->previlege_id==$previlege->id)
@@ -92,7 +85,7 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                                    <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     確定刪除？

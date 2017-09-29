@@ -9,11 +9,6 @@
         <h1 class="page-header">
             維修<small>維修明細</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 維修管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
@@ -39,6 +34,8 @@
                 <button type="submit" class="btn btn-success">增加維修項目</button>
             </div>
         </form>
+        <p>&nbsp;</p>
+
         @if (count($maintainceitems) > 0)
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -121,8 +118,6 @@
             </form>
         @endif
 
-
-        <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
 

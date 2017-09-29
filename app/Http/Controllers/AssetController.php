@@ -7,6 +7,8 @@ use App\Asset;
 use App\Category;
 use App\Http\Requests\AssetRequest;
 use App\Lending;
+use App\Maintaince;
+use App\MaintainceItem;
 use App\User;
 use App\Vendor;
 use Carbon\Carbon;
@@ -25,6 +27,10 @@ class AssetController extends Controller
         $asset=Asset::orderBy('created_at', 'DESC')->get();
         $category=Category::orderBy('created_at' ,'DESC') ->get();
         $lendings=Lending::whereNull('returntime')->get();
+        if(!(Auth::user()->previlege_id==3)){
+            $asset=Asset::where('id','0')->get();
+        }
+
         $data=['assets'=>$asset,'lendings'=>$lendings,'categories'=>$category];
         return view('admin.assets.index', $data);
     }
@@ -72,7 +78,11 @@ class AssetController extends Controller
         $category=Category::find($asset->category);
         $vendor=Vendor::find($asset->vendor);
         $user=User::find($asset->keeper);
-        $data = ['asset' => $asset,'category'=>$category,'vendor'=>$vendor,'user'=>$user];
+        $maintainceitems=MaintainceItem::orderBy('created_at', 'ASC')->get();
+        $assetmaintainces=Maintaince::where('asset_id',$asset->id)->where('status','已完成維修')->get();
+
+        $data = ['asset' => $asset,'category'=>$category,'vendor'=>$vendor,'user'=>$user,
+                 'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
 
         return view('admin.assets.show', $data);
     }
@@ -84,7 +94,8 @@ class AssetController extends Controller
             ->where('name', 'like','%'.$Search.'%')
             ->get();
         $category=Category::orderBy('created_at' ,'DESC') ->get();
-        $data=['assets'=>$asset,'categories'=>$category];
+        $lendings=Lending::whereNull('returntime')->get();
+        $data=['assets'=>$asset,'lendings'=>$lendings,'categories'=>$category];
         return view('admin.assets.index' ,$data);
     }
 

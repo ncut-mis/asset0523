@@ -20,9 +20,6 @@
 @include('admin.layouts.partials.validation')
 <!-- /.row -->
 
-
-<a href="/admin/maintainces/ {{$maintaince->id}} /mail" class="btn btn-success">mail</a>
-
 <div class="row">
     <div class="col-lg-12">
 

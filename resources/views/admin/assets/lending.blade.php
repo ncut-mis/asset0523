@@ -9,11 +9,6 @@
         <h1 class="page-header">
             租借 <small>資產</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 租借資產
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->

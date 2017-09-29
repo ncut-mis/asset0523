@@ -9,11 +9,6 @@
         <h1 class="page-header">
             添購耗材 <small>輸入耗材購買數量</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 耗材管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
@@ -22,7 +17,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form action="/admin/supplies/{{$supplies->id}}/buy" method="POST" role="form">
+        <form action="/admin/supplies/{{$supplies->id}}" method="POST" role="form">
             {{ csrf_field() }}
 
             <div class="form-group">

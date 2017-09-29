@@ -42,7 +42,7 @@ class SuppliesController extends Controller
 
     public function store(Requests\SupplyRequest $request)
     {
-        $supply = Supply::where('name',$request->name)->get();
+        $supply = Supply::where('name',$request->name)->first();
         if(count($supply) == 0)
         Supply::create($request->all());
         else{
@@ -58,7 +58,7 @@ class SuppliesController extends Controller
         Supply::destroy($id);
         return redirect()->route('admin.supplies.index');
     }
-    public function show(Request $request)
+    public function show(Requests\SupplyRequest $request)
     {
         $Search =$request->input('Search');
         $supplies = Supply::orderBy('created_at', 'DESC')
@@ -83,11 +83,11 @@ class SuppliesController extends Controller
         $data = ['supplies' => $supplies];
         return view('admin.supplies.buy',$data);
     }
-    public function buyupdate(Request $request, $id)
+    public function buyupdate(Requests\SupplyRequest $request, $id)
     {
         $supplies=Supply::find($id);
         $supplies->update([
-            'quantity'=>$supplies->quantity+$request->quantity
+            'quantity'=>$supplies->quantity + $request->quantity
         ]);
         return redirect()->route('admin.supplies.index');
     }

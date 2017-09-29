@@ -9,11 +9,6 @@
             <h1 class="page-header">
                 查詢資產 <small>請輸入查詢的資料</small>
             </h1>
-            <ol class="breadcrumb">
-                <li class="active">
-                    <i class="fa fa-edit"></i> 查詢管理
-                </li>
-            </ol>
         </div>
     </div>
     <!-- /.row -->

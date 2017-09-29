@@ -9,11 +9,6 @@
         <h1 class="page-header">
             新購耗材 <small>輸入耗材資料</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 耗材管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
@@ -27,7 +22,7 @@
 
             <div class="form-group">
                 <label>耗材名稱：</label>
-                <input name="name" class="form-control" placeholder="請輸入耗材名稱">
+                <input  name="name" class="form-control" placeholder="請輸入耗材名稱" value="{{ old('name') }}" autofocus>
             </div>
 
             <div class="form-group">

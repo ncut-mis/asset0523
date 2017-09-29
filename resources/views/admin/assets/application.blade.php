@@ -5,15 +5,17 @@
 @section('content')
 <!-- Page Heading -->
 <div class="row">
+    @if(!(Auth::user()->previlege_id==3))
+        <div class="col-sm-12">
+            <h1 class="page-header">
+                <small></small>
+            </h1>
+        </div>
+    @endif
     <div class="col-lg-12">
         <h1 class="page-header">
             資產報修申請 <small>請輸入資產問題</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 資產管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
@@ -60,6 +62,7 @@
 
             <div>
                 <button type="submit" class="btn btn-success">申請</button>
+                <a href="{{ route('admin.assets.index') }}" class="btn btn-success">返回</a>
             </div>
         </form>
 
