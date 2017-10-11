@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
 
@@ -168,6 +168,8 @@ return [
          */
         Recca0120\LaravelTracy\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -226,6 +228,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
 
 ];
