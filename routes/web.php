@@ -14,13 +14,11 @@ Route::auth();
 Route::get('/home',
     function (){return view('home');
 });
-Route::get('/'         , ['as' => 'home.index' , 'uses' => 'HomeController@index']);
-Route::get('posts'     , ['as' => 'posts.index', 'uses' => 'PostsController@index']);
-Route::get('posts/{id}', ['as' => 'posts.show' , 'uses' => 'PostsController@show']);
-
+//Route::get('/'         , ['as' => 'home.index' , 'uses' => 'HomeController@index']);
+Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'AdminDashboardController@index']);
 // 後台
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'AdminDashboardController@index']);
+   // Route::get('/', ['as' => 'admin.dashboard.index', 'uses' => 'AdminDashboardController@index']);
 
     //公告
     Route::get('announcements'         , ['as' => 'admin.announcements.index' , 'uses' => 'AnnouncementsController@index']);
