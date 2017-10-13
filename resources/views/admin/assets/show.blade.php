@@ -23,7 +23,7 @@
 <!-- /.row -->
 
 <div class="row">
-    <div class="col-lg-3">
+    <div class="col-xs-3">
             <div class="form-group">
                 <label width="80">資產名稱：</label>
                 <label name="name">{{$asset->name}}</label>
@@ -91,10 +91,10 @@
                 <lable name="warranty">{{$asset->remark}}</lable>
             </div>
     </div>
-    <div class="col-lm-9">
-        {!! QrCode::size(250)->generate($asset->id); !!}
+    <div class="col-sm-9">
+        {!! QrCode::size(250)->generate('http://localhost:8000/admin/assets/'.$asset->id.'/data' ) !!}
     </div>
-    <div class="col-lg-12">
+    <div class="col-xs-12">
                     <table>
                         <tbody>
                         <tr class="table-text"  style="text-align: center">

@@ -153,4 +153,8 @@ class AssetController extends Controller
         ]);
         return redirect()->route('admin.assets.index');
     }
+    public function instascan()
+{
+    return view('admin.assets.instascan');
+}
 }
