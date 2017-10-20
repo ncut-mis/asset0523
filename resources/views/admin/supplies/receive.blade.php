@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label>耗材編號：</label>
-                <input name="supply_id" class="form-control" value="{{$supply->id}}">
+                <input name="supply_id" class="form-control" value="{{$supply->id}}" disabled>
             </div>
             <div class="form-group">
                 <label>耗材名稱：</label>
