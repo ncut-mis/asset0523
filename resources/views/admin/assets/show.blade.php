@@ -93,7 +93,7 @@
     </div>
     @if(Auth::user()->previlege_id>=3)
     <div class="col-sm-6">
-        {!! QrCode::size(200)->generate('/admin/assets/'.$asset->id.'/data' ) !!}
+        {!! QrCode::size(200)->generate('https://140.128.80.195/admin/assets/'.$asset->id.'/data' ) !!}
     </div>
     @endif
     <div class="col-xs-12">
