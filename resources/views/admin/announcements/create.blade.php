@@ -9,11 +9,6 @@
         <h1 class="page-header">
             新增公告
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 公告管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->

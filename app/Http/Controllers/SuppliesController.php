@@ -83,7 +83,7 @@ class SuppliesController extends Controller
         $data = ['supplies' => $supplies];
         return view('admin.supplies.buy',$data);
     }
-    public function buyupdate(Requests\SupplyRequest $request, $id)
+    public function buyupdate(Requests\SupplyBuyRequest $request, $id)
     {
         $supplies=Supply::find($id);
         $supplies->update([
@@ -93,21 +93,4 @@ class SuppliesController extends Controller
     }
 
 
-   /* public function autocomplete(){
-        $term = Input::get('term');
-
-        $results = array();
-
-        $queries = DB::table('users')
-            ->where('first_name', 'LIKE', '%'.$term.'%')
-            ->orWhere('last_name', 'LIKE', '%'.$term.'%')
-            ->take(5)->get();
-
-        foreach ($queries as $query)
-        {
-            $results[] = [ 'id' => $query->id, 'value' => $query->first_name.' '.$query->last_name ];
-        }
-        return Response::json($results);
-    }
-   */
 }

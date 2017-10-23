@@ -4,16 +4,19 @@
 
 @section('content')
 <!-- Page Heading -->
+
 <div class="row">
+    @if(!(Auth::user()->previlege_id>=3))
+        <div class="col-sm-12">
+            <h1 class="page-header">
+                <small></small>
+            </h1>
+        </div>
+    @endif
     <div class="col-lg-12">
         <h1 class="page-header">
             維修處理 <small>選擇維修方式</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 維修處理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
@@ -155,6 +158,7 @@
 
         <div class="text-right">
             <button type="submit" class="btn btn-success">確定</button>
+            <a class="btn btn-success" href="{{ route('admin.maintainces.index') }}"  role="button">返回</a>
         </div>
         </form>
         <p>&nbsp;</p>
