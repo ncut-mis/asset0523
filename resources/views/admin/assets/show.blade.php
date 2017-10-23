@@ -4,14 +4,14 @@
 
 @section('content')
 <!-- Page Heading -->
+@if(!(Auth::user()->previlege_id>=3))
+    <div class="col-sm-12">
+        <h1 class="page-header">
+            <small></small>
+        </h1>
+    </div>
+@endif
 <div class="row">
-    @if(!(Auth::user()->previlege_id==3))
-        <div class="col-sm-12">
-            <h1 class="page-header">
-                <small></small>
-            </h1>
-        </div>
-    @endif
     <div class="col-lg-12">
         <h1 class="page-header">
             資產 <small>資產資料</small>
@@ -23,7 +23,7 @@
 <!-- /.row -->
 
 <div class="row">
-    <div class="col-xs-3">
+    <div class="col-xs-6">
             <div class="form-group">
                 <label width="80">資產名稱：</label>
                 <label name="name">{{$asset->name}}</label>
@@ -91,9 +91,11 @@
                 <lable name="warranty">{{$asset->remark}}</lable>
             </div>
     </div>
-    <div class="col-sm-9">
-        {!! QrCode::size(250)->generate('http://localhost:8000/admin/assets/'.$asset->id.'/data' ) !!}
+    @if(Auth::user()->previlege_id>=3)
+    <div class="col-sm-6">
+        {!! QrCode::size(200)->generate('/admin/assets/'.$asset->id.'/data' ) !!}
     </div>
+    @endif
     <div class="col-xs-12">
                     <table>
                         <tbody>
@@ -110,8 +112,8 @@
                                     @endif
                                 </td>
 
-                                <td width="80" >
-                                    @if($asset->status=='正常使用中'||$asset->lendable==1)
+                                <td width="80">
+                                    @if($asset->status=='正常使用中'&&$asset->lendable==1)
                                         <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >租借</a>
                                     @else
                                         <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
@@ -123,11 +125,11 @@
                                     @foreach($lendings as $lending)
                                         @if($asset->id==$lending->asset_id)
                                             <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
                                                     歸還
                                                 </button>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -196,7 +198,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">提示訊息</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     確定刪除？
