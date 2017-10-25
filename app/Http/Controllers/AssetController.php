@@ -80,9 +80,11 @@ class AssetController extends Controller
         $user=User::find($asset->keeper);
         $maintainceitems=MaintainceItem::orderBy('created_at', 'ASC')->get();
         $assetmaintainces=Maintaince::where('asset_id',$asset->id)->where('status','已完成維修')->get();
+        $lendings=Lending::where('returntime',null)->get();
 
         $data = ['asset' => $asset,'category'=>$category,'vendor'=>$vendor,'user'=>$user,
-                 'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
+                 'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems,
+                'lendings'=>$lendings];
 
         return view('admin.assets.show', $data);
     }

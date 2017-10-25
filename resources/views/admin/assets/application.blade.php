@@ -5,7 +5,7 @@
 @section('content')
 <!-- Page Heading -->
 <div class="row">
-    @if(!(Auth::user()->previlege_id==3))
+    @if(!(Auth::user()->previlege_id>=3))
         <div class="col-sm-12">
             <h1 class="page-header">
                 <small></small>

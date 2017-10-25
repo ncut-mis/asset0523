@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Page Heading -->
-@if(!(Auth::user()->previlege_id==3))
+@if(!(Auth::user()->previlege_id>=3))
 <div class="col-sm-12">
     <h1 class="page-header">
         <small></small>
@@ -80,7 +80,7 @@
                             <table>
                                 <tbody>
                                 <tr class="table-text" style="text-align: center">
-                                    @if(Auth::user()->previlege_id==3)
+                                    @if(Auth::user()->previlege_id>=3)
 
                                         <td width="80">
                                             @if($asset->status=='正常使用中')
@@ -91,7 +91,7 @@
                                         </td>
 
                                             <td width="80" >
-                                                @if($asset->status=='正常使用中'||$asset->lendable==1)
+                                                @if($asset->status=='正常使用中'&&$asset->lendable==1)
                                                     <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >租借</a>
                                                 @else
                                                     <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
@@ -103,11 +103,11 @@
                                                 @foreach($lendings as $lending)
                                                     @if($asset->id==$lending->asset_id)
                                                             <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
                                                                 歸還
                                                             </button>
                                                             <!-- Modal -->
-                                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                                 <div class="modal-dialog" role="document">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
