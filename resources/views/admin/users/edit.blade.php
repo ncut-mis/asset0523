@@ -4,6 +4,7 @@
 
 @section('content')
 <!-- Page Heading -->
+
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
@@ -15,6 +16,13 @@
 @include('admin.layouts.partials.validation')
 <!-- /.row -->
 
+@if(!(Auth::user()->previlege_id==3))
+    <div class="col-sm-12">
+        <h1 class="page-header">
+            <small></small>
+        </h1>
+    </div>
+@endif
 <div class="row">
     <div class="col-lg-12">
         <form action="/admin/users/{{$user->id}}" method="POST" role="form">
