@@ -129,7 +129,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th width="80" style="text-align: center">員工名稱</th>
+                        <th width="80" style="text-align: center">員工姓名</th>
                         <th width="200" style="text-align: center">資產名稱</th>
                         <th width="120" style="text-align: center">申請日期</th>
                         <th width="100" style="text-align: center">狀態</th>

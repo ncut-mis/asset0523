@@ -114,9 +114,9 @@
 
                                 <td width="80">
                                     @if($asset->status=='正常使用中'&&$asset->lendable==1)
-                                        <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >租借</a>
+                                        <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >借用</a>
                                     @else
-                                        <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
+                                        <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">借用</a>
                                     @endif
                                 </td>
 
