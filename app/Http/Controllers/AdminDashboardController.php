@@ -38,7 +38,7 @@ class AdminDashboardController extends Controller
         if (Auth::user()->previlege_id==3)
             return view('admin.dashboard.mis',$data);
         elseif(Auth::user()->previlege_id==4)
-            return view('admin.dashboard.index',$data);
+            return view('admin.dashboard.admin',$data);
         elseif(Auth::user()->previlege_id)
             return view('admin.dashboard.user',$data);
 
