@@ -79,7 +79,6 @@
                         <th style="text-align: center">資產名稱</th>
                         <th width="100" style="text-align: center">維修狀態</th>
                         <th width="120" style="text-align: center">申請日期</th>
-                        <th width="100" style="text-align: center">功能</th>
                     </tr>
                     </thead>
                     @foreach($applications as $application)

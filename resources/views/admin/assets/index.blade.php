@@ -30,13 +30,15 @@
 </div>
 </div>
 <div class="row" style="margin-bottom: 20px; text-align: right" >
-@if(Auth::user()->previlege_id==3)
+
     <div class="col-lg-12">
 
         <a href="{{ route('admin.assets.instascan') }}" class="btn btn-success">QR Cord</a>
-        <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
+        @if(Auth::user()->previlege_id==3)
+            <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
+        @endif
     </div>
-    @endif
+
 </div>
 <!-- /.row -->
 
@@ -49,7 +51,7 @@
                         <th width="80" style="text-align: center">資產編號</th>
                         <th width="200" style="text-align: center">資產名稱</th>
                         <th width="80" style="text-align: center">資產類別</th>
-                            <th width="80" style="text-align: center">放置地點</th>
+                            <th width="200" style="text-align: center">放置地點</th>
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
                             <th style="text-align: center">功能</th>
