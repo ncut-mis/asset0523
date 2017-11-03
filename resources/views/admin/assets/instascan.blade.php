@@ -32,16 +32,6 @@
                 <div v-for="scan in scans | orderBy 'date' -1" class="tile">
                     <div class="tile-action">
                         <ul class="nav nav-list margin-no pull-right">
-                            <li>
-                                <a class="text-black-sec waves-attach waves-effect clipboard-copy" data-clipboard="@{{ scan.content }}">
-                                    <span class="icon icon-md">content_copy</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-black-sec waves-attach waves-effect" @click.stop="deleteScan(scan)">
-                                <span class="icon icon-md">clear</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                     <div class="tile-inner">
@@ -57,7 +47,7 @@
 </nav>
 <div class="overlay">
     <a id="menu-button" class="fbtn fbtn-brand fbtn-lg waves-attach waves-circle" data-toggle="menu" href="#history-menu">
-        <span class="icon icon-lg">history</span>
+        <span class="icon icon-lg"></span>
     </a>
     <div id="camera"/>
 </div>
