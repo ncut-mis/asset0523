@@ -196,6 +196,9 @@ class MaintaincesController extends Controller
             $to = ['email'=>'shark85423@gmail.com',
                 'name'=>'shark'];
             $data = ['maintainceitems'=>$maintainceitems,
+                'name'=>$asset->name,
+                'location'=>$asset->location,
+                'total'=>$maintainceitems->sum('amount'),
             ];
             Mail::later(1,' admin.mails.spend',$data, function($message) use ($to) {
                 $message->to($to['email'], $to['name'])->subject('報修明細');
