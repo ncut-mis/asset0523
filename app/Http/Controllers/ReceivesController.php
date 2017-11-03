@@ -29,7 +29,7 @@ class ReceivesController extends Controller
 
        Receive::create([
             'user_id'=>$request->user_id,
-            'supply_id'=>$request->supply_id,
+            'supply_id'=>$id,
             'date'=> Carbon::now(),
             'quantity'=>$request->quantity
         ]);
