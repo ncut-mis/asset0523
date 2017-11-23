@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+﻿@extends('admin.layouts.master')
 
 @section('title', '資產管理')
 
@@ -44,18 +44,19 @@
 
 <div class="row">
     <div class="col-lg-12">
+	<div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <div class="table-responsive">
+                        
                         <th width="80" style="text-align: center">資產編號</th>
                         <th width="200" style="text-align: center">資產名稱</th>
                         <th width="80" style="text-align: center">資產類別</th>
                             <th width="200" style="text-align: center">放置地點</th>
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
-                            <th style="text-align: center">功能</th>
-                        </div>
+                            <th width="600" style="text-align: center">功能</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -225,6 +226,7 @@
                 @endforeach
                 </tbody>
             </table>
+</div>
         </div>
     </div>
 </div>
