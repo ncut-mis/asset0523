@@ -35,41 +35,42 @@ class MaintaincesController extends Controller
     public function store(Requests\ApplicationRequest $request,$id)
     {
         $asset=Asset::find($id);
-        $asset->maintainces()->create([
-            'vendor_id'=>$asset->vendor,
-            'status'=>'申請中',
-            'method'=>'未選擇',
-            'remark'=>null
-        ]);
-        //
-        $asset->update([
-            'status'=>'維修中'
-        ]);
-        $maintainces=Maintaince::orderBy('created_at', 'DESC')->first();
-        $maintainces->applications()->create([
-            'user_id'=>$request->user()->id,
-            'problem'=>$request->problem,
-            'date'=>Carbon::now()
-        ]);
-
-        $users=User::where('previlege_id',3)->get();
-        $userk=User::find($asset->keeper);
-        foreach ($users as $user)
-        {
-            $to = ['email'=>$user->email,
-                'name'=>$user->name];
-            $data = [
-                'name'=>$asset->name,
-                'location'=>$asset->location,
-                'keeper'=>$userk->name,
-                'applications_user'=>Auth::user()->name,
+        if($asset->status=='正常使用中'){
+            $asset->maintainces()->create([
+                'vendor_id'=>$asset->vendor,
+                'status'=>'申請中',
+                'method'=>'未選擇',
+                'remark'=>null
+            ]);
+            //
+            $asset->update([
+                'status'=>'維修中'
+            ]);
+            $maintainces=Maintaince::orderBy('created_at', 'DESC')->first();
+            $maintainces->applications()->create([
+                'user_id'=>$request->user()->id,
                 'problem'=>$request->problem,
-            ];
-            Mail::later(3,' admin.emails.application',$data, function($message) use ($to) {
-                $message->to($to['email'], $to['name'])->subject('有新的報修訊息');
-            });
+                'date'=>Carbon::now()
+            ]);
+            //Mail
+            $users=User::where('previlege_id',3)->get();
+            $userk=User::find($asset->keeper);
+            foreach ($users as $user)
+            {
+                $to = ['email'=>$user->email,
+                    'name'=>$user->name];
+                $data = [
+                    'name'=>$asset->name,
+                    'location'=>$asset->location,
+                    'keeper'=>$userk->name,
+                    'applications_user'=>Auth::user()->name,
+                    'problem'=>$request->problem,
+                ];
+                Mail::later(1,' admin.mails.application',$data, function($message) use ($to) {
+                    $message->to($to['email'], $to['name'])->subject('有新的報修訊息');
+                });
+            }
         }
-
         return redirect()->route('admin.assets.index');
     }
 
@@ -107,9 +108,21 @@ class MaintaincesController extends Controller
         $maintainceitems=MaintainceItem::orderBy('created_at', 'ASC')->get();
         $assetmaintainces=Maintaince::where('asset_id',$asset->id)->where('status','已完成維修')->get();
 
-        $maintaince->update([
-            'status'=>'申請待處理'
-        ]);
+        if($maintaince->status=='申請中'){
+            $maintaince->update([
+                'status'=>'申請待處理'
+            ]);
+            //Mail
+            foreach ($applications as$application){
+            $user=User::find($application->user_id);
+                $to = ['email'=>$user->email,
+                    'name'=>$user->name];
+                $data=[];
+                Mail::later(1,' admin.mails.status',$data, function($message) use ($to) {
+                    $message->to($to['email'], $to['name'])->subject('MIS人員已閱讀過');
+                });
+            }
+        }
 
         $data=['maintaince'=>$maintaince,'asset'=>$asset,'vendors'=>$vendors,'applications'=>$applications,'users'=>$users,
                 'assetmaintainces'=>$assetmaintainces,'maintainceitems'=>$maintainceitems];
@@ -139,6 +152,16 @@ class MaintaincesController extends Controller
                 'status'=>'自行維修中',
             ]);
         }
+        //Mail
+        foreach ($maintaince->applications()->get() as $application){
+            $user=User::find($application->user_id);
+            $to = ['email'=>$user->email,
+                'name'=>$user->name];
+            $data=[];
+            Mail::later(1,' admin.mails.status',$data, function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('報修的資產已開始維修');
+            });
+        }
 
         return redirect()->route('admin.maintainces.index');
     }
@@ -153,7 +176,7 @@ class MaintaincesController extends Controller
         $asset->update([
             'status'=>'正常使用中'
         ]);
-
+        //Mail
         $users=User::where('previlege_id',3)->get();
         foreach ($users as $user)
         {
@@ -163,25 +186,24 @@ class MaintaincesController extends Controller
                 'name'=>$asset->name,
                 'date'=>Carbon::now(),
             ];
-            Mail::later(3,' admin.emails.complete',$data, function($message) use ($to) {
+            Mail::later(1,' admin.mails.complete',$data, function($message) use ($to) {
                 $message->to($to['email'], $to['name'])->subject('報修的資產已完成維修');
             });
         }
 
-/*
- *       $maintainceitems=$maintaince->maintainceitems()->get();
-        $usersA=User::where('','')->get();
-        foreach ($users as $user)
-        {
-            $to = ['email'=>$usersA->email,
-                'name'=>$usersA->name];
+
+        $maintainceitems=$maintaince->maintainceitems()->get();
+            $to = ['email'=>'shark85423@gmail.com',
+                'name'=>'shark'];
             $data = ['maintainceitems'=>$maintainceitems,
+                'name'=>$asset->name,
+                'location'=>$asset->location,
+                'total'=>$maintainceitems->sum('amount'),
             ];
-            Mail::later(3,' admin.emails.spend',$data, function($message) use ($to) {
-                $message->to($to['email'], $to['name'])->subject('測試信件');
+            Mail::later(1,' admin.mails.spend',$data, function($message) use ($to) {
+                $message->to($to['email'], $to['name'])->subject('報修明細');
             });
-        }
-*/
+
 
         return redirect()->route('admin.maintainces.index');
     }
@@ -200,7 +222,7 @@ class MaintaincesController extends Controller
                 'name'=>$user->name];
             $data = ['status'=>$asset->status,
             ];
-            Mail::later(10,' admin.emails.test01',$data, function($message) use ($to) {
+            Mail::later(10,' admin.mails.test01',$data, function($message) use ($to) {
                 $message->to($to['email'], $to['name'])->subject('測試信件');
             });
         }

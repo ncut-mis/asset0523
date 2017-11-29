@@ -113,6 +113,7 @@
 
             <div class="text-right">
                 <button type="submit" class="btn btn-success">更新</button>
+                <a class="btn btn-success" href="{{ route('admin.assets.index') }}"  role="button">返回</a>
             </div>
 
         </form>

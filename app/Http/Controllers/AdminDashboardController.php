@@ -29,15 +29,16 @@ class AdminDashboardController extends Controller
         $maintaincesA=Maintaince::where('status','申請中')->get();
         $announcements = Announcement::orderBy('created_at', 'DESC')->take(3)->get();
         $users=User::orderBy('created_at' ,'DESC') ->get();
+        $departmaentU=$users->where('department_id', Auth::user()->department_id);
 
 
         $data=['applications'=>$applications,'maintainces'=>$maintainces,'assets'=>$assets,
             'maintaincesA'=>$maintaincesA,'applicationsA'=>$applicationsA,'announcements'=>$announcements,
-            "users"=>$users];
+            "users"=>$users,'departmaentU'=>$departmaentU];
         if (Auth::user()->previlege_id==3)
             return view('admin.dashboard.mis',$data);
         elseif(Auth::user()->previlege_id==4)
-            return view('admin.dashboard.index',$data);
+            return view('admin.dashboard.admin',$data);
         elseif(Auth::user()->previlege_id)
             return view('admin.dashboard.user',$data);
 

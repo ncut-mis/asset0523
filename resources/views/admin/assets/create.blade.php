@@ -4,6 +4,14 @@
 
 @section('content')
 <!-- Page Heading -->
+
+@if(!(Auth::user()->previlege_id>=3))
+    <div class="col-sm-12">
+        <h1 class="page-header">
+            <small></small>
+        </h1>
+    </div>
+@endif
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">

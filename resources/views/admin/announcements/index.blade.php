@@ -9,11 +9,6 @@
         <h1 class="page-header">
             公告管理 <small>公告列表</small>
         </h1>
-        <ol class="breadcrumb">
-            <li class="active">
-                <i class="fa fa-edit"></i> 公告管理
-            </li>
-        </ol>
     </div>
 </div>
 <!-- /.row -->
