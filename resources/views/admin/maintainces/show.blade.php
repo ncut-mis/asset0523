@@ -1,4 +1,3 @@
-@extends('admin.layouts.master')
 
 @section('title', '維修處理')
 
@@ -91,7 +90,7 @@
                             <h4 class="panel-title">
                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$assetmaintaince->id}}" aria-expanded="false>"
                                    aria-controls="collapse{{$assetmaintaince->id}}">
-                                       維修紀錄{{$assetmaintaince->id}}
+                                       維修紀錄 {{$assetmaintaince->date}}
                                 </a>
                             </h4>
                         </div>

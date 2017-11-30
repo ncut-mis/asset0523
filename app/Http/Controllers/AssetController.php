@@ -91,10 +91,20 @@ class AssetController extends Controller
 
     public function Search(Request $request)
     {
+	
         $Search =$request->input('Search');
-        $asset = Asset::orderBy('created_at', 'DESC')
+	if(Auth::user()->previlege_id!=3&&$Search==null)
+	{
+	$asset = Asset::orderBy('created_at', 'DESC')
+            ->where('id','0')
+            ->get();
+	}
+	else
+	{
+	$asset = Asset::orderBy('created_at', 'DESC')
             ->where('name', 'like','%'.$Search.'%')
             ->get();
+	}        
         $category=Category::orderBy('created_at' ,'DESC') ->get();
         $lendings=Lending::whereNull('returntime')->get();
         $data=['assets'=>$asset,'lendings'=>$lendings,'categories'=>$category];

@@ -14,7 +14,11 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            資產管理 <small>所有資產列表</small>
+		@if(Auth::user()->previlege_id==3)
+            		資產管理 <small>所有資產列表</small>
+		@else
+			查詢資產 <small>查詢資產列表</small>
+		@endif
         </h1>
     </div>
 </div>
@@ -33,7 +37,7 @@
 
     <div class="col-lg-12">
 
-        <a href="{{ route('admin.assets.instascan') }}" class="btn btn-success">QR Cord</a>
+        <a href="{{ route('admin.assets.instascan') }}" class="btn btn-success">QR Code</a>
         @if(Auth::user()->previlege_id==3)
             <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
         @endif
@@ -48,14 +52,23 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        
-                        <th width="80" style="text-align: center">資產編號</th>
-                        <th width="200" style="text-align: center">資產名稱</th>
-                        <th width="100" style="text-align: center">資產類別</th>
-                            <th width="200" style="text-align: center">放置地點</th>
-                        <th width="100" style="text-align: center">資產狀態</th>
-                        <th width="80" style="text-align: center">可否租借</th>
-                            <th width="600" style="text-align: center">功能</th>
+                        @if(Auth::user()->previlege_id==3)
+            			<th width="120" style="text-align: center">資產編號</th>
+                        	<th width="300" style="text-align: center">資產名稱</th>
+                       	 	<th width="150" style="text-align: center">資產類別</th>
+                            	<th width="200" style="text-align: center">放置地點</th>
+                        	<th width="150" style="text-align: center">資產狀態</th>
+                        	<th width="120" style="text-align: center">可否租借</th>
+                            	<th width="400" style="text-align: center">功能</th>                        
+			@else
+				<th width="120" style="text-align: center">資產編號</th>
+                        	<th width="300" style="text-align: center">資產名稱</th>
+                       	 	<th width="150" style="text-align: center">資產類別</th>
+                            	<th width="200" style="text-align: center">放置地點</th>
+                        	<th width="150" style="text-align: center">資產狀態</th>
+                        	<th width="120" style="text-align: center">可否租借</th>
+                            	<th width="80" style="text-align: center">功能</th>                        
+			@endif
                         
                     </tr>
                 </thead>

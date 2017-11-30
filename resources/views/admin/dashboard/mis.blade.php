@@ -169,7 +169,7 @@
                 <i class="fa fa-dashboard"></i> 報修處理
             </li>
         </ol>
-        @if(count($maintaincesA) > 0)
+        @if(count($maintainces) > 0)
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
@@ -185,8 +185,8 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($maintaincesA as $maintaince)
-                                @if($maintaince->status!=='已完成維修')
+                            @foreach($maintainces as $maintaince)
+                                @if(!($maintaince->status=='已完成維修'))
                                     <tr>
                                         <td style="text-align: center">
                                             {{ $maintaince->id }}
