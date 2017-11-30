@@ -51,7 +51,7 @@
                         
                         <th width="80" style="text-align: center">資產編號</th>
                         <th width="200" style="text-align: center">資產名稱</th>
-                        <th width="80" style="text-align: center">資產類別</th>
+                        <th width="100" style="text-align: center">資產類別</th>
                             <th width="200" style="text-align: center">放置地點</th>
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+﻿@extends('admin.layouts.master')
 
 @section('title', '主控台')
 
@@ -22,10 +22,10 @@
                             <thead>
                             <tr>
                                 <th width="100" style="text-align: center">標題</th>
-                                <th style="text-align: center">內容</th>
+                                <th width="300" style="text-align: center">內容</th>
                                 <th width="100" style="text-align: center">日期</th>
-                                <th style="text-align: center">發布者</th>
-                                <th width="200" style="text-align: center">功能</th>
+                                <th width="100" style="text-align: center">發布者</th>
+                                <th width="100" style="text-align: center">功能</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -117,10 +117,10 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th width="80" style="text-align: center">維修編號</th>
-                        <th style="text-align: center">資產名稱</th>
+                        <th width="100" style="text-align: center">維修編號</th>
+                        <th width="300" style="text-align: center">資產名稱</th>
                         <th width="100" style="text-align: center">維修狀態</th>
-                        <th width="80" style="text-align: center">維修方式</th>
+                        <th width="100" style="text-align: center">維修方式</th>
                         <th width="120" style="text-align: center">申請日期</th>
                         <th width="100" style="text-align: center">功能</th>
                     </tr>
@@ -169,24 +169,24 @@
                 <i class="fa fa-dashboard"></i> 報修處理
             </li>
         </ol>
-        @if(count($maintainces) > 0)
+        @if(count($maintaincesA) > 0)
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th width="80" style="text-align: center">維修編號</th>
-                                <th style="text-align: center">資產名稱</th>
+                                <th width="100" style="text-align: center">維修編號</th>
+                                <th width="300" style="text-align: center">資產名稱</th>
                                 <th width="100" style="text-align: center">維修狀態</th>
-                                <th width="80" style="text-align: center">維修方式</th>
+                                <th width="100" style="text-align: center">維修方式</th>
                                 <th width="120" style="text-align: center">申請日期</th>
                                 <th width="100" style="text-align: center">功能</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($maintainces as $maintaince)
-                                @if($maintaince->status!=='申請中'&&$maintaince->status!=='已完成維修')
+                            @foreach($maintaincesA as $maintaince)
+                                @if($maintaince->status!=='已完成維修')
                                     <tr>
                                         <td style="text-align: center">
                                             {{ $maintaince->id }}
