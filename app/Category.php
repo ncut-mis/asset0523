@@ -12,9 +12,9 @@ class Category extends Model
         'name'
     ];
 
-    public function asset() // Category (n) -> Asset (1)
+    public function assets() // Category (1) -> Asset (n)
     {
-        return $this->belongsTo(Asset::class);
+        return $this->hasMany(Asset::class);
     }
 
 }

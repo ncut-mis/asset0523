@@ -22,9 +22,9 @@ class Asset extends Model
         'warranty'
     ];
 
-    public function categories() //  Asset (1) -> Category (n)
+    public function category() //  Asset (n) -> Category (1)
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function maintainces() //  Asset (1) -> Maintaince (n)
