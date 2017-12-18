@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 namespace App\Http\Controllers;
 
@@ -192,7 +192,7 @@ class MaintaincesController extends Controller
 
 
         $maintainceitems=$maintaince->maintainceitems()->get();
-            $to = ['email'=>'moneyyinsh001@gmail.com',
+            $to = ['email'=>'moneyyinsh@gmail.com',
                 'name'=>'shark'];
             $data = ['maintainceitems'=>$maintainceitems,
                 'name'=>$asset->name,
