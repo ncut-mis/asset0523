@@ -28,7 +28,6 @@
     </div>
 </div>
 <!-- /.row -->
-
 <div class="row">
     <div class="col-lg-12">
         <div class="table-responsive">
@@ -36,7 +35,7 @@
                 <thead>
                     <tr>
                         <th width="100" style="text-align: center">耗材編號</th>
-                        <th style="text-align: center">耗材名稱</th>
+                        <th width="200" style="text-align: center">耗材名稱</th>
                         <th width="200" style="text-align: center">耗材數量</th>
                         <th width="350" style="text-align: center">功能</th>
                     </tr>

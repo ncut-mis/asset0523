@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+﻿@extends('admin.layouts.master')
 
 @section('title', '主控台')
 
@@ -22,10 +22,10 @@
                             <thead>
                             <tr>
                                 <th width="100" style="text-align: center">標題</th>
-                                <th style="text-align: center">內容</th>
+                                <th width="400" style="text-align: center">內容</th>
                                 <th width="100" style="text-align: center">日期</th>
-                                <th style="text-align: center">發布者</th>
-                                <th width="200" style="text-align: center">功能</th>
+                                <th width="100" style="text-align: center">發布者</th>
+                                <th width="100" style="text-align: center">功能</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -117,10 +117,10 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th width="80" style="text-align: center">維修編號</th>
-                        <th style="text-align: center">資產名稱</th>
+                        <th width="100" style="text-align: center">維修編號</th>
+                        <th width="300" style="text-align: center">資產名稱</th>
                         <th width="100" style="text-align: center">維修狀態</th>
-                        <th width="80" style="text-align: center">維修方式</th>
+                        <th width="100" style="text-align: center">維修方式</th>
                         <th width="120" style="text-align: center">申請日期</th>
                         <th width="100" style="text-align: center">功能</th>
                     </tr>
@@ -144,7 +144,7 @@
                             <td style="text-align: center">{{ $maintaince->method }}</td>
 
                             <td style="text-align: center">
-                                @foreach($applications as $application)
+                                @foreach($applicationsA as $application)
                                     @if($maintaince->id==$application->maintaince_id)
                                         {{ $application-> date}}
                                     @endif
@@ -176,17 +176,16 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th width="80" style="text-align: center">維修編號</th>
-                                <th style="text-align: center">資產名稱</th>
+                                <th width="100" style="text-align: center">維修編號</th>
+                                <th width="300" style="text-align: center">資產名稱</th>
                                 <th width="100" style="text-align: center">維修狀態</th>
-                                <th width="80" style="text-align: center">維修方式</th>
+                                <th width="100" style="text-align: center">維修方式</th>
                                 <th width="120" style="text-align: center">申請日期</th>
                                 <th width="100" style="text-align: center">功能</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($maintainces as $maintaince)
-                                @if($maintaince->status!=='申請中'&&$maintaince->status!=='已完成維修')
                                     <tr>
                                         <td style="text-align: center">
                                             {{ $maintaince->id }}
@@ -201,7 +200,7 @@
                                         <td style="text-align: center">{{ $maintaince->status }}</td>
                                         <td style="text-align: center">{{ $maintaince->method }}</td>
                                         <td style="text-align: center">
-                                            @foreach($applications as $application)
+                                            @foreach($applicationsA as $application)
                                                 @if($maintaince->id==$application->maintaince_id)
                                                     {{ $application-> date}}
                                                 @endif
@@ -215,7 +214,6 @@
                                             @endif
                                         </td>
                                     </tr>
-                                @endif
                             @endforeach
                             </tbody>
                         </table>
@@ -228,8 +226,6 @@
 <!-- /.row -->
 
 <div class="row">
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>

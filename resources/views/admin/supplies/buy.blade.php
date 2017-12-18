@@ -26,8 +26,9 @@
             </div>
 
             <div class="form-group">
-                <label>添購數量：</label>
-                <input name="quantity" class="form-control" placeholder="請輸入添購數量">
+
+                <label>數量：</label>
+                <input name="quantity" class="form-control" placeholder="請輸入數量">
             </div>
 
 

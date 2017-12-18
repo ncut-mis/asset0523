@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+﻿@extends('admin.layouts.master')
 
 @section('title', '資產管理')
 
@@ -30,30 +30,33 @@
 </div>
 </div>
 <div class="row" style="margin-bottom: 20px; text-align: right" >
-@if(Auth::user()->previlege_id==3)
+
     <div class="col-lg-12">
 
         <a href="{{ route('admin.assets.instascan') }}" class="btn btn-success">QR Cord</a>
-        <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
+        @if(Auth::user()->previlege_id==3)
+            <a href="{{ route('admin.assets.create') }}" class="btn btn-success">建立新資產</a>
+        @endif
     </div>
-    @endif
+
 </div>
 <!-- /.row -->
 
 <div class="row">
     <div class="col-lg-12">
+	<div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <div class="table-responsive">
+                        
                         <th width="80" style="text-align: center">資產編號</th>
                         <th width="200" style="text-align: center">資產名稱</th>
                         <th width="80" style="text-align: center">資產類別</th>
-                            <th width="80" style="text-align: center">放置地點</th>
+                            <th width="200" style="text-align: center">放置地點</th>
                         <th width="100" style="text-align: center">資產狀態</th>
                         <th width="80" style="text-align: center">可否租借</th>
-                            <th style="text-align: center">功能</th>
-                        </div>
+                            <th width="600" style="text-align: center">功能</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -92,9 +95,9 @@
 
                                             <td width="80" >
                                                 @if($asset->status=='正常使用中'&&$asset->lendable==1)
-                                                    <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >租借</a>
+                                                    <a class="btn btn-primary" role="button" href="{{ route('admin.lendings.create', $asset->id) }}" >借用</a>
                                                 @else
-                                                    <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">租借</a>
+                                                    <a class="btn btn-primary disabled" role="button" href="{{ route('admin.lendings.create', $asset->id) }}">借用</a>
                                                 @endif
                                             </td>
 
@@ -223,6 +226,7 @@
                 @endforeach
                 </tbody>
             </table>
+</div>
         </div>
     </div>
 </div>
