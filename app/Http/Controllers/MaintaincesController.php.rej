@@ -1,0 +1,6 @@
+diff a/app/Http/Controllers/MaintaincesController.php b/app/Http/Controllers/MaintaincesController.php	(rejected hunks)
+@@ -1,4 +0,3 @@
+-<?php
+ ﻿<?php
+ 
+ namespace App\Http\Controllers;
