@@ -144,7 +144,7 @@
                             <td style="text-align: center">{{ $maintaince->method }}</td>
 
                             <td style="text-align: center">
-                                @foreach($applications as $application)
+                                @foreach($applicationsA as $application)
                                     @if($maintaince->id==$application->maintaince_id)
                                         {{ $application-> date}}
                                     @endif
@@ -187,6 +187,7 @@
                             <tbody>
                             @foreach($maintainces as $maintaince)
                                 @if(!($maintaince->status=='已完成維修'))
+
                                     <tr>
                                         <td style="text-align: center">
                                             {{ $maintaince->id }}
@@ -201,7 +202,7 @@
                                         <td style="text-align: center">{{ $maintaince->status }}</td>
                                         <td style="text-align: center">{{ $maintaince->method }}</td>
                                         <td style="text-align: center">
-                                            @foreach($applications as $application)
+                                            @foreach($applicationsA as $application)
                                                 @if($maintaince->id==$application->maintaince_id)
                                                     {{ $application-> date}}
                                                 @endif
@@ -215,7 +216,6 @@
                                             @endif
                                         </td>
                                     </tr>
-                                @endif
                             @endforeach
                             </tbody>
                         </table>
@@ -228,8 +228,6 @@
 <!-- /.row -->
 
 <div class="row">
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
