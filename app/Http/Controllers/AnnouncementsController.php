@@ -19,7 +19,7 @@ class AnnouncementsController extends Controller
     //
     public function index()
     {
-        $announcements = Announcement::orderBy('created_at', 'DESC')->take(3)->get();
+        $announcements = Announcement::orderBy('created_at', 'DESC')->get();
         $users=User::orderBy('created_at' ,'DESC') ->get();
         $data = ['announcements' => $announcements,'users'=> $users];
 
