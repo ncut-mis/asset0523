@@ -9,5 +9,12 @@ return [
     'password'   => 'tiantian0202',
     'sendmail'   => '/usr/sbin/sendmail -bs',
     'pretend'    => true,
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+    ],
 ];
 

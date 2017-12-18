@@ -22,7 +22,7 @@
                             <thead>
                             <tr>
                                 <th width="100" style="text-align: center">標題</th>
-                                <th width="400" style="text-align: center">內容</th>
+                                <th width="300" style="text-align: center">內容</th>
                                 <th width="100" style="text-align: center">日期</th>
                                 <th width="100" style="text-align: center">發布者</th>
                                 <th width="100" style="text-align: center">功能</th>
@@ -186,6 +186,8 @@
                             </thead>
                             <tbody>
                             @foreach($maintainces as $maintaince)
+                                @if(!($maintaince->status=='已完成維修'))
+
                                     <tr>
                                         <td style="text-align: center">
                                             {{ $maintaince->id }}
