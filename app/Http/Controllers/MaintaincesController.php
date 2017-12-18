@@ -177,9 +177,8 @@ class MaintaincesController extends Controller
             'status'=>'正常使用中'
         ]);
         //Mail
-        $users=User::where('previlege_id',3)->get();
-        foreach ($users as $user)
-        {
+        foreach ($maintaince->applications()->get() as $application){
+            $user=User::find($application->user_id);
             $to = ['email'=>$user->email,
                 'name'=>$user->name];
             $data = [
