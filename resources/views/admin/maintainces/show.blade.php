@@ -1,3 +1,4 @@
+@extends('admin.layouts.master')
 
 @section('title', '維修處理')
 
