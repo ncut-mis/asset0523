@@ -1,0 +1,15 @@
+一般員工
+mail：useryinsh001@gmail.com
+密碼：yinsh001
+
+部門主管
+mail：supervisoryinsh@gmail.com
+密碼：yinsh001
+
+mis人員
+mail：misyinsh001@gmail.com
+密碼：yinsh001
+
+系統管理員
+mail：management@gmail.com
+密碼：management
